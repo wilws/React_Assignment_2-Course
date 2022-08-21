@@ -365,12 +365,16 @@ export default {
 
     .skill-set-page{
         h1{
-            font-family: $quaternary-font;
-            font-size:4.3rem;
+            // font-family: $quaternary-font;
+            // font-size:4.3rem;
             font-weight: 100;
-            color:$grey;
-            letter-spacing: .4rem;
+            color:black;
+            // letter-spacing: .4rem;
             margin: 3rem 0 0 8rem;
+
+            font-family: $secondary-font;
+            font-size:4rem;
+            letter-spacing: .1rem;
         }
 
         .cards-wrapper{

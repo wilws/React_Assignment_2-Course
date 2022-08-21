@@ -5,12 +5,12 @@
         <div class="left-wrapper">
             <div class="upper-wrapper">
                 <div class="left-side">
-                    <h1>{{ mainTitle }}</h1>
+                    <h1 v-html="mainTitle"></h1>
                     <h3>{{ subTitle }}</h3>
                     <button :style="{ backgroundColor:buttonColor}" @click="workDisplay">{{ linkToProjectDescription }}</button>
                 </div>
 
-                <div class="right-side">
+                <div v-if="projectIconUrl" class="right-side">
                     <img :src="projectIconUrl" alt="logo">
                 </div>
             </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="right-wrapper">
             <div v-if="mediaType == 'video'" class="vidoe">
-                <video :key="video" loop autoplay>
+                <video :key="video" controls loop autoplay>
                     <source :src="mediaDisplayUrl" type="video/mp4">
                 </video>
             </div>
@@ -95,8 +95,6 @@ export default {
     height:100%;
     @include row-horizontal-center();
     overflow: hidden;
-    // color:white;
-    // background-color: white;
 
     .left-wrapper{
         padding: 4rem;

@@ -33,7 +33,7 @@ export default {
         return {
             mainTitle : "Web Project 2",
             subTitle: "2018-OPTION KATZE",
-            linkToProjectDescription: "View project description",
+            linkToProjectDescription: "View Project Description",
             projectIconUrl: require('@/assets/img/projects/web_project_2/logo.png'),
             FrontEndTechList: ['HTML/CSS','Javascript'],
             BackEndTechList: ['Python','Django', 'MySQL'],

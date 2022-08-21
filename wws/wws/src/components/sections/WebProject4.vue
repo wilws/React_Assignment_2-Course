@@ -33,7 +33,7 @@ export default {
         return {
             mainTitle : "Web Project 4",
             subTitle: "2016 - Longlife Production Limited",
-            linkToProjectDescription: "Go to the web page",
+            linkToProjectDescription: "Go to the Web Page",
             projectIconUrl: require('@/assets/img/projects/web_project_4/logo.png'),
             FrontEndTechList: ['HTML/CSS','Javascript'],
             BackEndTechList: [],

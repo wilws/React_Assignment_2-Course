@@ -33,7 +33,7 @@ export default {
         return {
             mainTitle : "Web Project 1",
             subTitle: "2022-ELLOW TRADITION",
-            linkToProjectDescription: "Go to the web page",
+            linkToProjectDescription: "Go to the Web Page",
             projectIconUrl: require('@/assets/img/projects/web_project_1/logo.png'),
             FrontEndTechList: ['HTML/CSS','Javascript','VueJs/Vue-Cli'],
             BackEndTechList: ['NodeJs / ExpressJs', 'MongoDB'],
