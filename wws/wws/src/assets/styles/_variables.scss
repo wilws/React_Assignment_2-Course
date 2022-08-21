@@ -1,0 +1,50 @@
+// font 
+$primary-font:'Nanum Myeongjo', serif;
+$secondary-font:'Bodoni Moda', serif;
+$tertiary-font:'Roboto', sans-serif;
+$quaternary-font: 'Courier Prime', monospace;
+
+
+
+/*  Google Font Style */
+/*  font-family: 'Bodoni Moda', serif;
+font-family: 'Courier Prime', monospace;
+font-family: 'Julius Sans One', sans-serif;
+font-family: 'Kalam', cursive;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Noto Sans TC', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+
+// Center object
+@mixin vertical-horizontal-center{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin column-horizontal-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin row-horizontal-center{
+    display: flex;
+    align-items: center;
+}
+
+@mixin vertical-center{
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+$grey : #757575;
+
+$skillCardWidth: 40.6rem;
+
+
+
+
