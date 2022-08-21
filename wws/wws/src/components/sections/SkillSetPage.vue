@@ -255,8 +255,8 @@
             <div class="card-wrapper">
                 <div class="card" id="front-end-card">
                     <div class="card-title">
-                        <h3>DATA BASE</h3>
-                        <h4>MANAGEMENT</h4>
+                        <h3>OTHERS</h3>
+                        <!-- <h4></h4> -->
                     </div>
 
                     <!-- technology used -->
@@ -415,7 +415,7 @@ export default {
                         font-family: $quaternary-font;
                         font-weight: 600;
                         letter-spacing: 0.5rem;
-                        text-align:right;
+                        text-align:center;
                     }
                     h4{
                         @extend h3;

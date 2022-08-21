@@ -1,0 +1,63 @@
+<template>
+    <section class="web-project-1">
+        <project-page-layout
+
+            :mainTitle = "mainTitle"
+            :subTitle = "subTitle"
+            :linkToProjectDescription = "linkToProjectDescription"
+            :projectIconUrl = "projectIconUrl"
+            :projectDescription = "projectDescription"
+            :FrontEndTechList = "FrontEndTechList"
+            :BackEndTechList = "BackEndTechList"
+            :DesignStyleList = "DesignStyleList"
+            :mediaDisplayUrl = "mediaDisplayUrl"
+            :mediaType = "mediaType"
+            :backgroundColor = "backgroundColor"
+            :fontColor = "fontColor"
+            :buttonColor = "buttonColor"
+            @work-display = "workDisplay"
+
+        ></project-page-layout>
+    </section>
+</template>
+
+<script>
+
+import ProjectPageLayout from "../layout/ProjectPageLayout.vue";
+
+export default {
+    components:{
+        ProjectPageLayout
+    },
+    data(){
+        return {
+            mainTitle : "Web Project 4",
+            subTitle: "2016 - Longlife Production Limited",
+            linkToProjectDescription: "Go to the web page",
+            projectIconUrl: require('@/assets/img/projects/web_project_4/logo.png'),
+            FrontEndTechList: ['HTML/CSS','Javascript'],
+            BackEndTechList: [],
+            DesignStyleList: [],
+            mediaType:"image",
+            mediaDisplayUrl: require('@/assets/img/projects/web_project_4/cover.png'),
+            backgroundColor:"White",
+            fontColor:"Black",
+            buttonColor:"#F70007",
+            projectDescription :"This is a pure HTML/CSS/JAVASCRIPT webpage for a visual merchandising services company Longlife Production Limited.<br><br>My designer friend one day urgently asked for my assistance to make a website for the company. He gave me the web layout and picture and I made them online. Hence this simple web page is created."
+        }
+    },
+    methods:{
+        workDisplay(){
+            window.open("http://http://www.longlifeproduction.com", '_blank');
+        }
+    }
+}
+</script>
+
+
+<style lang="scss" scoped>
+.web-project-1{
+    background-color: rgb(0, 0, 0);
+}
+
+</style>
