@@ -1,5 +1,5 @@
 <template>
-    <section class="web-project-1">
+    <section class="web-project-1" id="web-project-2">
         <project-page-layout
 
             :mainTitle = "mainTitle"
@@ -18,12 +18,14 @@
             @work-display = "workDisplay"
 
         ></project-page-layout>
+
     </section>
 </template>
 
 <script>
 
 import ProjectPageLayout from "../layout/ProjectPageLayout.vue";
+
 
 export default {
     components:{

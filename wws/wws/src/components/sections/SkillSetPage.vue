@@ -1,5 +1,5 @@
 <template>
-    <section class="skill-set-page">
+    <section class="skill-set-page" id="skill-set-page">
 
         <h1>Skill Set</h1>
 

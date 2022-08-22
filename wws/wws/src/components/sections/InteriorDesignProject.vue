@@ -1,5 +1,5 @@
 <template>
-    <section class="web-project-1">
+    <section class="interior-design-project-1" id="interior-design-project-1">
         <project-page-layout
 
             :mainTitle = "mainTitle"
@@ -56,7 +56,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.web-project-1{
+.interior-design-1{
     background-color: rgb(0, 0, 0);
 }
 

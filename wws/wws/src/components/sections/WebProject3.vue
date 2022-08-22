@@ -1,33 +1,42 @@
 <template>
-    <section class="web-project-1">
-        <project-page-layout
+    <section class="web-project-3" id="web-project-3">
 
-            :mainTitle = "mainTitle"
-            :subTitle = "subTitle"
-            :linkToProjectDescription = "linkToProjectDescription"
-            :projectIconUrl = "projectIconUrl"
-            :projectDescription = "projectDescription"
-            :FrontEndTechList = "FrontEndTechList"
-            :BackEndTechList = "BackEndTechList"
-            :DesignStyleList = "DesignStyleList"
-            :mediaDisplayUrl = "mediaDisplayUrl"
-            :mediaType = "mediaType"
-            :backgroundColor = "backgroundColor"
-            :fontColor = "fontColor"
-            :buttonColor = "buttonColor"
-            @work-display = "workDisplay"
+        <rotation-layout>
+        <template v-slot:face1>
+            <project-page-layout
+                :mainTitle = "mainTitle"
+                :subTitle = "subTitle"
+                :linkToProjectDescription = "linkToProjectDescription"
+                :projectIconUrl = "projectIconUrl"
+                :projectDescription = "projectDescription"
+                :FrontEndTechList = "FrontEndTechList"
+                :BackEndTechList = "BackEndTechList"
+                :DesignStyleList = "DesignStyleList"
+                :mediaDisplayUrl = "mediaDisplayUrl"
+                :mediaType = "mediaType"
+                :backgroundColor = "backgroundColor"
+                :fontColor = "fontColor"
+                :buttonColor = "buttonColor"
+                @work-display = "workDisplay"
+            ></project-page-layout>
+        </template>
+        </rotation-layout>
 
-        ></project-page-layout>
+
+
+
     </section>
 </template>
 
 <script>
 
 import ProjectPageLayout from "../layout/ProjectPageLayout.vue";
+import RotationLayout from "../layout/rotationLayout.vue";
 
 export default {
     components:{
-        ProjectPageLayout
+        ProjectPageLayout,
+        RotationLayout
     },
     data(){
         return {
@@ -56,7 +65,9 @@ export default {
 
 
 <style lang="scss" scoped>
-.web-project-1{
+.web-project-3{
+    width:100vw;
+    height: 100vh;
     background-color: rgb(0, 0, 0);
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <section class="web-project-1">
+    <section class="graphic-design-project-1" id="graphic-design-project-1">
         <project-page-layout
 
             :mainTitle = "mainTitle"

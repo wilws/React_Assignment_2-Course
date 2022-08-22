@@ -1,5 +1,5 @@
 <template>
-    <section class="index-page">
+    <section class="index-page" id="index">
         <div class="name">
             <h1>WAISHUN</h1>
             <h1>WONG</h1>
@@ -52,7 +52,7 @@ export default {
         letter-spacing: 1.3rem;
         text-align: right;
         left:32.4%;
-        z-index: 10;
+        z-index: 1;
         background-color: rgba(256,256,256,0.5);
     
         // h1:nth-child(1){

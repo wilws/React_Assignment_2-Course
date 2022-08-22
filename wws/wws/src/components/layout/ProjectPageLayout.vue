@@ -135,6 +135,12 @@ export default {
                     text-align: center;
                     border-radius: 1rem;
                     margin-top:.7rem;
+                    cursor: pointer;
+                    transition: transform .5s;
+
+                    &:hover{
+                        transform:scale(1.1);
+                    }
                 }
             }
             .right-side{

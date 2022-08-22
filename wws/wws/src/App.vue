@@ -1,9 +1,7 @@
 <template>
 
   <div class="container">
-    <!-- menu -->
-
-
+    <menu-page></menu-page>
     <index-page></index-page>
     <skill-set-page></skill-set-page>
     <web-project-1></web-project-1>
@@ -13,15 +11,14 @@
     <graphic-design-project></graphic-design-project>
     <interior-design-project></interior-design-project>
     <final-page></final-page>
-    
-
-
+            <rotation-layout></rotation-layout>
   </div>
 
 
 </template>
 
 <script>
+import MenuPage from "./components/sections/menuPage.vue";
 import IndexPage from "./components/sections/IndexPage.vue";
 import SkillSetPage from './components/sections/SkillSetPage.vue';
 import WebProject1 from './components/sections/WebProject1.vue';
@@ -45,6 +42,7 @@ export default {
     GraphicDesignProject,
     InteriorDesignProject,
     FinalPage,
+    MenuPage,
   }
 }
 </script>
