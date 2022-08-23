@@ -1,12 +1,13 @@
 <template>
     <div class="space">
-        <button v-if="rotateDeg >-270" class="forward" @click="rotate('forward')">Next</button>
-        <button v-if="rotateDeg <= -90" class="backward" @click="rotate('backward')">Previous</button>
-        <div class="box">
-            <div class="face1"><slot name="face1"></slot></div>
-            <div class="face2">face2</div>
-            <div class="face3">face 3</div>
-            <div class="face4">face 4</div>
+        <button v-if="rotateDeg > forwardButtonAppearDeg && rotateDeg < 0" class="forward" @click="rotate('forward')"><i  :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-angle-left"></i></button>
+        <button v-if="rotateDeg < 0"  class="backward" @click="rotate('backward')"><i :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-angle-left"></i></button>
+        <button v-if="rotateDeg < 0"  class="firstPage" @click="rotate('firstPage')"><i :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-house"></i></button>
+       <div class="box">
+            <div v-if="hasSlot1" class="face1"><slot name="slot1"></slot></div>
+            <div v-if="hasSlot3" class="face2"><slot name="slot3"></slot></div>
+            <div v-if="hasSlot4" class="face3"><slot name="slot4"></slot></div>
+            <div v-if="hasSlot2" class="face4"><slot name="slot2"></slot></div>
         </div>
     </div>
 </template>
@@ -16,27 +17,97 @@ export default {
     data(){
         return{
             rotateDeg : 0,
+            forwardButtonAppearDeg : 0,
+            hasSlot1 :false,
+            hasSlot2 :false,
+            hasSlot3 :false,
+            hasSlot4 :false,
+            buttonSetting : { 
+                backgroundColor : "white",
+                color:"Black",
+            },
+            boxClass : ""    // to pin in the targeted box to rotate if this slot is repeated used
         }
     },
+
+    created(){
+        // check if slot is inserted. 
+        // for those slot has nth to be inserted, disappearing it by v-if
+        this.hasSlot1 = (this.$slots.slot1) ? true:false;
+        this.hasSlot2 = (this.$slots.slot2) ? true:false;
+        this.hasSlot3 = (this.$slots.slot3) ? true:false;
+        this.hasSlot4 = (this.$slots.slot4) ? true:false;
+
+        
+        this.buttonVisibilityController();
+
+    },
+    mounted(){
+
+        // Responsive Setting
+        // this.resizeAdjustor();                          
+        window.addEventListener("resize",this.resizeAdjustor);    // Always ready to trigger "resize()" when width change. 
+    },
+
     methods:{
         rotate(direction){
-            if ( direction === "forward"){
-                this.rotateDeg -= 90;
-            } else {
-                this.rotateDeg += 90;
-            }            
-            this.resizeTranslateZ();
-            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-            const translateZ = `-${vw/2}px`;
-            document.querySelector('.box').style.transform = `translateZ(${translateZ}) rotateY(${this.rotateDeg}deg) `;
-            // document.querySelector('.box').style.transform = `rotateY(${this.rotateDeg}deg)`;
+            
+            if (!this.singlePageChecker()) {   // [ Disallow this action ]: Check if it is just 1 page i.e only slot 1 or no slot at all. if yes, leave the function
+                return
+            }
+            switch(direction) {
+                case "forward":
+                    this.rotateDeg -= 90;
+                    break;
+                case "backward":
+                    this.rotateDeg += 90;
+                    break;
+                case "firstPage":
+                    this.rotateDeg = 0;
+                    break;
+                default:
+                    break;
+            }
+            document.querySelector(this.boxClass).style.transition = "transform 1s";  // When rotate browser, we want to see the rotation
+            this.rotateController();      
         },
-        resizeTranslateZ(){
+        resizeAdjustor(){
+            document.querySelector(this.boxClass).style.transition = "transform 0s";   // When resize browser, we dont what the delay effect. It stop the transition delay when resize
+            this.rotateController();                                          
+        },
+
+        rotateController(){
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
             const translateZ = `-${vw/2}px`;
-            document.querySelector('.box').style.transform = `translateZ(${translateZ})`;
+            document.querySelector(this.boxClass).style.transform = `translateZ(${translateZ}) rotateY(${this.rotateDeg}deg) `;
+        },
 
-        }
+        singlePageChecker(){
+            // check if it is just 1 page i.e only slot 1 or no slot at all. if yes, disable forward/backward function
+            if (!this.hasSlot1 && !this.hasSlot2 && !this.hasSlot3 && !this.hasSlot4){
+                return false
+            }
+
+            if (this.hasSlot1 && !this.hasSlot2 && !this.hasSlot3 && !this.hasSlot4){
+                return false
+            }
+            return true
+        },
+
+        buttonVisibilityController(){
+
+            if (this.hasSlot2){
+                this.forwardButtonAppearDeg = -90;
+            }
+
+            if (this.hasSlot3){
+                this.forwardButtonAppearDeg = -180;
+            }
+
+            if (this.hasSlot4){
+                this.forwardButtonAppearDeg = -270;
+            }
+        },
     }
 
 }
@@ -63,32 +134,84 @@ $translateDistanceRight : $boxWidth/2;
 
 }
 
-.forward{
-        position:absolute;
-        top:0;
-        right:0;
-        width:3rem;
-        height:3rem;
-        z-index: 3;
-}
-
 .backward{
         position:absolute;
+        background-color: transparent;
+        border:none;
         top:0;
-        left:0;
-        width:3rem;
-        height:3rem;
+        left:0rem;
+        width:4rem;
+        height:100%;
         z-index: 3;
+        transition-property:background-color transform ;
+        transition-duration: .5s;
+        cursor: pointer;
+
+    i{
+        font-size: 5rem;
+    }
+
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 }
+
+.forward{
+        position:absolute;
+        transform:rotateZ(180deg);
+        background-color: transparent;
+        border:none;
+        top:0;
+        right:0rem;
+        width:4rem;
+        height:100%;
+        z-index: 3;
+        transition-property:background-color transform ;
+        transition-duration: .5s;
+        cursor: pointer;
+
+    i{
+        font-size: 5rem;
+    }
+
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+        transform:rotateZ(180deg) scale(1.3);
+    }
+}
+
+
+.firstPage{
+    position:absolute;
+    top:4rem;
+    right:8rem;
+    border: none;
+    background-color: transparent;
+    z-index: 10;
+    transition-property:background-color transform ;
+    transition-duration: .5s;
+    font-size: 2rem;
+    font-family: $tertiary-font;
+    cursor: pointer;
+
+    i {
+        font-size:3rem;
+    }
+    
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(1.1);
+    }
+}
+
+
 
 .box{
     position:relative;
     width:$boxWidth;
     height:$boxHeight;
-    // transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
     transform: translateZ(-$translateDistanceFront);
     transform-style: preserve-3d;
-    transition:transform 1s;
     transform-origin: center;
 
 
@@ -104,23 +227,23 @@ $translateDistanceRight : $boxWidth/2;
     .face1{
         @include setting();
         transform: translateZ($translateDistanceFront);
-        background-color: red;
+        // background-color: red;
     }
     .face2{
         @include setting();
         transform: translateZ($translateDistanceBack) rotateY(180deg);
-        background-color: blue;
+        // background-color: blue;
     }
     .face3{
         @include setting();
         transform: translateX($translateDistanceLeft) rotateY(-90deg) ;
-        background-color: rgb(64, 202, 179);
+        // background-color: rgb(64, 202, 179);
     }
     .face4{
         @include setting();
-        color:white;
+        // color:white;
         transform: translateX($translateDistanceRight) rotateY(90deg) ;
-        background-color: rgb(41, 8, 8);
+        // background-color: rgb(41, 8, 8);
     }
 }
 

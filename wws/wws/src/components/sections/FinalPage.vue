@@ -156,16 +156,10 @@ export default {
         // border:orange solid thin;
         height:100rem;
         right:20rem;
-        top:6rem;
+        top:0rem;
         z-index: 1;
 
         .dog-img{
-            // position: absolute;
-            // // border:orange solid thin;
-            // height:100rem;
-            // right:20rem;
-            // top:6rem;
-            // z-index: 1;
             height:100%;
         }
         .my-dog-tag{

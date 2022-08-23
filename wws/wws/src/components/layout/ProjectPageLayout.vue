@@ -125,7 +125,6 @@ export default {
                      padding-left:.4rem;
                      margin-top:-.5rem;
                      text-align: left;
-
                 }
                 button{
                     height:3rem;

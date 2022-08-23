@@ -1,7 +1,11 @@
 <template>
     <section class="interior-design-project-1" id="interior-design-project-1">
+        
+        <rotation-layout-5 ref="rotationLayoutRef5">
+       
+        <!-- slot 1 -->
+        <template v-slot:slot1> 
         <project-page-layout
-
             :mainTitle = "mainTitle"
             :subTitle = "subTitle"
             :linkToProjectDescription = "linkToProjectDescription"
@@ -16,18 +20,88 @@
             :fontColor = "fontColor"
             :buttonColor = "buttonColor"
             @work-display = "workDisplay"
-
         ></project-page-layout>
+        </template>
+        <!-- End of slot 1 -->
+
+        <!-- slot 2 -->
+        <template v-slot:slot2>
+            <div class="slot-wrapper">
+                <div class="title-wrapper">
+                    <div class="title">
+                        <h1 v-html="mainTitle"></h1>
+                        <h3>{{ subTitle }}</h3>
+                    </div>
+                </div>
+                <div class="content-wrapper">
+
+                </div>
+            </div>
+        </template>
+        <!-- End of slot 2 -->
+
+        <!-- slot 3 -->
+        <template v-slot:slot3>
+            <div class="slot-wrapper">
+                <div class="title-wrapper">
+                    <div class="title">
+                        <h1 v-html="mainTitle"></h1>
+                        <h3>{{ subTitle }}</h3>
+                    </div>
+                </div>
+                <div class="content-wrapper">
+
+                </div>
+            </div>
+        </template>
+        <!-- End of slot 3 -->
+
+
+        <!-- slot 4 -->
+        <template v-slot:slot4>
+            <div class="slot-wrapper">
+                <div class="title-wrapper">
+                    <div class="title">
+                        <h1 v-html="mainTitle"></h1>
+                        <h3>{{ subTitle }}</h3>
+                    </div>
+                </div>
+                <div class="content-wrapper">
+
+                </div>
+            </div>
+        </template>
+        <!-- End of slot 4 -->
+
+    
+
+
+
+
+
+
+
+
+        </rotation-layout-5>
     </section>
 </template>
 
 <script>
 
 import ProjectPageLayout from "../layout/ProjectPageLayout.vue";
-
+import RotationLayout5 from "../layout/rotationLayout.vue";
 export default {
     components:{
-        ProjectPageLayout
+        ProjectPageLayout,
+        RotationLayout5
+    },
+     mounted(){
+        // pass proprs to "rotation-layout" slot
+        this.$refs.rotationLayoutRef5.buttonSetting = { 
+            backgroundColor : "grey",
+            color:"White",
+        }
+        this.$refs.rotationLayoutRef5.boxClass = ".interior-design-project-1 .space .box";
     },
     data(){
         return {
@@ -48,7 +122,7 @@ export default {
     },
     methods:{
         workDisplay(){
-            window.open("http://http://www.longlifeproduction.com", '_blank');
+            this.$refs.rotationLayoutRef5.rotate('forward');
         }
     }
 }
@@ -56,8 +130,54 @@ export default {
 
 
 <style lang="scss" scoped>
-.interior-design-1{
-    background-color: rgb(0, 0, 0);
+.interior-design-project-1{
+    background-color: rgb(255, 255, 255);
 }
 
+.slot-wrapper{
+    position: relative;
+    width:100%;
+    height:100%;
+    padding: 4rem;
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    @include column-horizontal-center();
+
+    .title-wrapper{
+        width:100%;
+
+        .title{
+            h1{
+                width:100%;
+                font-family: $secondary-font;
+                font-size:4rem;
+                letter-spacing: .1rem;
+                text-align: left;
+            }
+            h3{
+                    width:100%;
+                    font-size: 2.1rem;
+                    font-weight: 500;
+                    font-family: $secondary-font;
+                    letter-spacing: .2rem;
+                    padding-left:.4rem;
+                    margin-top:-.5rem;
+                    text-align: left;
+            }
+        }
+    }
+
+    .content-wrapper{
+        width:100%;
+        height: 80%;
+        margin-top:5rem;
+        text-align: center;
+
+        video{
+            height: 100%;
+            // width:100%;
+            object-fit:cover;
+        }
+    }
+}
 </style>
