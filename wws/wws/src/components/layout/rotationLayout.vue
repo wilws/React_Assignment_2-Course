@@ -40,6 +40,7 @@ export default {
 
         
         this.buttonVisibilityController();
+        
 
     },
     mounted(){
@@ -210,6 +211,7 @@ $translateDistanceRight : $boxWidth/2;
     position:relative;
     width:$boxWidth;
     height:$boxHeight;
+    transform: translateZ(-$translateDistanceFront) rotateY(-270deg);
     transform: translateZ(-$translateDistanceFront);
     transform-style: preserve-3d;
     transform-origin: center;

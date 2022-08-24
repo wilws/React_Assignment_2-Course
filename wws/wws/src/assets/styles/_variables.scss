@@ -41,6 +41,14 @@ font-family: 'Roboto', sans-serif; */
     transform: translateY(-50%);
 }
 
+@mixin child-center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+
 $grey : #757575;
 
 $skillCardWidth: 40.6rem;
@@ -49,10 +57,11 @@ $skillCardWidth: 40.6rem;
 $projectRightSideWidth: 39%;
 $projectLeftSideTopSideHeight: 20rem;
 
-
-
-
 //Final page
 $assignmentsWidth:0%;
 $assignmentsheight:$assignmentsWidth/1.2;
 
+
+
+// Show border line during contruction:
+$borderLine: solid thin grey;
