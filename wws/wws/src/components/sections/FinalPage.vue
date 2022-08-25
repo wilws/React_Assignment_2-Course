@@ -1,9 +1,9 @@
 <template>
     <section class="assignment" id="assignment">
-        <h1>Assignment</h1>
+        <h1>Course Assignment</h1>
 
-        <p>Udemy is my source of knowledge. 
-            <br>During the learning process, I follow the videos to complete the assignments,Whenever I encounter something that I don`t understand , I will click “Pause” on the video to search for the  reason rather than clicking “Next” to let it remains mysterious. I understand every single lines that I type in my assignment.  And therefore I can replicate every effect / output of the assignment. 
+        <p>
+            Udemy is my source of coding knowledge. I always follow the online course and complete the assignments / projects requested in the course. Whenever I encounter something that I don’t understand druing the lesson, I will pause the video then search for the reason rather than clicking “Next” to let it remains mysterious. Therefore, I understand every single codes that I type in my assignment.  Hence I can replicate the effect / output that the assignments have. 
             <br>It is meaningless to fake what you know as time will reveal it anyway.
         </p>
         <div class="web-assignments">
@@ -57,7 +57,7 @@ export default {
     width:100%;
     height:100%;
     padding: 4rem;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color:white;
     display: flex;
     flex-direction: column;
@@ -66,9 +66,10 @@ export default {
 
     h1{
         width:100%;
-        font-family: $secondary-font;
-        font-size:3rem;
-        letter-spacing: .1rem;
+        letter-spacing: .4rem;;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 100;
+        font-size: 2.25rem;
         text-align: left;
         // border:red solid thin;
     }
@@ -76,17 +77,19 @@ export default {
         position: relative;
         margin-top:2rem;
         width:60%;
-        font-family: $secondary-font;
-        // border:green solid thin;
-        font-size:2.4rem;
-        letter-spacing: .1rem;
+        font-family: $primary-font;     
+        font-size: 1.5rem;
+        letter-spacing: .3rem;
+        text-align: left;
+        padding:4rem;
+        line-height: 3.5rem;
         z-index: 10;
 
     }
     .web-assignments{
         position: relative;
         z-index: 2;
-        margin-top:10rem;
+        margin-top:4rem;
         // border:yellow solid thin;
         width:65rem;
         height:27rem;
@@ -106,6 +109,7 @@ export default {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+
             
             
             a {
@@ -160,7 +164,7 @@ export default {
         z-index: 1;
 
         .dog-img{
-            height:100%;
+            height:50%;
         }
         .my-dog-tag{
             // border:rgb(124, 63, 63) solid thin;

@@ -7,10 +7,11 @@
 
         <div class="introduction-wrapper">
             <div class="introduction">
-                <p>My name is Wai Shun WONG. I am a self-taught full stack web developer. I specialise in VueJs, HTML/CSS for front end construction.  For the backend, I use Python with Django, NodeJs with Express. I can connect application to mySQL / Mongo database to preform CRUD. I can construct RESTful API for the communication of front and back ends.</p>
-                <p>I love learning. Applying newly absorbed knowledge to solve the problem encountered in reality brings me a great satisfaction. Moreover, the passion of programming drives me to explore more and more.  I recently finished an online course of Solidity and Ethereum. I am seeking chances to make a blockchain project.</p>
-                <p>After Obtaining a Bachelor Degree in Biology in Hong Kong, I pursued a Postgraduate Diploma in Investment Management and Financial Intelligence. The knowledge obtained from postgraduate diploma always stimulating me what programming can do in financial world.</p>
-            </div>
+                I am Wai Shun WONG, a self-taught full stack web developer. 
+                <br>I specialise in VueJs, HTML and CSS/SACS/SCSS to construct frontend web application. For the backend side, I am proficient in using Python + Django or NodeJs + Express framework. I can construct RESTful API for the communication of both front and back ends. I also have knowledge to connect application to MySQL / MongoDB  to preform CRUD.
+                <br>“Learn” and “Create” are what I passionate about. From design to coding and even to investment, applying newly absorbed knowledge to solve the problem encountered in reality brings me a great satisfaction. 
+                <br>After Obtaining a Bachelor Degree in Biology in Hong Kong, I pursued a Postgraduate Diploma in Investment Management and Financial Intelligence. The knowledge obtained from postgraduate diploma always stimulating me what programming can do in financial aspect.  I recently finished a course of Solidity and Ethereum. I am seeking chances to participate in a relative project. But, I will never confine myself in single area as life is a journey of learning. My passion for learning and coding drive me to try and challenge as much as I can, no matter it is a frontend project, backend project or others.
+          </div>
         </div>
 
         <div class="img-wrapper">
@@ -40,6 +41,7 @@ export default {
     display: flex;
     background-color: white;
     overflow: hidden;
+    // border-bottom:grey thin solisrd;
     
 }
 
@@ -48,19 +50,16 @@ export default {
     .name{
         position:absolute;
         font-family: 'Noto Sans TC', sans-serif;
-        font-size: 8rem;
+        font-size: 6rem;
         letter-spacing: 1.3rem;
         text-align: right;
-        left:32.4%;
+        left:26%;
         z-index: 1;
         background-color: rgba(256,256,256,0.5);
     
-        // h1:nth-child(1){
-      
-        // }
 
         h1:nth-child(2){
-            margin-top:-6rem;
+            margin-top:-4rem;
         }
 
     }
@@ -69,17 +68,18 @@ export default {
         display: flex;
         @include vertical-horizontal-center();
         width:55%;
+        z-index: 2;
    
 
         .introduction{
-            margin-top:40rem;
-            width:60%;
+            margin-top:25rem;
+            width:65%;
             height:100%;
             font-family: $primary-font;
             color:$grey ;
-            font-size: 2rem;
+            font-size: 1.3rem;
             letter-spacing: .1rem ;
-            line-height: 4rem;
+            line-height: 3rem;
             text-align: justify;
             padding-bottom: 0;
 

@@ -41,6 +41,12 @@ font-family: 'Roboto', sans-serif; */
     transform: translateY(-50%);
 }
 
+@mixin horizontal-center{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+
 @mixin child-center{
     position:absolute;
     top:50%;

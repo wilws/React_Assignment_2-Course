@@ -32,7 +32,9 @@
                         <div class="blackbox">
                             <h1>JOYFUL HOUSE</h1>
                             <h3>- a dream of 5 -</h3>
-                            <p>Jason with 4 other friends established Joyful House in 2016. It was their dream to have a shop to endlessly supply sweetness to people all around</p>
+                            <p>
+                                Jason with 4 other friends established Joyful House in 2016. It was their dream to have a shop to endlessly supply sweetness to people around.
+                            </p>
                         </div>
                     </div>
                     <div class="right-side">
@@ -44,7 +46,11 @@
                             <div class="old-icon"><img :src="require('@/assets/img/projects/design_project_1/old_icon.png')"></div>
                             <div class="new-icon"><img :src="require('@/assets/img/projects/design_project_1/logo.png')"></div>
                         </div>
-                        <p>To re-brand the company, the very first step is to have a new logo. There were five balloons in the original logo representing the 5 establishers of the dessert shop. I kept this element and the hexagon shape, fusing them with Japanese minimalism.  The slogan “Sweeten up your life” means  “ life is tough, let my dessert to make life sweeter”</p>
+                        <p>
+                            To re-brand the company, the very first step is to have a new logo. 
+                            There are five balloons in the original logo representing the 5 establishers of the dessert shop. 
+                            I kept this element as well as the hexagon shape, fusing them with minimalistic style and add the slogan “Sweeten up your life”  , 
+                            expressing  “We know life is tough, let my dessert to give you a little bit sweetness”</p>
                         <div class="ai-img"><img :src="require('@/assets/img/projects/design_project_1/bg-img-icon.png')"> </div>
                     </div>
  
@@ -59,7 +65,8 @@
                     <div class="col col-1">
                         <div class="title-wrapper">
                             <h1 class="title">BOX WITHOUT GLUE</h1>
-                            <p>Ancient Chinese/Japanese architecture concept-"Nailless”  always connects to the “embodiment of seamlessness”.  The perfect treasure should be placed in a perfect container. Hence all the parts of the box were gule-less so as to express the idea of “seamlessness”</p>
+                            <p>I love the asian architecture’s “Nailless” concept which always connects to the “embodiment of seamlessness”. Hence all the parts of the box were gule-less so as to express the idea : “A treasure-like cake should be placed in a seamless box”. 
+After spending numerous time on studying packaging, I drafted my own version’s gule-less box.</p>
                         </div>
                         <div class="img"><img :src="require('@/assets/img/projects/design_project_1/draft.png')"></div>
                     </div>
@@ -72,14 +79,22 @@
                         </div>
                         <div class="title-wrapper">
                             <h1 class="title">PROTOTYPE</h1>
-                            <p>I use paper to make a prototype in order to test if the design is possible </p>
+                            <p>I made a prototype to test the possibility of the design.</p>
                         </div>
                    </div>
 
                     <div class="col col-3">
                         <div class="title-wrapper">
                             <h1 class="title">MANUFACTURING</h1>
-                            <p>After testing, I contacted packaging manufacturing in China to manufacturing it. The logo was silver plating making it more elegant.</p>
+                            <p>
+                                After the testing, I contacted packaging manufacturers in China to make the box real. Dealing with the tricky Chinese manufacturer was the most challenging part in the whole process. In the end, I had tried 3 manufacturers to get the satisfactory result.
+                                <br>
+                                <br>
+                                The logo was silver plated making it more elegant.
+
+
+
+</p>
                         </div>
                         <div class="img-wrapper">   
                             <div class="img"><img :src="require('@/assets/img/projects/design_project_1/finish2.jpg')"></div>
@@ -118,7 +133,10 @@ export default {
             backgroundColor:"White",
             fontColor:"Black",
             buttonColor:"grey",
-            projectDescription :"In the spring of 2019,  My friend Jason was struggling in his cake shop business.  Since the rent of Hong Kong is ridiculously high, he planned to switch the business mode from physical dessert shop to online cake shop.  He asked my assistance to transform the image of the shop. I accepted this challenge with alacrity.<br><br>I first use Adobe Photoshop and Illustrator to re-design the shop logo.  I adopt Japanese minimalism design style. Second, to make the brand on the high-end-track, I designed a “glue-less” cake container. Like ancient Chinese/ Japanese interlocking architecture concept,  “Nailless” in construction is the embodiment of seamlessness."
+            projectDescription :
+            "In the spring of 2019,  My friend Jason was struggling in his cake shop business.  Since the rent of Hong Kong is ridiculously high, he planned to switch the business mode from physical dessert shop to online cake shop.  He asked my assistance to transform the image of the shop. I accepted this challenge with alacrity."+
+            "<br><br>"+
+            "With aid of Adobe Photoshop and Illustrator, I  re-designed the shop logo in minimalism style. Moreover Inspired by ancient Asian interlocking architecture concept - “Nailless”-  in construction,  I designed my own version’s “glue-less” cake box in order to put the brand on the high-end-track."
         }
     },
     mounted(){
@@ -177,7 +195,7 @@ export default {
             width:100%;
             
             img{
-                border:thin pink solid;
+                // border:thin pink solid;
                 height:100%;
                 width:100%;
                 object-fit: cover;
@@ -341,6 +359,7 @@ export default {
         // border:rgb(243, 10, 10) solid thin;
         @include column-horizontal-center();
         justify-content: space-between;
+        
 
         .title-wrapper{
             width:100%;
@@ -455,10 +474,10 @@ export default {
             .img:nth-child(1){
                 // border:rgb(49, 5, 5) solid thin;
                 position:absolute;
-                bottom:20rem;
+                bottom:10rem;
                 left:0;
                 
-                width:80%;
+                width:75%;
 
                 img{
                     width:100%;

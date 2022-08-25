@@ -28,9 +28,15 @@
         <template v-slot:slot2>
             <div class="slot2-wrapper">
                 <div class="left-side">
-                    <h1>Messy Storage Room</h1>
+                    <h1>A Messy Storage Room</h1>
                     <div class="content">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum quidem, quam dolore provident eaque debitis laudantium ullam aperiam incidunt eveniet repellendus eos consequatur dicta laboriosam, nostrum porro accusamus nihil. Dolore?
+                        The place that we rented was used as a store room by the owner.
+                        <br>
+                        <br>
+                        Dusty, scraped wall, worn carpet, dirty window and full of miscellaneous stuff, we were at first in question that was it really possible to use this place as our private harbour?
+                        <br>
+                        <br>
+                        We started to study different information to learn how to do renovation. Finally we found that it was not as difficult as we though
                     </div>
                 </div>
                 <div class="right-side">
@@ -50,10 +56,13 @@
                 </div>
                 <div class="col-2">
                     <div class="h1-wrapper">
-                        <h1>Messy Storage Room</h1>
+                        <h1>Planning</h1>
                     </div>
                     <div class="content">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum quidem, quam dolore provident eaque debitis laudantium ullam aperiam incidunt eveniet repellendus eos consequatur dicta laboriosam, nostrum porro accusamus nihil. Dolore?
+                        After acquiring knowledge from Internet, YouTube, books..etc, We roughly understood how to do plastering, construction of wooden structure, light and electricity stuff (well..yes...we knew it is dangerous...but we both are graduated from science background and believed in our knowledge. Don’t try it by yourself at home=) ).
+                       <br>
+                       <br>
+                       Having ensured that the renovation was within our ability, I started to learn how to use the software "SketchUp" to draw the layout. 
                     </div>
                 </div>
                 <div class="col-3">
@@ -77,15 +86,25 @@
                 <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-5.jpg')"/></div>
                 <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-6.jpg')"/></div>
                 <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-7.jpg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-8.jpg')"/></div>
-                <div class="left-frame">
-                    <div class="h1-wrapper">
-                        <h1>Messy Storage Room</h1>
+
+                <div class="complete-wrapper">
+                    <div class="left-side">
+                        <h1> Desire , Knowledge and Action</h1>
+                        <div class="content">
+                            We finally spent 3 months to have our cozy studio completed. The whole process was so painful but the outcome was so satisfactory.
+                            <br>
+                            <br>
+                                This experience is so unforgettable. We started from zero, from doubt. We had no knowlege of renovation in the very beginning. But, desire motivated us to pursue knowledge to make it real.
+                            <br>
+                            <br>
+                            "Knowledge" and "Willingness to Learn" provide us confidence to action, to try and to achieve different things in life. Learning endlessly will turn every chapter of your life journey into an exciting adventrue. The more I learn, the more experience that I can put into my life story. We are the sole writer of our life story. Never, Never, Never write a boring story. You don't have another chance to re-write again.
+                        </div>
                     </div>
-                    <div class="content">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum quidem, quam dolore provident eaque debitis laudantium ullam aperiam incidunt eveniet repellendus eos consequatur dicta laboriosam, nostrum porro accusamus nihil. Dolore?
+                    <div class="right-side">
+                        <img :src="require('@/assets/img/projects/interior_design_project_1/p3-8.jpg')"/>
                     </div>
                 </div>
+                
             </div>
         </template>
         <!-- End of slot 4 -->
@@ -134,7 +153,15 @@ export default {
             backgroundColor:"White",
             fontColor:"Black",
             buttonColor:"grey",
-            projectDescription :"In the spring of 2019,  My friend Jason was struggling in his cake shop business.  Since the rent of Hong Kong is ridiculously high, he planned to switch the business mode from physical dessert shop to online cake shop.  He asked my assistance to transform the image of the shop. I accepted this challenge with alacrity.<br><br>I first use Adobe Photoshop and Illustrator to re-design the shop logo.  I adopt Japanese minimalism design style. Second, to make the brand on the high-end-track, I designed a “glue-less” cake container. Like ancient Chinese/ Japanese interlocking architecture concept,  “Nailless” in construction is the embodiment of seamlessness."
+            projectDescription :
+            "In Hong Kong, it is quite hard to get a private place for relax since rental is so high in this tiny place. In 2015,  My friend ,Berry ,and I were so luckily to have a chance to rent a place in a factory area with a very economic price. However,  as mentioned, it was in a factory area, the place was “not fancy”, or be more accurate — “messy”. Let see how we 2 turned a messy store room to a cozy studio."
+
+
+
+
+
+
+
         }
     },
     methods:{
@@ -216,7 +243,7 @@ export default {
             width:100%;
             text-align: center;
             font-family: $secondary-font;
-            font-size: 2.6rem;
+            font-size: 2.3rem;
             font-weight: 300;
             letter-spacing: .2rem;
             height:25%;
@@ -224,12 +251,12 @@ export default {
         }
         .content{
             // border: thin solid red;
-            font-family: $primary-font;
-            font-size:1.6rem;
-            letter-spacing: .2rem;
-            width:100%;
-            height:75%;
-            text-align: center;
+                font-family: $primary-font;
+                color:$grey ;
+                font-size: 1.3rem;
+                letter-spacing: .1rem ;
+                line-height: 3rem;
+                text-align: justify;
         }
     }
     .right-side{
@@ -290,13 +317,16 @@ export default {
         width:40%;
         height:100%;
         border: .5rem black solid;
+        // border-top: 1rem black solid;
+        // border-bottom: 1rem black solid;
         @include column-horizontal-center();
         .h1-wrapper{
             h1{
+                // border: thin solid red;
                 width:100%;
                 text-align: center;
                 font-family: $secondary-font;
-                font-size: 2.6rem;
+                font-size: 2.3rem;
                 font-weight: 300;
                 letter-spacing: .2rem;
                 height:25%;
@@ -304,13 +334,13 @@ export default {
             }
         }
         .content{
+            width:60%;
             font-family: $primary-font;
-            font-size:1.6rem;
-            letter-spacing: .2rem;
-            width:70%;
-            height:75%;
-            text-align: center;
-            padding: 0 10rem;
+            color:$grey ;
+            font-size: 1.3rem;
+            letter-spacing: .1rem ;
+            line-height: 3rem;
+            text-align: justify;
         }
     }
     .col-3{
@@ -394,41 +424,62 @@ export default {
         left:43%;
         // opacity:0.2;
     }
-    .img:nth-child(8){
 
-        width:50%;
-        right:0%;
-    }
-
-    .left-frame{
+    .complete-wrapper{
         position:absolute;
-        width:50%;
-        height:100%;
         left:0;
-        top:0;
-        background-color: rgba(0, 0, 0, 0.863);
-        @include column-horizontal-center();
-        color: white;
-        .h1-wrapper{
+        right:0;
+        background-color: rgba(0, 0, 0,0.94);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: 100%;
+
+    
+        .left-side{
+            // position:relative;
+            // background-color: rgba(0, 0, 0, 0.712);
+            color: white;
+            width: 50%;
+            height:100%;
+            // border: thin solid red;
+            padding: 10rem;
+            margin-left:8rem;
+            @include column-horizontal-center();
             h1{
+                // border: thin solid red;
                 width:100%;
                 text-align: center;
                 font-family: $secondary-font;
-                font-size: 2.6rem;
+                font-size: 2.3rem;
                 font-weight: 300;
                 letter-spacing: .2rem;
                 height:25%;
                 line-height:20rem;
             }
+            .content{
+                // border: thin solid red;
+                font-family: $primary-font;
+                color:$grey ;
+                font-size: 1.3rem;
+                letter-spacing: .1rem ;
+                line-height: 3rem;
+                text-align: center;
+                width:100%;
+                // padding: 10rem;
+            }
         }
-        .content{
-            font-family: $primary-font;
-            font-size:1.6rem;
-            letter-spacing: .2rem;
-            width:70%;
-            height:75%;
-            text-align: center;
-            padding: 0 10rem;
+        .right-side{
+            background-color: rgba(0, 0, 0, 0.562);
+            width:40%;
+            height:100%;
+            // border: thin solid red;
+            
+            img{
+                width:100%;
+                height:100%;
+                object-fit: cover;
+            }
         }
     }
 

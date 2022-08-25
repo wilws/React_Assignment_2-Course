@@ -156,22 +156,25 @@ export default {
             position: relative;
             width:100%;
             height: calc(100% - $projectLeftSideTopSideHeight);
-            margin-top:2rem;
+            margin-top:1rem;
             // border:rgb(59, 47, 47) thin solid;
 
             .left-side{
-                width:73rem;
+                width:70%;
                 height: 100%;
                 // border:red thin solid;
+
                 font-family: $primary-font;
-                font-size: 1.8rem;
-                letter-spacing: .1rem;
-                line-height: 3.1rem;
+                color:$grey ;
+                font-size: 1.3rem;
+                letter-spacing: .1rem ;
+                line-height: 3rem;
                 text-align: justify;
+
             }
             .right-side{
                 position:absolute;
-                bottom:5rem;
+                bottom:3rem;
                 right:0;
                 // border:red thin solid;
                 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -183,7 +186,7 @@ export default {
 
                 div .tech-cat-tittle{
                     font-weight: bold;
-                    font-size: 2rem;
+                    font-size: 1.3rem;
                     text-decoration: underline;
                     text-align: right;
                     letter-spacing: .1rem;
@@ -193,7 +196,7 @@ export default {
                 div li{
                     list-style: none;
                     text-align: right;
-                    font-size: 1.5rem;
+                    font-size: 1rem;
                     margin-top:.3rem;
                 }
             }
