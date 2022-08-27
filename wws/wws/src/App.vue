@@ -4,13 +4,13 @@
     <menu-page></menu-page>
     <index-page></index-page>
     <skill-set-page></skill-set-page>
-    <web-project-1></web-project-1>
+    <!--<web-project-1></web-project-1>
     <web-project-2></web-project-2>
     <web-project-3></web-project-3>
     <web-project-4></web-project-4>
     <graphic-design-project></graphic-design-project>
     <interior-design-project></interior-design-project>
-    <final-page></final-page>
+    <final-page></final-page> -->
             <rotation-layout></rotation-layout>
   </div>
 
@@ -21,28 +21,29 @@
 import MenuPage from "./components/sections/menuPage.vue";
 import IndexPage from "./components/sections/IndexPage.vue";
 import SkillSetPage from './components/sections/SkillSetPage.vue';
-import WebProject1 from './components/sections/WebProject1.vue';
-import WebProject2 from './components/sections/WebProject2.vue';
-import WebProject3 from './components/sections/WebProject3.vue';
-import WebProject4 from './components/sections/WebProject4.vue';
-import GraphicDesignProject from './components/sections/GraphicDesignProject.vue';
-import InteriorDesignProject from './components/sections/InteriorDesignProject.vue';
-import FinalPage from './components/sections/FinalPage.vue';
+// import WebProject1 from './components/sections/WebProject1.vue';
+// import WebProject2 from './components/sections/WebProject2.vue';
+// import WebProject3 from './components/sections/WebProject3.vue';
+// import WebProject4 from './components/sections/WebProject4.vue';
+// import GraphicDesignProject from './components/sections/GraphicDesignProject.vue';
+// import InteriorDesignProject from './components/sections/InteriorDesignProject.vue';
+// import FinalPage from './components/sections/FinalPage.vue';
 
 
 export default {
   name: 'App',
   components: {
+    MenuPage,
     IndexPage,
     SkillSetPage,
-    WebProject1,
-    WebProject2,
-    WebProject3,
-    WebProject4,
-    GraphicDesignProject,
-    InteriorDesignProject,
-    FinalPage,
-    MenuPage,
+    // WebProject1,
+    // WebProject2,
+    // WebProject3,
+    // WebProject4,
+    // GraphicDesignProject,
+    // InteriorDesignProject,
+    // FinalPage,
+    
   }
 }
 </script>
@@ -60,7 +61,7 @@ export default {
 }
 
 html{
-    font-size:62.5%;
+    // font-size:62.5%;
     scroll-behavior: smooth;
 }
 
