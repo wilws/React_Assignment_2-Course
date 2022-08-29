@@ -19,6 +19,7 @@
             :backgroundColor = "backgroundColor"
             :fontColor = "fontColor"
             :buttonColor = "buttonColor"
+            :id = "id"
             @work-display = "workDisplay"
         ></project-page-layout>
         </template>
@@ -153,6 +154,7 @@ export default {
             backgroundColor:"White",
             fontColor:"Black",
             buttonColor:"grey",
+            id: "#interior-design-project-1",
             projectDescription :
             "In Hong Kong, it is quite hard to get a private place for relax since rental is so high in this tiny place. In 2015,  My friend ,Berry ,and I were so luckily to have a chance to rent a place in a factory area with a very economic price. However,  as mentioned, it was in a factory area, the place was “not fancy”, or be more accurate — “messy”. Let see how we 2 turned a messy store room to a cozy studio."
 

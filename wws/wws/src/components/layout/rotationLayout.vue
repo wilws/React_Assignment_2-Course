@@ -183,7 +183,7 @@ $translateDistanceRight : $boxWidth/2;
 
 
 .firstPage{
-    position:absolute;
+    // position:absolute;
     top:4rem;
     right:8rem;
     border: none;

@@ -19,6 +19,7 @@
                 :backgroundColor = "backgroundColor"
                 :fontColor = "fontColor"
                 :buttonColor = "buttonColor"
+                :id = "id"
                 @work-display = "workDisplay"
             ></project-page-layout>
         </template>
@@ -148,6 +149,7 @@ export default {
             backgroundColor:"Black",
             fontColor:"white",
             buttonColor:"#0099AF",
+            id: "#web-project-2",
             projectDescription :    
             "I was so fascinated in option trading after reading Sheldon Natenberg’s  “Option Volatility & Pricing: Advanced Trading Strategies and Techniques”. The charm of option is that you can adopt numerous strategies by combining selling or buying action of put and call contract."+
             // "<br>"+

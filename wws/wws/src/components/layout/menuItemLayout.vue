@@ -35,6 +35,10 @@ a {
     font-family: 'Courier New';
     transition-duration: .5s; 
     min-height:85px;
+    width:90%;
+    
+    max-width:30rem;
+    // border:blue thin solid;
 
 
     &:hover{
@@ -47,6 +51,8 @@ a {
         border-right:4px solid #000000;
     }
 
+    $max-width:23rem;
+
     h1{
         width:100%;
         font-size: 1.5rem;
@@ -54,6 +60,7 @@ a {
         font-weight: lighter;
         border-right: 4px solid #EBEBEB;
         padding-right: 10px;
+        max-width:$max-width;
         @media (min-width : 820px){
             font-size: 1.6rem;
             letter-spacing: .2rem;
@@ -69,6 +76,7 @@ a {
         border-right: 4px solid #EBEBEB;
         padding-right: 14px;
         min-height:58px;
+        max-width:$max-width;
         @media (min-width : 820px){
             font-size: 1rem;
             letter-spacing: .2rem;
@@ -79,7 +87,6 @@ a {
             padding-left:6rem;
         }
         @media (min-width : 1366px) and (min-height: 1024px){
-         
             padding-left:0rem;
         }
     }

@@ -15,6 +15,7 @@
             :backgroundColor = "backgroundColor"
             :fontColor = "fontColor"
             :buttonColor = "buttonColor"
+            :id = "id"
             @work-display = "workDisplay"
 
         ></project-page-layout>
@@ -51,7 +52,8 @@ export default {
                "<br> To refresh my web development skills, I re-design and re-built the website by using modern tools. Adobe XD was used to draft and design the interface. VueJs is applied as frontend technology, and NodeJs + ExpressJs framework with MongoDB are used in backend. Both ends are communicated by RESTful API and JWT is used for authentication. Stripe is adopted for payment gateway.",
             backgroundColor:"White",
             fontColor:"Black",
-            buttonColor:"Black"
+            buttonColor:"Black",
+            id: "#web-project-1"
        }
     },
     methods:{

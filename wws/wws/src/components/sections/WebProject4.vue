@@ -15,6 +15,7 @@
             :backgroundColor = "backgroundColor"
             :fontColor = "fontColor"
             :buttonColor = "buttonColor"
+            :id = "id"
             @work-display = "workDisplay"
 
         ></project-page-layout>
@@ -43,6 +44,7 @@ export default {
             backgroundColor:"White",
             fontColor:"Black",
             buttonColor:"#F70007",
+            id: "#web-project-4",
             projectDescription :
             "This is a pure HTML + CSS + Javascript webpage for a visual merchandising services company Longlife Production Limited.<br><br>My designer friend one day urgently asked for my assistance to make a website for the company. He gave me the web layout and picture and I made them online. Hence this simple web page is created."
         }

@@ -49,6 +49,8 @@ export default {
     min-height:568px;
     min-width:320px;
     background-color: rgb(255, 255, 255);
+    // border:red thin solid;
+    // background-color: red;
 
     // Rotated Tablet or Desktop
     @media (min-width : 1024px) and (max-height: 1025px){

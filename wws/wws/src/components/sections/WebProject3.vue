@@ -19,6 +19,7 @@
                     :backgroundColor = "backgroundColor"
                     :fontColor = "fontColor"
                     :buttonColor = "buttonColor"
+                    :id = "id"
                     @work-display = "workDisplay"
                 ></project-page-layout>
             </template>
@@ -130,11 +131,12 @@ export default {
             projectIconUrl: require('@/assets/img/projects/web_project_3/logo.png'),
             FrontEndTechList: ['HTML/CSS','Javascript'],
             BackEndTechList: ['Python','Django', 'MySQL'],
-            DesignStyleList: ['Ajax  for data exchange', 'Bootstrip for styling','JQuery', 'Yahoo-Finance-API for historical stock data'],
+            DesignStyleList: ['Ajax  for data exchange', 'Bootstrip for styling','JQuery'],
             mediaType:"image",
             mediaDisplayUrl: require('@/assets/img/projects/web_project_3/cover.png'),
             backgroundColor:"Black",
             fontColor:"white",
+            id: "#web-project-3",
             buttonColor:"#EAAB15",
             projectDescription :
 

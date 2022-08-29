@@ -361,23 +361,43 @@ export default {
 
     data(){
         return {
+            cardRotateDeg : -380,     // card rotation Y degree
           
         }
     },
+    mounted(){
+        window.addEventListener('scroll',()=>{
+            this.cardsScrollingRotateEffect();
+        })
+    },
     methods:{
         moveCard(n){
-            document.querySelectorAll('.card').forEach(card => {
-                card.style.transform = "rotateY(0deg)";
-            });
-            const width = window.innerWidth;
-            const translateDistance = width * -n;
+            // [ small screen ] Moves cards-wrapper horizontally to display other cards 
+            this.cardsRotation();
+            const translateDistance = window.innerWidth * -n;
             document.querySelector('.cards-wrapper').style.transform = `translateX(${translateDistance}px)`;
+            this.cardsRotation(this.cardRotateDeg,1000);
+        },
+        cardsScrollingRotateEffect(){
+            // When scroll to Skill set page, trigger cardsRotation()
+            const page = document.querySelector('#skill-set-page');
+            const travelDistance = window.innerHeight + window.pageYOffset;
+            const triggerPoint = page.offsetTop + page.offsetHeight/2;
+            if (travelDistance > triggerPoint){
+                this.cardsRotation(this.cardRotateDeg,500);
+            } else {
+                // this.cardsRotation();
+            }
+        },
+        cardsRotation(deg=0,delayTime=0){
+            // funtion that rotates the card.
             document.querySelectorAll('.card').forEach(card => {
                 setTimeout(()=>{
-                    card.style.transform = "rotateY(-20deg)";
-                },1000)
-            });
+                    card.style.transform = `rotateY(${deg}deg)`;
+                },delayTime);
+            })
         },
+        
     }
 }
 </script>
@@ -406,6 +426,13 @@ export default {
             padding: 1.4rem 0 0 1.4rem;
             letter-spacing: .1rem;
             // border: blue solid thin;
+            @media (min-width:768px){
+                font-size: 1.8rem;
+            }
+
+            @media (min-width:768px){
+                font-size: 2rem;
+            }
             @media (min-width:1306px){
                 font-size: 2.1rem;
             }
@@ -419,8 +446,16 @@ export default {
             font-size:.5rem;
             letter-spacing: .1rem;
             padding: 0 0 0 1.4rem;
-            @media (min-width:1306px){
+            @media (min-width:768px){
                 font-size: 0.9rem;
+            }
+            @media (min-width:1024px){
+                font-size: 1.1rem;
+                margin-bottom:30px;
+            }
+
+            @media (min-width:1306px){
+                font-size: 1.2rem;
                 margin-bottom:100px;
             }
         }
@@ -513,14 +548,15 @@ export default {
                 border: thin solid rgba(238, 235, 235, .5);
                 border-radius: 1rem;
                 box-shadow: 2rem 1.5rem .8rem #4442424f;
-                transform:rotateY(0deg);
+                transform:rotateY(360deg);
                 background-color: #ffffff;
                 transform-origin: center;
+                transition:transform .5s;
                 @include column-horizontal-center(); 
 
-                @media (min-width:1306px){
-                    transform: rotateY(-8deg);
-                }
+                // @media (min-width:1306px){
+                    // transform: rotateY(-8deg);
+                // }
 
             
 

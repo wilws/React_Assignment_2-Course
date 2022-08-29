@@ -73,8 +73,8 @@ export default {
 
 .menu-button{
     position:fixed;
-    width:1.1rem;
-    height:1.1rem;
+    width:.9rem;
+    height:.9rem;
     background-color: rgb(46, 46, 46);
     top:0.3rem;
     left:0.3em;
@@ -128,13 +128,15 @@ export default {
 
     .menu-items-wrapper{
         width:100%;
-        padding-right:10px;
+        // padding-right:10px;
         padding-top:10px;
         display: flex;
         flex-direction: column;
         gap:50px;
+        // border:red thin solid;
 
         @media (min-width : 768px) and (min-height: 600px){
+            
             position: absolute;
             width:100%;
             height:100%;
@@ -158,6 +160,7 @@ export default {
             "e j";
 
             .menu-item{
+                // width:100%;
                 // border:red thin solid;
             }
 
@@ -200,6 +203,8 @@ export default {
             height:100%;
             padding: 0rem;
             padding-right:6rem;
+            margin-left:6rem;
+
             padding-top:2rem;
             display: grid;
             grid-template-columns: repeat(3,30%);
@@ -252,6 +257,9 @@ export default {
 
             position: absolute;
             width:100%;
+
+          
+         
             height:100%;
             padding: 3rem;
             padding-right:6rem;

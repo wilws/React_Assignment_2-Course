@@ -19,6 +19,7 @@
                 :backgroundColor = "backgroundColor"
                 :fontColor = "fontColor"
                 :buttonColor = "buttonColor"
+                :id = "id"
                 @work-display = "workDisplay"
             ></project-page-layout>
             </template>
@@ -133,6 +134,7 @@ export default {
             backgroundColor:"White",
             fontColor:"Black",
             buttonColor:"grey",
+            id: "#graphic-design-project-1",
             projectDescription :
             "In the spring of 2019,  My friend Jason was struggling in his cake shop business.  Since the rent of Hong Kong is ridiculously high, he planned to switch the business mode from physical dessert shop to online cake shop.  He asked my assistance to transform the image of the shop. I accepted this challenge with alacrity."+
             "<br><br>"+
