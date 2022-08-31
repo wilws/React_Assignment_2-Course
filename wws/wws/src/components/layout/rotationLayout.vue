@@ -26,8 +26,14 @@ export default {
                 backgroundColor : "white",
                 color:"Black",
             },
-            boxClass : ""    // to pin in the targeted box to rotate if this slot is repeated used
-        }
+            boxClass : "",    // to pin in the targeted box to rotate if this slot is repeated used
+            animationClass:{  // to trigger animation
+                'slot1':[],
+                'slot2':[],
+                'slot3':[],
+                'slot4':[],
+            },
+       }
     },
 
     created(){
@@ -51,8 +57,7 @@ export default {
     },
 
     methods:{
-        rotate(direction){
-            
+        rotate(direction){   
             if (!this.singlePageChecker()) {   // [ Disallow this action ]: Check if it is just 1 page i.e only slot 1 or no slot at all. if yes, leave the function
                 return
             }
@@ -77,10 +82,58 @@ export default {
             this.rotateController();                                          
         },
 
+        mainScrollBarLocker(n){
+            if(n){
+                document.querySelector('html').style.overflow = 'hidden';
+            } else {
+                document.querySelector('html').style.overflow = 'scroll';
+            }
+        },
+
         rotateController(){
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
             const translateZ = `-${vw/2}px`;
             document.querySelector(this.boxClass).style.transform = `translateZ(${translateZ}) rotateY(${this.rotateDeg}deg) `;
+    
+            if (!this.rotateDeg){      
+                 this.animationClassRemover();     // remove animation when go back to first page
+                 this.mainScrollBarLocker(false);
+            } else {
+                this.mainScrollBarLocker(true)
+                this.animationClassController(this.rotateDeg);
+            }
+        },
+
+        animationClassController(n){
+    
+            let classList = []
+            switch(n){
+                // case 0:
+                //     break
+                case -90:
+                    classList = this.animationClass.slot2;
+                    break;
+                case -180:
+                    classList = this.animationClass.slot3;
+                    break;
+                case -270:
+                    classList = this.animationClass.slot4;
+                    break
+            }
+            this.animationClassInserter(classList);
+        },
+
+        animationClassInserter(n){
+            n.forEach((c) => {
+                document.querySelector(c).classList.add('animation');
+            });
+        },
+        animationClassRemover(){
+
+            document.querySelectorAll('.animation').forEach((c) => {
+                c.classList.remove('animation');
+            })
+            
         },
 
         singlePageChecker(){
@@ -126,77 +179,94 @@ $translateDistanceLeft : -$boxWidth/2;
 $translateDistanceRight : $boxWidth/2;
 
 .space{
+    position: relative;
     width:100%;
     height:100%;
-    position: relative;
-    background-color: rgb(104, 95, 95);
+   
+    background-color: rgb(236, 231, 231);
     perspective: $perspective;
     @include vertical-horizontal-center();
-
 }
 
-.backward{
+@mixin buttonStyle {
         position:absolute;
         background-color: transparent;
         border:none;
         top:0;
-        left:0rem;
-        width:4rem;
+        // left:0rem;
+        width:1.5rem;
         height:100%;
         z-index: 3;
         transition-property:background-color transform ;
         transition-duration: .5s;
         cursor: pointer;
 
-    i{
-        font-size: 5rem;
-    }
+        @media(min-width:768px){
+            width:2rem;
+        }
+        @media(min-width:1024px){
+            width:2.2rem;
+        }
+
+        i{
+            font-size: 1.3rem;
+            @media(min-width:768px){
+                font-size: 2rem;
+            }
+            @media(min-width:1024px){
+                font-size:2.2rem;
+            }
+        }
 
     &:hover{
         background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.backward{
+    @include buttonStyle();
+    left:0rem;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+        transform:scale(1.5);
     }
 }
 
 .forward{
-        position:absolute;
-        transform:rotateZ(180deg);
-        background-color: transparent;
-        border:none;
-        top:0;
-        right:0rem;
-        width:4rem;
-        height:100%;
-        z-index: 3;
-        transition-property:background-color transform ;
-        transition-duration: .5s;
-        cursor: pointer;
-
-    i{
-        font-size: 5rem;
-    }
-
+    @include buttonStyle();
+    transform:rotateZ(180deg);
+    right:0rem;
     &:hover{
         background-color: rgba(255, 255, 255, 0.1);
-        transform:rotateZ(180deg) scale(1.3);
+        transform:rotateZ(180deg) scale(1.5);
     }
 }
 
 
 .firstPage{
-    // position:absolute;
-    top:4rem;
-    right:8rem;
+    position:absolute;
+    top:1rem;
+    right:1rem;
     border: none;
     background-color: transparent;
     z-index: 10;
     transition-property:background-color transform ;
     transition-duration: .5s;
-    font-size: 2rem;
     font-family: $tertiary-font;
     cursor: pointer;
 
-    i {
-        font-size:3rem;
+    i{
+        font-size: 1.3rem;
+        @media(min-width:768px){
+            font-size: 1.7rem;
+        }
+        @media(min-width:1024px) and (max-height:1024px){
+            font-size:1.6rem;
+        }
+
+        @media(min-width:1024px) and (min-height:1024px){
+            font-size:2.2rem;
+        }
     }
     
     &:hover{
@@ -219,9 +289,12 @@ $translateDistanceRight : $boxWidth/2;
 
     @mixin setting{
         position:absolute;
+        padding: 0;
+        margin: 0;
+        top:0;
+        left:0;
         width:100%;
         height:100%;
-        font-size: 5rem;
         transform-origin: center;
         @include vertical-horizontal-center();
     }
@@ -229,23 +302,23 @@ $translateDistanceRight : $boxWidth/2;
     .face1{
         @include setting();
         transform: translateZ($translateDistanceFront);
-        // background-color: red;
+        background-color: white;
     }
     .face2{
         @include setting();
         transform: translateZ($translateDistanceBack) rotateY(180deg);
-        // background-color: blue;
+        background-color: white;
     }
     .face3{
         @include setting();
         transform: translateX($translateDistanceLeft) rotateY(-90deg) ;
-        // background-color: rgb(64, 202, 179);
+        background-color: white;
     }
     .face4{
         @include setting();
         // color:white;
         transform: translateX($translateDistanceRight) rotateY(90deg) ;
-        // background-color: rgb(41, 8, 8);
+        background-color: white;
     }
 }
 

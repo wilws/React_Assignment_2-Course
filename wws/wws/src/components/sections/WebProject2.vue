@@ -39,23 +39,25 @@
                 <div class="content-wrapper">
                     <div class="flex-box description-wrapper">
                         <div>
-
-                        <h6>Dig out Arbitrage Chance </h6>
-                        <p>
-                            <br>
-                            <br>
-                            In the red circle, it shows that  if we make a “Long Butterfly” combination, the cost to pay is -7.32 HKD and the premium to receive is 7.38 HKD. The difference of 0.06 HKD means no matter where the price goes (up or down), that 0.06 HKD is for sure in your wallet. If you are so lucky that the price eventually falls on the desired point, you can take 2.56 HKD. 
-                        </p>
+                            <h6>Dig out Arbitrage Chance </h6>
+                            <p>
+                                <br>
+                                <br>
+                                In the red circle of the Picture-1, it shows that  if we make a “Long Butterfly” combination, the cost to pay is -7.32 HKD and the premium to receive is 7.38 HKD. The difference of 0.06 HKD means no matter where the price goes (up or down), that 0.06 HKD is for sure in your wallet. If you are so lucky that the price eventually falls on the desired point, you can take 2.56 HKD. 
+                            </p>
                         </div>
                     </div>
                     <div class="flex-box img">
                         <img :src="require('@/assets/img/projects/web_project_2/PHOTO-2020-10-26-02-22-18.jpg')" alt="">
+                        <p>Picture-1</p>
                     </div>
                      <div class="flex-box img">
                             <img :src="require('@/assets/img/projects/web_project_2/PHOTO-2020-10-26-02-29-56.jpg')" alt="">
+                            <p>Picture-2</p>
                     </div>
                      <div class="flex-box img">
                             <img :src="require('@/assets/img/projects/web_project_2/PHOTO-2020-10-25-13-44-32.jpg')" alt="">
+                            <p>Picture-3</p>
                     </div>
                 </div>
             </div>
@@ -75,7 +77,7 @@
 
 
                 <div class="content-wrapper">
-                    <div class="flex-box description-wrapper">
+                    <div class="flex-box description-wrapper slot3">
                         <div>
                         <h6>Deploy on Google Cloud</h6>
                         <p>
@@ -85,10 +87,10 @@
                         </p>
                         </div>
                     </div>
-                    <div class="flex-box img">
+                    <div class="flex-box img slot3">
                         <img :src="require('@/assets/img/projects/web_project_2/appEngiene.png')" alt="">
                     </div>
-                    <div class="flex-box description-wrapper">
+                    <div class="flex-box description-wrapper slot3 ">
                         <div>
                         <h6>Google AdSense</h6>
                         <p>
@@ -98,7 +100,7 @@
                         </p>
                         </div>
                     </div>
-                     <div class="flex-box img">
+                     <div class="flex-box img slot3">
                             <img :src="require('@/assets/img/projects/web_project_2/AdSense.png')" alt="">
                     </div>
                 </div>
@@ -172,7 +174,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.web-project-1{
+.web-project-2{
     background-color: rgb(0, 0, 0);
 }
 
@@ -180,110 +182,167 @@ export default {
     position: relative;
     width:100%;
     height:100%;
-    padding: 4rem;
+    padding: 1rem;
     background-color: black;
     color: white;
     @include column-horizontal-center();
+    // border:red solid thin;
 
     .background-logo{
+        @include vertical-center();
         opacity: 0.2;
-         @include vertical-center();
+        width:50%;
+        height:50%;
+        object-fit: contain;
         z-index: 0;
     }
 
     .title-wrapper{
-        
+        position:relative;
         width:100%;
 
         .title{
+            position: relative;
+            width:100%;
+            min-height:44px;
+            min-width:284px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            // border:red thin solid;
+        
             h1{
+                position: relative;
                 width:100%;
                 font-family: $secondary-font;
-                font-size:4rem;
-                letter-spacing: .1rem;
-                text-align: left;
+                font-size:1.1rem;
+                letter-spacing: 0rem;
+                text-align: left; 
             }
+
             h3{
-                    width:100%;
-                    font-size: 2.1rem;
-                    font-weight: 500;
-                    font-family: $secondary-font;
-                    letter-spacing: .2rem;
-                    padding-left:.4rem;
-                    margin-top:-.5rem;
-                    text-align: left;
+                position: relative;
+                width:100%;
+                font-size: 0.6rem;
+                font-weight: 500;
+                font-family: $secondary-font;
+                letter-spacing: .1rem;
+                padding-left: .2rem;
+                text-align: left;
             }
         }
     }
 
     .content-wrapper{
-       
-        width:100%;
-        height: 85%;
-        // margin-top:0rem;
         display: flex;
-        flex-wrap: wrap;
-        // gap:5px;
+        flex-direction: column;    
+        width:100%;
+        margin-top:2rem;
         column-gap: 2px;
-        row-gap: 2px;
-        // @include horizontal-center();
-        // border:thin solid red;
+        row-gap: 10px;
+        overflow: scroll;
+        
+
+        @media(min-width:1024px) and (max-height:1024px){
+            flex-direction: unset; 
+            flex-wrap: wrap;   
+            justify-content: space-between;
+            padding:0 2rem;
+        }
 
         .flex-box{
-            flex:45%;
-            height:45%;
+            width:100%;
             // border:thin solid red;
+
         }
 
         .description-wrapper{
             position: relative;
-            text-align: justify;
+            width:100%;
+
+  
 
             div{
-                position:absolute;
-                right:2rem;
-                top:10px;
-                // width:500px;
-                // height:370px;
-                width:62.5%;
-                height:100%;
+                width:100%;
+                text-align: center;
+                display: flex;
+                justify-content: start;
+                flex-direction: column;
+                margin-top:2rem;
                 // border:thick rgba(255, 255, 255, 0.74) solid;
                 h6{
-                    margin-top:2rem;
                     width:100%;
+                    font-size:1.5rem;
+                    margin:0;
                 }
 
                 p{
                     width:100%;
-                    height:100%;
-                    margin-top:-2rem;
-                    padding-bottom:2rem;
                     font-family: $primary-font;
                     color:white;
-                    font-size: 1.4rem;
+                    font-size: .8rem;
                     letter-spacing: .1rem ;
-                    line-height: 2.5rem;
+                    line-height: 1.5rem;
+                    padding:0;
+                    margin-top:-2rem;
+
                 }
             }
         }
 
 
         .img{
-            //  border:solid purple thin;
+            position: relative;
+            height:50%;
+            min-height:170px;
             z-index:1;
-            padding: 1rem;
+            width:100%;
+            @media(min-width:1024px) and (max-height:1024px){
+                width:30%;
+            }
+
+            &.slot3{
+                @media(min-width:1024px) and (max-height:1024px){
+                    width:100%;
+                    text-align: center;
+                }
+                img{
+                    @media(min-width:1024px) and (max-height:1024px){
+                        width:30%;
+                    }
+                }
+            }
             img{
-                // width:500px;
-                // height:370px;
-                width:66%;
+                z-index:1;
+                width:100%;
                 height:100%;
+                
                 border:thick rgba(255, 255, 255, 0.74) solid;
-                object-fit: contain;
+                object-fit: cover;
+            }
+
+            p{
+                position: absolute;
+                z-index: 2;
+                bottom: .5rem;
+                left: .5rem;
+                // width: 100%;
+                height: 1.5rem;
+                line-height: 2.2rem;
+                // text-align: left;
+                color: white;
+                font-size: 0.9rem;
+                // margin-left: 1rem;
+                padding: 0 1rem;
+                letter-spacing: 0.2rem;
+                font-family: sans-serif;
+                font-weight: 100;
+                background-color: rgba(0, 0, 0, 0.336);
             }
         }
 
         .img:nth-child(3){
-            text-align: right;
+            // text-align: right;
         }
 
     }

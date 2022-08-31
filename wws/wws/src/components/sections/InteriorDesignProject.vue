@@ -1,5 +1,5 @@
 <template>
-    <section class="interior-design-project-1" id="interior-design-project-1">
+    <section class="interior-design-project-1 rotated" id="interior-design-project-1">
         
         <rotation-layout-5 ref="rotationLayoutRef5">
        
@@ -28,7 +28,12 @@
         <!-- slot 2 -->
         <template v-slot:slot2>
             <div class="slot2-wrapper">
-                <div class="left-side">
+               
+                <div class="upper-side">
+                    <img :src="require('@/assets/img/projects/interior_design_project_1/p1.jpeg')"/>
+                </div>
+
+                 <div class="lower-side">
                     <h1>A Messy Storage Room</h1>
                     <div class="content">
                         The place that we rented was used as a store room by the owner.
@@ -39,9 +44,6 @@
                         <br>
                         We started to study different information to learn how to do renovation. Finally we found that it was not as difficult as we though
                     </div>
-                </div>
-                <div class="right-side">
-                    <img :src="require('@/assets/img/projects/interior_design_project_1/p1.jpeg')"/>
                 </div>
             </div>
         </template>
@@ -60,7 +62,7 @@
                         <h1>Planning</h1>
                     </div>
                     <div class="content">
-                        After acquiring knowledge from Internet, YouTube, books..etc, We roughly understood how to do plastering, construction of wooden structure, light and electricity stuff (well..yes...we knew it is dangerous...but we both are graduated from science background and believed in our knowledge. Don’t try it by yourself at home=) ).
+                        After acquiring knowledge from Internet, YouTube, books..etc, We roughly understood how to do plastering, construction of wooden structure, light and electricity stuff (well..yes...we knew it is dangerous...but we both are graduated from science background and believed in our knowledge. Don’t try it by yourself at home  <i class="fa-solid fa-face-smile"></i>).
                        <br>
                        <br>
                        Having ensured that the renovation was within our ability, I started to learn how to use the software "SketchUp" to draw the layout. 
@@ -80,16 +82,19 @@
         <!-- slot 4 -->
         <template v-slot:slot4>
             <div class="slot4-wrapper">
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-1.jpeg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-2.jpeg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-3.jpeg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-4.jpg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-5.jpg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-6.jpg')"/></div>
-                <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-7.jpg')"/></div>
-
+                <div class="imgs-wrapper">
+                    <div class="img font-page"><p>Let's get started</p></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-1.jpeg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-2.jpeg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-3.jpeg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-4.jpg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-5.jpg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-6.jpg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-7.jpg')"/></div>
+                    <div class="img"><img :src="require('@/assets/img/projects/interior_design_project_1/p3-8.jpg')"/></div>
+                </div>
                 <div class="complete-wrapper">
-                    <div class="left-side">
+                    <div class="content-wrapper">
                         <h1> Desire , Knowledge and Action</h1>
                         <div class="content">
                             We finally spent 3 months to have our cozy studio completed. The whole process was so painful but the outcome was so satisfactory.
@@ -101,11 +106,7 @@
                             "Knowledge" and "Willingness to Learn" provide us confidence to action, to try and to achieve different things in life. Learning endlessly will turn every chapter of your life journey into an exciting adventrue. The more I learn, the more experience that I can put into my life story. We are the sole writer of our life story. Never, Never, Never write a boring story. You don't have another chance to re-write again.
                         </div>
                     </div>
-                    <div class="right-side">
-                        <img :src="require('@/assets/img/projects/interior_design_project_1/p3-8.jpg')"/>
-                    </div>
                 </div>
-                
             </div>
         </template>
         <!-- End of slot 4 -->
@@ -127,18 +128,40 @@
 
 import ProjectPageLayout from "../layout/ProjectPageLayout.vue";
 import RotationLayout5 from "../layout/rotationLayout.vue";
+import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
 export default {
     components:{
         ProjectPageLayout,
         RotationLayout5
     },
-     mounted(){
+    mixins:[screenSizeDetection],
+    mounted(){
         // pass proprs to "rotation-layout" slot
         this.$refs.rotationLayoutRef5.buttonSetting = { 
             backgroundColor : "grey",
             color:"White",
         }
         this.$refs.rotationLayoutRef5.boxClass = ".interior-design-project-1 .space .box";
+        this.$refs.rotationLayoutRef5.animationClass = { 
+            'slot1':[],
+            'slot2':[],
+            'slot3':[
+                '#interior-design-project-1 div div div.face2 div div.col-1',
+                '#interior-design-project-1 div div div.face2 div div.col-2',
+                '#interior-design-project-1 div div div.face2 div div.col-3',
+            ],
+            'slot4':[],
+        }
+  
+
+        window.addEventListener('resize',()=>{
+            if (this.screenRotatedDetector()){
+                document.querySelector(this.id).classList.add('rotated');
+            } else {
+                document.querySelector(this.id).classList.remove('rotated');
+            }
+        })
+    
     },
     data(){
         return {
@@ -158,17 +181,14 @@ export default {
             projectDescription :
             "In Hong Kong, it is quite hard to get a private place for relax since rental is so high in this tiny place. In 2015,  My friend ,Berry ,and I were so luckily to have a chance to rent a place in a factory area with a very economic price. However,  as mentioned, it was in a factory area, the place was “not fancy”, or be more accurate — “messy”. Let see how we 2 turned a messy store room to a cozy studio."
 
-
-
-
-
-
-
         }
     },
     methods:{
         workDisplay(){
-            this.$refs.rotationLayoutRef5.rotate('forward');
+            document.querySelector(this.id).scrollIntoView();
+            setTimeout(() => {
+                this.$refs.rotationLayoutRef5.rotate('forward');
+            }, 200);
         }
     }
 }
@@ -228,47 +248,59 @@ export default {
 }
 
 .slot2-wrapper{
-    @extend .slot-wrapper;
 
-    .left-side{
-        position:absolute;
-        // width:30rem;
-        width: 25%;
-        height:100%;
+    position:relative;
+    width:100%;
+    height:100%;
+    // padding:1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    @media(min-width:1024px){
+        flex-direction:row-reverse;
+    }
+
+    .lower-side{
+
+        width: 100%;
         top:0;
         left:0;
         // border: thin solid red;
-        padding: 4rem;
+        padding: 0.5rem 1rem 1rem 1rem;
         @include column-horizontal-center();
+        @media(min-width:1024px){
+            max-width:400px;
+            width:40%;
+            height:100%;
+            justify-content: center;
+            padding:3rem;
+        }
         h1{
             // border: thin solid red;
             width:100%;
             text-align: center;
             font-family: $secondary-font;
-            font-size: 2.3rem;
+            font-size: 1.1rem;
             font-weight: 300;
-            letter-spacing: .2rem;
-            height:25%;
-            line-height:20rem;
+            letter-spacing: 0rem;
+            // height:25%;
+            line-height:3rem;
         }
         .content{
             // border: thin solid red;
                 font-family: $primary-font;
                 color:$grey ;
-                font-size: 1.3rem;
-                letter-spacing: .1rem ;
-                line-height: 3rem;
-                text-align: justify;
+                font-size: 0.8rem;
+                letter-spacing: 0rem ;
+                line-height: 1.2rem;
+                text-align: center;
         }
     }
-    .right-side{
-        position:absolute;
-        
-        top:0;
-        right:0;
-        width:75%;
-        height:100%;
-        // width:1365px;
+    .upper-side{
+        min-height: 227px;
+        min-width: 320px;
+        width:100%;
         // border: thin solid red;
         
         img{
@@ -282,17 +314,25 @@ export default {
 
 
 .slot3-wrapper{
-    @extend .slot-wrapper;
-    padding: 0;
+    position:relative;
+    width:100%;
+    height:100%;
+    perspective: 100rem;
+
     
 
     .col-1{
         position:absolute;
-        width:30%;
+        width:50%;
         height:100%;
         left:0;
         top:0;
+        z-index: 2;
         @include column-horizontal-center();
+        
+        &.animation{
+            animation: leftSideMovingOut 4s 1.8s forwards;
+        }
 
         .img{
             width:100%;
@@ -316,48 +356,85 @@ export default {
         }
     }
     .col-2{
-        width:40%;
+        z-index: 1;
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
         height:100%;
-        border: .5rem black solid;
-        // border-top: 1rem black solid;
-        // border-bottom: 1rem black solid;
+        opacity: 1;
+        transform: translateZ(-10rem);
+        transform-style: preserve-3d;
+        opacity: 0;
+      
         @include column-horizontal-center();
+        justify-content: center;
+
+        &.animation{
+            animation: movingClose 3s 1.5s forwards;
+        }
         .h1-wrapper{
             h1{
-                // border: thin solid red;
-                width:100%;
                 text-align: center;
                 font-family: $secondary-font;
                 font-size: 2.3rem;
                 font-weight: 300;
                 letter-spacing: .2rem;
-                height:25%;
-                line-height:20rem;
+                margin-top: 1rem;
+                padding: 0 0.6rem;
+                line-height:2.8rem;
+                background-color: rgba(255, 255, 255, 0.8);
             }
         }
         .content{
-            width:60%;
+            margin-top:1rem;
+            width:80%;
+            max-width:588px;
+            // max-height:200px;
             font-family: $primary-font;
-            color:$grey ;
-            font-size: 1.3rem;
-            letter-spacing: .1rem ;
-            line-height: 3rem;
+            
+            
+            color: #1f1f1f;
+            font-size: 0.9rem;
+            letter-spacing: 0rem;
+            line-height: 1.8rem;
             text-align: justify;
+            background-color: rgba(255, 255, 255, 0.8);
+            i{
+                // font-size: .8rem;
+                width:10px;
+                color:rgba(0, 0, 0, 0.384);
+                transform:rotateZ(180deg);
+            }
+        }
+        .content::first-letter{
+            text-transform: capitalize;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
     }
     .col-3{
 
         position:absolute;
-        width:30%;
+        width:50%;
         height:100%;
         right:0;
         top:0;
-        // @include column-horizontal-center();
+        z-index: 2;
         display: flex;
         flex-wrap: wrap;
+
+        
+        &.animation{
+            animation: RightSideMovingOut 4s 1.8s forwards;
+        }
         .img{
             border: thick black solid;
+            position:relative;
             img{
+                position: absolute;
+                left:0;
+                top:0;
                 width:100%;
                 height:100%;
                 object-fit: cover;
@@ -369,27 +446,245 @@ export default {
             height:60%;
         }
         .img:nth-child(2){
-            width:50%;
-            height:40%;
+            width:100%;
+            height:20%;
         }
         .img:nth-child(3){
-             width:50%;
-            height:40%;
+             width:100%;
+            height:20%;
         }
     }
+
+    @keyframes leftSideMovingOut {
+        0%{
+            left:0%;
+            z-index: 2;
+        }
+        50%{
+            left:-100%;
+            z-index: 1;
+        }
+        100%{
+            left:0%;
+            z-index: 1;
+        }
+    }
+
+    @keyframes RightSideMovingOut {
+        0%{
+            right:0%;
+            z-index: 2;
+        }
+        50%{
+            right:-100%;
+            z-index: 1;
+        }
+        100%{
+            right:0;
+            z-index: 1;
+        }
+    }
+
+
+    @keyframes movingClose {
+        0%{
+           transform:translateZ(-10rem);
+           z-index: 1;
+           opacity: 0;
+        }
+        100%{
+            transform:translateZ(0rem);
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+
+
+
 
 }
 
 .slot4-wrapper{
-    @extend .slot-wrapper;
+    position: relative;
+    width:100%;
+    height:100%;
     padding:0;
     background-color: black;
+    padding: 0;
+    perspective: 100rem;
+    // border: green thin solid;
+
+    $gap:2.5rem;
+
+    .imgs-wrapper{
+         
+        width:calc((100vw * 9) + $gap * 8);
+        height:100%;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        gap:$gap;
+        transform-style: preserve-3d;
+        // border: red thin solid;
+
+        transform: translateZ(-5rem);
+        animation: rolling 30s 7s forwards;
+
+
+    .font-page{
+        width:100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: rgb(0, 0, 0);
+        // border:orange thin solid;
+
+        p{
+            opacity: 0;
+            width:100%;
+            height:30px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: white;
+            animation: showStart 6s  forwards;
+        }
+
+        @keyframes showStart {
+            0%{
+                opacity: 0;
+                // font-size: 0rem;
+            }
+            50%{
+                opacity: 1;
+                // font-size: 1.5rem;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        $moveDistance: calc((100vw + $gap) * -1);
+        @keyframes rolling {
+            // Start page
+            0%{
+                transform: translateX(0) translateZ(-5rem)
+            }
+            4.35%{
+                transform: translateX( $moveDistance) translateZ(-5rem)
+            }
+            8.70%{
+                transform: translateX( $moveDistance) translateZ(0rem)
+            }
+
+            13.03%{
+                transform: translateX( $moveDistance) translateZ(0rem)
+            }
+
+            // img-1
+            13.04%{
+                 transform: translateX( $moveDistance) translateZ(-5rem)
+            }
+            17.39%{
+                transform: translateX( calc($moveDistance * 2) ) translateZ(-5rem)
+            }
+            21.74%{
+                transform: translateX( calc($moveDistance * 2)) translateZ(0rem)
+            }
+            26.08%{
+                transform: translateX( calc($moveDistance * 2)) translateZ(0rem)
+            }
+
+            // img-2
+            26.09%{
+                 transform: translateX( calc($moveDistance * 2)) translateZ(-5rem)
+            }
+            30.43%{
+                transform: translateX( calc($moveDistance * 3) ) translateZ(-5rem)
+            }
+            34.78%{
+                transform: translateX( calc($moveDistance * 3)) translateZ(0rem)
+            }
+            39.12%{
+                transform: translateX( calc($moveDistance * 3)) translateZ(0rem)
+            }
+
+            // img-3
+            39.13%{
+                 transform: translateX( calc($moveDistance * 3)) translateZ(-5rem)
+            }
+            43.48%{
+                transform: translateX( calc($moveDistance * 4) ) translateZ(-5rem)
+            }
+            47.83%{
+                transform: translateX( calc($moveDistance * 4)) translateZ(0rem)
+            }
+            52.16%{
+                transform: translateX( calc($moveDistance * 4)) translateZ(0rem)
+            }
+
+            // img-4
+            52.17%{
+                 transform: translateX( calc($moveDistance * 4)) translateZ(-5rem)
+            }
+            56.52%{
+                transform: translateX( calc($moveDistance * 5) ) translateZ(-5rem)
+            }
+            60.87%{
+                transform: translateX( calc($moveDistance * 5)) translateZ(0rem)
+            }
+
+            65.20%{
+                transform: translateX( calc($moveDistance * 5)) translateZ(0rem)
+            }
+
+            // img-5
+            65.22%{
+                 transform: translateX( calc($moveDistance * 5)) translateZ(-5rem)
+            }
+            69.57%{
+                transform: translateX( calc($moveDistance * 6) ) translateZ(-5rem)
+            }
+            73.91%{
+                transform: translateX( calc($moveDistance * 6) ) translateZ(0rem)
+            }
+
+            78.25%{
+                transform: translateX( calc($moveDistance * 6) ) translateZ(0rem)
+            }
+
+            // img-6
+            78.26%{
+                 transform: translateX( calc($moveDistance * 6) ) translateZ(-5rem)
+            }
+            82.61%{
+                transform: translateX( calc($moveDistance * 7) ) translateZ(-5rem)
+            }
+            86.96%{
+                transform: translateX( calc($moveDistance * 7)) translateZ(0rem)
+            }     
+            91.29%{
+                transform: translateX( calc($moveDistance * 7)) translateZ(0rem)
+            }  
+            // img-7
+            91.30%{
+                 transform: translateX( calc($moveDistance * 7 )) translateZ(-5rem)
+            }
+            95.65%{
+                transform: translateX( calc($moveDistance * 8) ) translateZ(-5rem)
+            }
+            100%{
+                transform: translateX( calc($moveDistance * 8)) translateZ(0rem)
+            }      
+        }
+    }
 
     .img{
-        position:absolute;
+        // position:absolute;
+        // border:red thin solid;
         height:100%;
-        width:40%;
+        width:100vw;
         top:0;
+
         img{
             width:100%;
             height:100%;
@@ -397,93 +692,390 @@ export default {
         }
     }
 
-    .img:nth-child(1){
-        left:0;
-        // opacity:0.2;
-    }
+    // .img:nth-child(1){
+    //     left:0;
+    
+    //     // opacity:0.2;
+    // }
 
-    .img:nth-child(2){
-        left:6%;
-        // opacity:0.2;
-    }
-    .img:nth-child(3){
-        left:14%;
-        // opacity:0.2;
-    }
-    .img:nth-child(4){
-        left:21%;
-        // opacity:0.2;
-    }
-    .img:nth-child(5){
-        left:29%;
-        // opacity:0.2;
-    }
-    .img:nth-child(6){
-        left:38%;
-        // opacity:0.2;
-    }
-    .img:nth-child(7){
-        left:43%;
-        // opacity:0.2;
-    }
+    // .img:nth-child(2){
+    //     left:6%;
+    //     // opacity:0.2;
+    // }
+    // .img:nth-child(3){
+    //     left:14%;
+    //     // opacity:0.2;
+    // }
+    // .img:nth-child(4){
+    //     left:21%;
+    //     // opacity:0.2;
+    // }
+    // .img:nth-child(5){
+    //     left:29%;
+    //     // opacity:0.2;
+    // }
+    // .img:nth-child(6){
+    //     left:38%;
+    //     // opacity:0.2;
+    // }
+    // .img:nth-child(7){
+    //     left:43%;
+    //     // opacity:0.2;
+    // }
 
     .complete-wrapper{
-        position:absolute;
-        left:0;
-        right:0;
-        background-color: rgba(0, 0, 0,0.94);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        height: 100%;
+        display: none;
+
+    }
 
     
-        .left-side{
-            // position:relative;
-            // background-color: rgba(0, 0, 0, 0.712);
-            color: white;
-            width: 50%;
-            height:100%;
-            // border: thin solid red;
-            padding: 10rem;
-            margin-left:8rem;
-            @include column-horizontal-center();
-            h1{
-                // border: thin solid red;
-                width:100%;
-                text-align: center;
-                font-family: $secondary-font;
-                font-size: 2.3rem;
-                font-weight: 300;
-                letter-spacing: .2rem;
-                height:25%;
-                line-height:20rem;
-            }
-            .content{
-                // border: thin solid red;
-                font-family: $primary-font;
-                color:$grey ;
-                font-size: 1.3rem;
-                letter-spacing: .1rem ;
-                line-height: 3rem;
-                text-align: center;
-                width:100%;
-                // padding: 10rem;
-            }
-        }
-        .right-side{
-            background-color: rgba(0, 0, 0, 0.562);
-            width:40%;
-            height:100%;
-            // border: thin solid red;
+    //     .left-side{
+    //         // position:relative;
+    //         // background-color: rgba(0, 0, 0, 0.712);
+    //         color: white;
+    //         width: 50%;
+    //         height:100%;
+    //         // border: thin solid red;
+    //         padding: 10rem;
+    //         margin-left:8rem;
+    //         @include column-horizontal-center();
+    //         h1{
+    //             // border: thin solid red;
+    //             width:100%;
+    //             text-align: center;
+    //             font-family: $secondary-font;
+    //             font-size: 2.3rem;
+    //             font-weight: 300;
+    //             letter-spacing: .2rem;
+    //             height:25%;
+    //             line-height:20rem;
+    //         }
+    //         .content{
+    //             // border: thin solid red;
+    //             font-family: $primary-font;
+    //             color:$grey ;
+    //             font-size: 1.3rem;
+    //             letter-spacing: .1rem ;
+    //             line-height: 3rem;
+    //             text-align: center;
+    //             width:100%;
+    //             // padding: 10rem;
+    //         }
+    //     }
+    //     .right-side{
+    //         background-color: rgba(0, 0, 0, 0.562);
+    //         width:40%;
+    //         height:100%;
+    //         // border: thin solid red;
             
-            img{
-                width:100%;
-                height:100%;
-                object-fit: cover;
-            }
-        }
+    //         img{
+    //             width:100%;
+    //             height:100%;
+    //             object-fit: cover;
+    //         }
+    //     }
+    
     }
 
 }
+
+#interior-design-project-1.rotated{
+    .space{
+        .box{
+            .face3{
+                .slot4-wrapper{
+        
+                    @media(min-width:1024px){
+                        background-color: white;
+                        display: flex;
+                    }
+                    .imgs-wrapper{
+       
+                        @media(min-width:1024px){
+                            height:100%;
+                            width:100%;
+                            animation: none;
+                            gap:0;
+                            transform: translateZ(0rem);
+                            perspective: 10rem;
+                            background-color: rgb(255, 255, 255);
+
+                            
+                        }
+                 
+                        .img{
+                            @media(min-width:1024px){
+                                // position: relative;
+                                position:absolute;
+                                width:auto;
+                                height:50%;
+                                margin-left:0;
+                                background-color: rgb(31, 30, 30);
+                                text-align: left;
+                                padding:.3rem;
+                                transform-style: preserve-3d;
+                           
+                                box-shadow: -19px 12px 0.4rem rgb(0 0 0 / 43%);
+                                
+
+                            }
+                            img{
+                                height:100%;
+                                width:auto;
+                                object-fit: contain;
+
+                            }
+       
+                        }
+
+                        @media(min-width:1024px){
+                            .img:nth-child(1){
+                                display: none;
+                            }
+
+                            .img:nth-child(2){
+                                height:60%;
+                                left:0;
+                                top:0;
+                                transform: rotateZ(-20deg) translateZ(50px) ;
+                                z-index: 2;
+                                transform-style: preserve-3d;
+                                animation: dropPicture1 3s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 3s forwards,
+                                }
+                                @keyframes dropPicture1 {
+                                    0%{
+                                        transform: rotateZ(-20deg) translateZ(50px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(-20deg) translateZ(0);
+                                    }
+                                }
+                            }
+                            
+                            .img:nth-child(3){
+                                height:60%;
+                                z-index: 3;
+                                left:20%;
+                                top:7%;
+                                transform: rotateZ(10deg) translateZ(500px);
+                                animation: dropPicture2 3s 4s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 8s forwards,
+                                }
+                                @keyframes dropPicture2 {
+                                    0%{
+                                        transform: rotateZ(10deg) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(10deg) translateZ(0);
+                                    }
+                                }
+                            }
+                            .img:nth-child(4){
+                                height:70%;
+                                z-index: 4;
+                                left:34%;
+                                top:20%;
+                                transform: rotateZ(-8deg)  translateZ(500px) ;
+                                animation: dropPicture3 3s 9s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 12s forwards,
+                                }
+                                @keyframes dropPicture3 {
+                                    0%{
+                                        transform: rotateZ(-8deg) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(-8deg) translateZ(0);
+                                    }
+                                }
+                            }
+                            .img:nth-child(5){
+                                height:65%;
+                                z-index: 5;
+                                left:34%;
+                                top:20%;
+                                transform: rotateZ(7deg) translateZ(500px) ;
+                                animation: dropPicture4 3s 13s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 16s forwards,
+                                }
+                                @keyframes dropPicture4 {
+                                    0%{
+                                        transform: rotateZ(7deg) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(7deg) translateZ(0);
+                                    }
+                                }
+                            }
+                            .img:nth-child(6){
+                                height: 76%;
+                                z-index: 6;
+                                left: 9%;
+                                top: 13%;
+                                transform: rotateZ(349deg)  translateZ(500px) ;
+                                animation: dropPicture5 3s 17.5s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 22s forwards,
+                                }
+                                @keyframes dropPicture5 {
+                                    0%{
+                                        transform: rotateZ(349deg) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(349deg) translateZ(0);
+                                    }
+                                };
+                            }
+                            .img:nth-child(7){
+                                height: 77%;
+                                z-index: 7;
+                                left: 42%;
+                                top: 4%;
+                                transform: rotateZ(0) translateZ(500px) ;
+                                animation: dropPicture6 3s 22s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 26s forwards,
+                                }
+                                @keyframes dropPicture6 {
+                                    0%{
+                                        transform: rotateZ(0) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(0) translateZ(0);
+                                    }
+                                };
+                            }
+                            .img:nth-child(8){
+                                height: 83%;
+                                z-index: 8;
+                                left: 31%;
+                                top: 4%;
+                                transform: rotateZ(357deg) translateZ(500px) ;
+                                animation: dropPicture7 3s 27s forwards;
+                                img{
+                                    filter: sepia(0%);
+                                    animation: sepia 3s 31s forwards,
+                                }
+                                @keyframes dropPicture7 {
+                                    0%{
+                                        transform: rotateZ(357deg) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(357deg) translateZ(0);
+                                    }
+                                };
+                            }
+                            .img:nth-child(9){
+                                height: 90%;
+                                // width:60%;
+                                z-index: 9;
+                                left: 25%;
+                                top: 5%;
+                                transform: rotateZ(0deg) translateZ(500px) ;
+                                animation: 
+                                    dropPicture8 3s 32s forwards,
+                                    movingLeft  3s 35s forwards;
+                               
+                                @keyframes dropPicture8 {
+                                    0%{
+                                        transform: rotateZ(0) translateZ(500px) ;
+                                    }
+                                    100%{
+                                        transform: rotateZ(0) translateZ(0);
+                                    }
+                                };
+                                @keyframes movingLeft {
+                                    0%{
+                                        left:25%;
+                                        
+                                    }
+                                    100%{
+                                        left:3%;
+                                    }
+                                    
+                                }  
+                            }
+                            @keyframes sepia {
+                                0%{
+                                    filter: sepia(0%);
+                                }
+                                100%{
+                                    filter: sepia(100%);
+                                }
+                            }
+
+                            @keyframes shadding {
+                                0%{
+                                    opacity: 0;
+                                }
+                                100%{
+                                    opacity: 0.4;
+                                    
+                                }
+                            }
+
+
+                        }
+                    }
+                    @media(min-width: 1024px){
+                        .complete-wrapper{
+                                display: flex;
+                                justify-content: center;
+                                z-index: 7;
+                                visibility: hidden;
+                                opacity: 0;
+                                position: relative;
+                                width: 100%;
+                                background-color:  rgb(255 255 255 / 84%);
+
+                                height: 100%;
+                                animation:showCompleteWrapper 3s 38s forwards;
+
+                                @keyframes showCompleteWrapper {
+                                    0%{
+                                        visibility: hidden;
+                                        opacity: 0;
+                                    }
+                                    100%{
+                                        visibility: visible;
+                                        opacity: 1;                                        
+                                    }
+                                }
+                            
+                            .content-wrapper{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                padding:2rem;
+                                width:65%;
+                    
+
+                                h1{
+                                    text-align: center;
+                                }
+
+                                .content{
+                                    margin-top: 2rem;
+                                    text-align: justify;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+} 
 </style>

@@ -35,7 +35,7 @@ a {
     font-family: 'Courier New';
     transition-duration: .5s; 
     min-height:85px;
-    width:90%;
+    // width:90%;
     
     max-width:30rem;
     // border:blue thin solid;

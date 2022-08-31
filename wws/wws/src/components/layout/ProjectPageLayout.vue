@@ -159,7 +159,7 @@ export default {
         .upper-wrapper{
             display: flex;
             justify-content: space-between;
-            height:7rem;
+            height:8rem;
             // max-height:30rem;
             visibility: none;
             // border:blue thin solid;
@@ -205,7 +205,11 @@ export default {
 
                     @media(min-width:1024px) and (max-height: 1024px){
                         font-size: 1.8rem;
-                    }                   
+                    }  
+                    
+                    @media(min-width:1024px) and (min-height: 1024px){
+                        font-size: 1.8rem;
+                    }  
                 }
 
                 h3{
@@ -230,6 +234,9 @@ export default {
                     }
                     @media(min-width:1024px) and (max-height: 1024px){
                         font-size: 0.8rem;
+                    }
+                    @media(min-width:1024px) and (min-height: 1024px){
+                        font-size: 1.8rem;
                     }
                 }
                 button{
@@ -261,6 +268,11 @@ export default {
                         height: 1.8rem;
                         width: 9.5rem;;
                         font-size:.7rem;
+                    }
+                    @media(min-width:1024px) and (min-height: 1024px){
+                        height: 3.2rem;
+                        width: 12.7rem;
+                        font-size: 1rem;
                     }
 
                     &:hover{
@@ -314,12 +326,12 @@ export default {
 
             @media(min-width:1024px){
                 height:calc(100% - 13rem);
-                margin-top:8rem;
+                margin-top:6rem;
             }
 
             .content{
                 position: relative;
-                overflow: scroll;
+                overflow: auto;
                 width:100%;
                 height: 100%;
                 opacity:0;
@@ -327,6 +339,7 @@ export default {
 
                 .left-side{
 
+                    overflow: scroll;
                     font-family: $primary-font;
                     // color:white ;
                     font-size: 0.8rem;
@@ -335,11 +348,12 @@ export default {
       
                     padding-right: 1rem;
                     @media(min-width:768px){
-                        font-size: .8rem;
+                        font-size: 1rem;
                         line-height: 1.9rem;
                     }
                     @media(min-width:1024px){
-                        font-size: 1rem;
+                        // font-size: 1.3rem;
+                        font-size: 0.9rem;
                     }
 
                     
@@ -347,6 +361,8 @@ export default {
                 }
                 .bottom-side{
                     padding-right: 1rem;
+                    // display: flex;
+                    // gap:5rem;
 
                     margin-bottom:4rem;
                     // background-color: white;

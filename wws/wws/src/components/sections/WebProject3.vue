@@ -36,64 +36,10 @@
                     </div>
                     <div class="content-wrapper">
                         <div class="video-wrapper">
-                            <video controls loop autoplay>
+                            <video loop autoplay muted>
                                 <source :src="require('@/assets/img/projects/web_project_3/optionkatze2.mp4')" type="video/mp4">
                             </video>
                         </div>
-                        <div class="dialogue-wrapper">
-                            <div class="dialogue1">
-                                <p>Let start the app…</p>
-                            </div>
-                            <div class="dialogue2">
-                                <p> We choose 0002.HK “CLP HOLDINGS” as testing company.</p>
-                            </div>
-                            <div class="dialogue3">
-                                <p>We use 1 year  daily price record </p>
-                            </div>
-                            <div class="dialogue4">
-                                <p>We test indicator “RSI”,
-                                    <br>We buy when:
-                                    <br> - RSI is lower than and equal to 20
-                                    <br>
-                                    <br>We sell when:
-                                    <br> - RSI is higher than and equal to 70
-                                </p>
-                            </div>
-                            <div class="dialogue5">
-                                <p>For the long position, we close the position when:
-                                    <br> - we have 10% profit or,
-                                    <br> - We have 5% loss
-                                    <br>For the short position, we close the position when:
-                                    <br> - we have 20% profit or,
-                                    <br> - We have 10% loss
-                                    <br>
-                                    <br>The holding period is “0” 
-                                    <br>means no time restriction in holding.
-                                </p>
-                            </div>
-                            <div class="dialogue6">
-                                <p>Here is the result:
-                                    <br>We traded 66 time.
-                                    <br>
-                                    <br>For long position:
-                                    <br> - We have 16 trades
-                                    <br> - in which 4  trades were loss, 
-                                    <br> - 0 trade is win 
-                                    <br> - other 12 trade is still on going 
-                                    <br>   and not yet meet the close requirement
-                                    <br>
-                                    <br>For Short position:
-                                    <br> - We have 25 trades
-                                    <br> -  in which 0  trades were loss
-                                    <br> - 21 trades were win
-                                    <br> -  other 4 trade is still on going 
-                                    <br>    and not yet meet the close’s requirement)
-                                    <br>
-                                    <br>The total profit is 265.65 HKD. 
-                                </p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </template>
@@ -157,8 +103,8 @@ export default {
 
 <style lang="scss" scoped>
 .web-project-3{
-    width:100vw;
-    height: 100vh;
+    // width:100vw;
+    // height: 100vh;
     background-color: rgb(0, 0, 0);
 }
 
@@ -167,103 +113,75 @@ export default {
     position: relative;
     width:100%;
     height:100%;
-    padding: 4rem;
+    padding: 1rem;
     background-color: black;
-    color:white;
+    color: white;
     @include column-horizontal-center();
 
     .title-wrapper{
+        position:relative;
         width:100%;
 
         .title{
+            position: relative;
+            width:100%;
+            min-height:44px;
+            min-width:284px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            // border:red thin solid;
+        
             h1{
+                position: relative;
                 width:100%;
                 font-family: $secondary-font;
-                font-size:4rem;
-                letter-spacing: .1rem;
-                text-align: left;
+                font-size:1.1rem;
+                letter-spacing: 0rem;
+                text-align: left; 
             }
+
             h3{
-                    width:100%;
-                    font-size: 2.1rem;
-                    font-weight: 500;
-                    font-family: $secondary-font;
-                    letter-spacing: .2rem;
-                    padding-left:.4rem;
-                    margin-top:-.5rem;
-                    text-align: left;
+                position: relative;
+                width:100%;
+                font-size: 0.6rem;
+                font-weight: 500;
+                font-family: $secondary-font;
+                letter-spacing: .1rem;
+                padding-left: .2rem;
+                text-align: left;
             }
         }
     }
 
     .content-wrapper{
-        position:relative;
+ 
         width:100%;
-        height: 80%;
-        margin-top:5rem;
-        text-align: left;
-        display: flex;
-        flex-wrap: wrap;
-        // border:solid thin red;
+        height:80%;
+        margin-top:1rem;
 
-        .dialogue-wrapper{
-            position:relative;
-
-            width:30%;
-            height:100%;
+        // border:red thin solid;
+        // overflow: scroll;
         
-            div{
-                position:absolute;
-                color:black;
-                background-color: rgba(255, 255, 255, 0.678);
-                font-size:2rem;
-                text-align: left;
-                z-index:2;
-                padding:1rem 2rem;
-                top: 0rem;
-                border-radius: 5px;
-            }
 
-            .dialogue1{
-                display: none;
-                right:3rem;
-                
-            
-            }
-            .dialogue2{
-                display: none;
-                right:3rem;
-    
-            }
-            .dialogue3{
-                display: none;
-                right:3rem;
-            }
-            .dialogue4{
-                display: none;
-                right:3rem;
-
-            }
-            .dialogue5{
-                display: none;
-                right:3rem;
-            }
-            .dialogue6{
-                //  display: none;
-                right:3rem;
-            }
-        }
+        // @media(min-width:1024px) and (max-height:1024px){
+        //     flex-direction: unset; 
+        //     flex-wrap: wrap;   
+        //     justify-content: space-between;
+        //     padding:0 2rem;
+        // }  
 
         .video-wrapper{
             position:relative;
-            width:70%;
+            width:100%;
             height:100%;
             background-color: transparent;
             z-index: 1;
+            text-align: center;
             video{
-                // height: 100%;
+                height: 100%;
                 width:100%;
-                object-fit:cover;
+                object-fit:contain
             }
         }
 
