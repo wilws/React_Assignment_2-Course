@@ -94,12 +94,12 @@ export default {
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
             const translateZ = `-${vw/2}px`;
             document.querySelector(this.boxClass).style.transform = `translateZ(${translateZ}) rotateY(${this.rotateDeg}deg) `;
-    
-            if (!this.rotateDeg){      
-                 this.animationClassRemover();     // remove animation when go back to first page
-                 this.mainScrollBarLocker(false);
+            
+            this.animationClassRemover();         // remove animation when go back
+            if (!this.rotateDeg){           
+                 this.mainScrollBarLocker(false);  // unlockscroll bar
             } else {
-                this.mainScrollBarLocker(true)
+                this.mainScrollBarLocker(true)     // lockscroll bar when go to project details
                 this.animationClassController(this.rotateDeg);
             }
         },
@@ -129,7 +129,6 @@ export default {
             });
         },
         animationClassRemover(){
-
             document.querySelectorAll('.animation').forEach((c) => {
                 c.classList.remove('animation');
             })

@@ -94,14 +94,10 @@ export default {
          contentShow(){
             // When scroll to Skill set page, trigger cardsRotation()
 
-            
-           
-
             const headerMovingItems =  [
                 `${this.id} div div.left-wrapper div.upper-wrapper .left-side h1`,
                 `${this.id} div div.left-wrapper div.upper-wrapper .left-side h3`,
                 `${this.id} div div.left-wrapper div.upper-wrapper .left-side button`,
-                // `${this.id} div div.left-wrapper div.upper-wrapper .right-side img`
             ];
 
             const imgPath = `${this.id} div div.left-wrapper div.upper-wrapper .right-side img`;
@@ -112,12 +108,12 @@ export default {
             const page = document.querySelector(this.id);
             const travelDistance = window.innerHeight + window.pageYOffset;
             const triggerPoint = page.offsetTop + page.offsetHeight/2;
+            
             if (travelDistance > triggerPoint){
                 headerMovingItems.forEach((item) => {
                     document.querySelector(item).style.transform= 'translateX(0)';
                 });      
                 document.querySelector(content).style.opacity = '1';
-
             } 
         }
     }

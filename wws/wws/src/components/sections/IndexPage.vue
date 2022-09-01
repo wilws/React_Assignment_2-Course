@@ -13,6 +13,8 @@
         </div>
 
         <div class="introduction-wrapper">
+            <div class="above-intro"> 
+            </div>
             <div class="introduction">
                 I am Wai Shun WONG, a self-taught full stack web developer. 
                 <br><br>I specialise in VueJs, HTML and CSS/SACS/SCSS to construct frontend web application. For the backend side, I am proficient in using Python + Django or NodeJs + Express framework. I can construct RESTful API for the communication of both front and back ends. I also have knowledge to connect application to MySQL / MongoDB  to preform CRUD.
@@ -23,332 +25,378 @@
 
 
 
-        <!-- <div class="contact">
-            <p>github : https://github.com/wilws</p>
-            <p>email : wilson.ws.pro@gmail.com</p>
-        </div> -->
+
     </section>
 </template>
 
 <script>
+import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
 export default {
-    setup() {
-        
+    mixins:[screenSizeDetection],
+    mounted(){
+        // Check if the device is horizontally rotated 
+        // if true, add class "rotated" to the <section> tag
+        // We treat the style of the horizontal screen separately
+        this.deviceRotationResponse(this.id)
+        window.addEventListener('resize',()=>{
+            this.deviceRotationResponse(this.id);
+        });
     },
+    data(){
+        return {
+            id: "#index"
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 
-// default size: iPhone 5 : 320px x 568px 
 
 .index-page{
     position:relative;
     width:100%;
     height:100%;
-    min-height:568px;
-    min-width:320px;
     background-color: rgb(255, 255, 255);
-    // border:red thin solid;
-    // background-color: red;
 
-    // Rotated Tablet or Desktop
-    @media (min-width : 1024px) and (max-height: 1025px){
-        display:flex;
-        flex-direction: row-reverse;
-    }
-
-
-    $img-wrapper-height: 45%;
-    $img-wrapper-min-height: 300px;
     .img-wrapper{
         position: relative;
-        height:$img-wrapper-height;
-        min-height:$img-wrapper-min-height;
         width:100%;
-
-        // Tablet - Width
-        @media (min-width:768px) {
-            height:54%;
-            min-height:550px;
-        }
-
-        // Phone - Height
-        @media (min-height:375px){
-            min-height:140px;
-        }
-
-    
-
-        // Phone - Height
-        @media (min-height:414px){
-            min-height:220px;
-        }
-
-
-
-
-        // Rotated Tablet or Desktop
-        @media (min-width : 1024px) and (max-height: 1024px){
-            width:100%;
-            height:100%;
-        }
-
-
-
-
-
+        height:45%;
+        // min-height:300px;
+        
         .img{
             position: absolute;
+            width:80%;
+            height:100%;
             top:0;
             right:0;
-            width:80%;
             overflow: hidden;
-            height:100%;
-            // background-color: green;
 
-            // Rotated Tablet or Desktop
-            @media (min-width : 1024px) and (max-height: 1024px){
-                width:100%;
-                height:100%;
+            @media (min-width:760px) {
+                width:60%;
             }
-
+ 
             img{
-                position: absolute;
-                right:0;
                 width: 100%;
-                height:100%;
-                max-width:340px;
+                height:100%;      
                 object-fit:cover;
                 overflow: hidden;
-
-                @media (min-width:768px) {
-                    max-width:600px;
-                }
-
-                @media (min-width : 1024px) and (max-height: 1024px){
-                    max-width: unset;
-                }
             }
         }
 
-
-
         .name{
-            position:absolute;
-            bottom:-8%;
-            right:30%;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 0.3rem;
-            line-height: 1.8rem;
-            text-align: right;
-            z-index: 1;
-            padding: 0rem;
-            background-color: rgba(256,256,256,0.5);
 
-            // Phone - Width
-            @media (min-width: 375px) {
+            @mixin nameFontSetting_320px{
+                bottom:-5%;
+                right:30%;
+                font-size: 1.5rem;
+                letter-spacing: 0.3rem;
+                line-height: 1.8rem;   
+            }
+
+            @mixin nameFontSetting_375px{  
+                bottom:-5%; 
+                right:30%;           
                 font-size: 1.9rem;
                 letter-spacing: 0.3rem;
                 line-height: 2.5rem;
-                bottom:-3%;
             }
 
-            // Tablet - Width
-            @media (min-width:768px) {
-                font-size: 3.9rem;
+            @mixin nameFontSetting_400px{  
+                bottom:-3%; 
+                right:30%;           
+                font-size: 2.1rem;
+                letter-spacing: 0.3rem;
+                line-height: 2.9rem;
+            }
+            @mixin nameFontSetting_540px{  
+                bottom: -7%;
+                right: 46%;
+            }
+
+            @mixin nameFontSetting_760px{
+                bottom:-7%;
+                right:37%;
+                font-size: 3.7rem;
                 letter-spacing: 0.3rem;
                 line-height: 5.14rem; 
+            }
+
+            @mixin nameFontSetting_1020px{
                 bottom:-7%;
-            }
-
-            // Tablet - Height
-            @media (min-height:1180px) {        
-                 bottom: -6%;
-            }
-
-            @media (min-width : 1024px) and (max-height: 1024px){
-                font-size: 2.7rem;
+                right: 40.7%;
+                font-size: 4.7rem;
                 letter-spacing: 0.3rem;
-                line-height: 3.44rem;
-                top: 0.7%;
-                right: 87.1%;
+                line-height: 6.05rem;
                 background-color: transparent;
-                height:0;
             }
 
-            @media (min-width : 1360px) and (max-height: 1360px){
+
+            @mixin nameFontSetting_1300px{
+                top: 0.7%;
+                bottom:-7%;
+                right: 91.5%;     
                 font-size: 3.5rem;
                 letter-spacing: 0.5rem;
                 line-height: 4.84rem;
+                background-color: transparent;
+            }
+
+            position:absolute;
+            font-family: 'Noto Sans TC', sans-serif;
+            z-index: 1;
+            padding: 0rem;
+            text-align: right;
+            background-color: rgba(256,256,256,0.5);
+
+            @media (min-width:320px) {
+                @include nameFontSetting_320px();
+            }
+
+            @media (min-width:375px) {
+                @include nameFontSetting_375px();
+            }
+
+            @media (min-width:400px) {
+                @include nameFontSetting_400px();
+            }
+
+            @media (min-width:540px) {
+                @include nameFontSetting_540px();
+            }
+
+            @media (min-width:760px) {
+                @include nameFontSetting_760px();
+            }
+
+            @media (min-width:1020px) {
+                @include nameFontSetting_1020px();
             }
 
 
-             @media (min-width : 1360px) and (max-height: 1360px){
-                right: 91.5%;
+            @media (min-width:1300px) {
+                @include nameFontSetting_1300px();
             }
-
 
             h1:nth-child(2){
                 margin-top:.2rem;
             }
-
         }
-
-        
     }
 
     .introduction-wrapper{
         position: relative;     
-        height: calc(100% - 320px - 4%);
+        height:50%;
         width: 100%;
-        padding:0 2.3rem 0 2.3rem;
-        margin:10% 0 1px 0;
-        overflow: scroll;
+        padding:0 1.3rem 1.3rem 1.3rem;
+        overflow: hidden;
         z-index: 0;
 
-        // background-color: blue;;
-
-
-        // Phone - Width
-        @media (min-width: 375px){
-            height: calc(100% - 375px - 4%);
-            margin:5% 0 1px 0;
+        @media(min-width:760px){
+            padding:0 3rem 3rem 3rem;
         }
 
-        // Tablet - Width
-        @media (min-width: 820px){
-            padding:0 5rem 0 5rem;
+        $aboveIntroHeight_320px: 34px;
+        $aboveIntroHeight_760px: 48px;
+        $aboveIntroHeight_1000px: 65px;
+
+        .above-intro{
+            position: relative;
+            height:$aboveIntroHeight_320px;
+            @media(min-width:760px){
+                height:$aboveIntroHeight_760px;
+            }
+            @media(min-width:1000px){
+                height:$aboveIntroHeight_1000px;
+            }
         }
-
-        // Phone - Height
-        @media (min-height:667px){
-            height: calc(100% - 360px);
-            margin: 9% 0 1px 0;
-        }
-
-        @media (min-height:720px){
-            height: calc(100% - 381px);
-        }
-
-        @media (min-height:812px) {        
-            height: calc(100% - 425px);      
-            margin: 6% 0 1px 0;
-        }
-
-        @media (min-height:896px) {        
-            height: calc(100% - 500px);      
-            margin: 6% 0 1px 0;
-        }
-
-        // Tablet - Height
-        @media (min-height:1024px){
-            height: calc(100% - 730px);
-            padding:0 5rem 0 5rem;
-            margin: 9% 0 1px 0;
-        }
-
-        // Tablet - Height
-        @media (min-height:1366px){
-            height: calc(100% - 900px);
-            padding:0 5rem 0 5rem;
-            margin: 9% 0 1px 0;
-        }
-
-
-        @media (min-width : 1024px) and (max-height: 1024px){
-            height:100%;
-            margin: 0% 0 1px 0;
-            padding-top:15%;
-   
-        }
-
-
 
 
         .introduction{
             position: relative;
+            color: rgb(0, 0, 0);
+            height:calc(100% - $aboveIntroHeight_320px);
+            overflow: scroll;
 
-            // background-color: rgb(0, 255, 0);;
-   
-            width:100%;
-            height:auto;
-            font-family: $primary-font;
-            color: black ;
-            font-size: 0.6rem;
-            letter-spacing: 0rem;
-            line-height: 1.2rem;
-            text-align: justify;
-            // border:thin red solid;
-
-
-
-
-            // Tablet Width
-            @media (min-width:820px){
-                font-size: 1.2rem;
-                letter-spacing: 0.1rem;
-                line-height: 2.2rem;
+            @media(min-width:320px){
+                @include contentFontSetting_320px();
             }
-
-            @media (min-height:720px){
-                font-size: 0.8rem;
-                letter-spacing: 0rem;
-                line-height: 1.4rem;
+            @media(min-width:760px){
+                height:calc(100% - $aboveIntroHeight_760px);
+                @include contentFontSetting_760px();
             }
-
-
-            @media (min-height:814px){
-                font-size: 0.8rem;
-                letter-spacing: 0rem;
-                line-height: 1.1rem;
+            @media(min-width:1000px){
+                height:calc(100% - $aboveIntroHeight_1000px);
             }
+        }
+    }
 
-            // Tablet Height
-            @media (min-height:1024px){
-                font-size: 1.1rem;
-                letter-spacing: 0.1rem;
-                line-height: 1.6rem;
+    // .contact{
+    //     position:absolute;
+    //     right:5rem;
+    //     bottom:5rem;
+    //     color: rgb(141, 139, 139);
+    //     font-family: $secondary-font;
+    //     font-size: 1.4rem;
+    //     letter-spacing: 0.3rem;
+    //     text-align: right;
+
+    // }
+}
+
+// Rotated style
+.index-page.rotated{
+    @media(min-width:568px){
+        display:flex;
+        flex-direction: row-reverse;
+    }
+    .img-wrapper{
+        @media(min-width:568px){
+            width:80%;
+            height: 100%;
+        }
+        .img{
+            @media(min-width:568px){
+                width:100%;
+                height:100%;
             }
-
-            @media (min-height:1366px){
-                font-size: 1.6rem;
-                letter-spacing: 0.1rem;
-                line-height: 2.2rem;
-            }
-
-
-            @media (min-width : 1024px) and (max-height: 1024px){
-                font-size: 0.8rem;
-                letter-spacing: 0rem;
-                line-height: 1.5rem;
-            }
-
-             @media (min-width : 1360px) and (max-height: 1360px){
-                font-size: 1.1rem;
-                letter-spacing: 0rem;
-                line-height: 2.2rem;
+            img{
+                @media(min-width:568px){
+                    width:100%;
+                    height:100%;
+                    object-fit: cover;
+                }
             }
         }
 
+        .name{
+            @mixin nameFontSetting_h_560px{  
+                top:2%;
+                left:unset;
+                bottom:unset;
+                right:87%;
+                
+                font-size: 1.5rem;
+                letter-spacing: 0.3rem;
+                line-height: 1.8rem;  
+                width: 203px;
+                height: auto;
+                background-color: transparent;
+        
+            }
 
+            @mixin nameFontSetting_h_660px{
+                top: 1.4%;
+                right: 87%;
+                font-size: 2rem;
+                line-height: 2.4rem;
+                width: 262.1px;
+            }
+
+            @mixin nameFontSetting_h_840px{
+                top: 1.4%;
+                right: 89.1%;
+                font-size: 2.2rem;
+                line-height: 2.7rem;
+                width: 284.1px;
+            }
+
+            @mixin nameFontSetting_h_1000px{
+                top: 1.4%;
+                right: 86.1%;
+                font-size: 3.2rem;
+                line-height: 3.9rem;
+                width: 399.1px;
+            }
+
+
+            @mixin nameFontSetting_h_1300px{
+                top: 1.4%;
+                right: 86.1%;
+                font-size: 4.2rem;
+                line-height: 5.3rem;
+                width: 558.1px;
+                letter-spacing: .7rem;
+            }
+        
+            @media (min-width:560px) {
+                @include nameFontSetting_h_560px();
+            }
+
+            @media (min-width:660px) {
+                @include nameFontSetting_h_660px();
+            }
+
+            @media (min-width:840px) {
+                @include nameFontSetting_h_840px();
+            }
+
+            @media (min-width:1000px) {
+                @include nameFontSetting_h_1000px();
+            }
+
+            @media (min-width:1300px) {
+                @include nameFontSetting_h_1300px();
+            }
+
+            h1:nth-child(2){}
+        }
     }
+    .introduction-wrapper{
+        $aboveIntroHeight_560px: 3.84rem;
+        $aboveIntroHeight_660px: 5.34rem;
+        $aboveIntroHeight_1000px: 9.34rem;
+        $aboveIntroHeight_1300px: 12.34rem;
 
 
+        @media(min-width:560px){
+            position: relative;
+            margin-top:0;
+            height:auto;      
+            padding-top:1rem; 
+            overflow: hidden;
+        }
+        .above-intro{
+            @media(min-width:560px){
+                position: relative;
+                width:100%;
+                height: $aboveIntroHeight_560px;
+            }
+            @media(min-width:660px){
+                height: $aboveIntroHeight_660px;
+            }
+            @media(min-width:1000px){
+                height: $aboveIntroHeight_1000px;
+            }
+            @media(min-width:1300px){
+                height: $aboveIntroHeight_1300px;
+            }
 
-    .contact{
-        position:absolute;
-        right:5rem;
-        bottom:5rem;
-        color: rgb(141, 139, 139);
-        font-family: $secondary-font;
-        font-size: 1.4rem;
-        letter-spacing: 0.3rem;
-        text-align: right;
-
+        }
+        .introduction{ 
+            @media(min-width:560px){
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                // height:calc(100% -  $aboveIntroHeight_560px);
+                justify-content: center;
+                
+                overflow: scroll;   
+            }
+            @media(min-width:660px){
+                height:calc(100% -  $aboveIntroHeight_660px);
+            }
+            @media(min-width:1000px){
+                height:calc(100% -  $aboveIntroHeight_1000px);
+            }
+            @media(min-width:1300px){
+                height:calc(100% -  $aboveIntroHeight_1300px);
+            }            
+        }
     }
 }
+
 
 
 </style>

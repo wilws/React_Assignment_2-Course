@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 
 
@@ -37,7 +37,7 @@ a {
     min-height:85px;
     // width:90%;
     
-    max-width:30rem;
+    // max-width:30rem;
     // border:blue thin solid;
 
 
@@ -60,11 +60,11 @@ a {
         font-weight: lighter;
         border-right: 4px solid #EBEBEB;
         padding-right: 10px;
-        max-width:$max-width;
-        @media (min-width : 820px){
-            font-size: 1.6rem;
-            letter-spacing: .2rem;
-        }
+        // max-width:$max-width;
+        // @media (min-width : 820px){
+        //     font-size: 1.6rem;
+        //     letter-spacing: .2rem;
+        // }
     }
 
     h2{
@@ -76,19 +76,19 @@ a {
         border-right: 4px solid #EBEBEB;
         padding-right: 14px;
         min-height:58px;
-        max-width:$max-width;
-        @media (min-width : 820px){
-            font-size: 1rem;
-            letter-spacing: .2rem;
-        }
+        // max-width:$max-width;
+        // @media (min-width : 820px){
+        //     font-size: 1rem;
+        //     letter-spacing: .2rem;
+        // }
 
-        @media (min-width : 1024px) and (min-height: 1024px){
-            font-size: 1.3rem;
-            padding-left:6rem;
-        }
-        @media (min-width : 1366px) and (min-height: 1024px){
-            padding-left:0rem;
-        }
+        // @media (min-width : 1024px) and (min-height: 1024px){
+        //     font-size: 1.3rem;
+        //     padding-left:6rem;
+        // }
+        // @media (min-width : 1366px) and (min-height: 1024px){
+        //     padding-left:0rem;
+        // }
     }
 }
 </style>

@@ -5,6 +5,30 @@ $tertiary-font:'Roboto', sans-serif;
 $quaternary-font: 'Courier Prime', monospace;
 
 
+//font size in different browser screen
+
+
+@mixin contentFontSetting_320px{
+    font-family: "Nanum Myeongjo", serif;
+    text-align: justify;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    letter-spacing: 0rem;
+}
+
+@mixin contentFontSetting_760px{
+    font-family: "Nanum Myeongjo", serif;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 2.1rem;
+}
+
+// @mixin contentFontSetting_1024px{
+//     font-family: "Nanum Myeongjo", serif;
+//     text-align: justify;
+//     font-size: 0.8rem;
+//     line-height: 1.2rem;
+// }
 
 /*  Google Font Style */
 /*  font-family: 'Bodoni Moda', serif;
