@@ -84,8 +84,7 @@ export default {
             fontColor:"white",
             id: "#web-project-3",
             buttonColor:"#EAAB15",
-            projectDescription :
-
+            projectDescription :  
             "RSI, MACD, SMA…etc. Those mysterious words from Technical Analysis  (TA) are always seen in stock world. TA is a method to predict the price movement of an asset. But it is always blamed by fundamental investors that TA is nothing but astrology. So, to dig out how accurate TA could be in investment, I made this application for back testing difference TA strategies, to see wether it is really profitable if disciplinarily following the TA strategies.  Yahoo-finance API is used to extract historical price data."+
             "<br>"+
             "<br>"+

@@ -187,28 +187,33 @@ export default {
 
     .introduction-wrapper{
         position: relative;     
-        height:50%;
+        // height:50%;
+        height:55%;
         width: 100%;
-        padding:0 1.3rem 1.3rem 1.3rem;
+        padding:0 1.3rem 0rem 1.3rem;
         overflow: hidden;
         z-index: 0;
+        display:flex;
+        flex-direction: column;
+  
 
         @media(min-width:760px){
             padding:0 3rem 3rem 3rem;
         }
 
-        $aboveIntroHeight_320px: 34px;
-        $aboveIntroHeight_760px: 48px;
-        $aboveIntroHeight_1000px: 65px;
+
 
         .above-intro{
             position: relative;
-            height:$aboveIntroHeight_320px;
+      
+            @media(min-width:320px){
+                margin-bottom:34px;
+            }
             @media(min-width:760px){
-                height:$aboveIntroHeight_760px;
+                margin-bottom:48px;
             }
             @media(min-width:1000px){
-                height:$aboveIntroHeight_1000px;
+                margin-bottom:65px;
             }
         }
 
@@ -216,19 +221,19 @@ export default {
         .introduction{
             position: relative;
             color: rgb(0, 0, 0);
-            height:calc(100% - $aboveIntroHeight_320px);
+            height:100%;
             overflow: scroll;
 
             @media(min-width:320px){
                 @include contentFontSetting_320px();
             }
             @media(min-width:760px){
-                height:calc(100% - $aboveIntroHeight_760px);
+                // height:calc(100% - $aboveIntroHeight_760px);
                 @include contentFontSetting_760px();
             }
-            @media(min-width:1000px){
-                height:calc(100% - $aboveIntroHeight_1000px);
-            }
+            // @media(min-width:1000px){
+            //     height:calc(100% - $aboveIntroHeight_1000px);
+            // }
         }
     }
 
@@ -344,55 +349,34 @@ export default {
         }
     }
     .introduction-wrapper{
-        $aboveIntroHeight_560px: 3.84rem;
-        $aboveIntroHeight_660px: 5.34rem;
-        $aboveIntroHeight_1000px: 9.34rem;
-        $aboveIntroHeight_1300px: 12.34rem;
-
 
         @media(min-width:560px){
-            position: relative;
-            margin-top:0;
-            height:auto;      
-            padding-top:1rem; 
-            overflow: hidden;
+            height:100%;
         }
+      
         .above-intro{
             @media(min-width:560px){
-                position: relative;
-                width:100%;
-                height: $aboveIntroHeight_560px;
+                margin-bottom:5rem;
             }
             @media(min-width:660px){
-                height: $aboveIntroHeight_660px;
+                margin-bottom:6rem;
             }
             @media(min-width:1000px){
-                height: $aboveIntroHeight_1000px;
+                margin-bottom: 10rem;
+        
             }
             @media(min-width:1300px){
-                height: $aboveIntroHeight_1300px;
+                margin-bottom:15rem;
+
             }
 
         }
         .introduction{ 
             @media(min-width:560px){
                 position: relative;
-                display: flex;
-                flex-direction: column;
-                // height:calc(100% -  $aboveIntroHeight_560px);
-                justify-content: center;
-                
+                height:100%;
                 overflow: scroll;   
-            }
-            @media(min-width:660px){
-                height:calc(100% -  $aboveIntroHeight_660px);
-            }
-            @media(min-width:1000px){
-                height:calc(100% -  $aboveIntroHeight_1000px);
-            }
-            @media(min-width:1300px){
-                height:calc(100% -  $aboveIntroHeight_1300px);
-            }            
+            }        
         }
     }
 }

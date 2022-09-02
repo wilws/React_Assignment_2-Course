@@ -1,22 +1,20 @@
 <template>
     <section class="skill-set-page" id="skill-set-page">
+        <div class="header">
+            <h1>Skill Set</h1>
+            <h3>Here are the programming languages and <br>software that I used to create web project. </h3>
 
-        <h1>Skill Set</h1>
-        <h3>Here are the programming languages and<br>
-        software that I used to create web project. </h3>
-
-        <div class="card-switcher">
-            <button @click="moveCard(0)">Frontend</button>
-            <button @click="moveCard(1)">Backend</button>
-            <button @click="moveCard(2)">Database</button>
-            <button @click="moveCard(3)">Others</button>
+            <div class="card-switcher">
+                <button @click="moveCard(0)"> Frontend </button>
+                <button @click="moveCard(1)"> Backend </button>
+                <button @click="moveCard(2)"> Database </button>
+                <button @click="moveCard(3)"> Others </button>
+            </div>
         </div>
 
         <!-- <div class="cards-wrapper-vertical-positioner"> -->
 
             <div class="cards-wrapper">
-
-
                 <!-- card 1 Front End-->
                 <div class="card-wrapper">
                     <div class="card" id="front-end-card">
@@ -357,18 +355,30 @@
 
 
 <script>
+import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
 export default {
+    mixins:[screenSizeDetection],
 
     data(){
         return {
-            cardRotateDeg : -380,     // card rotation Y degree
-          
+            cardRotateDeg : -25,     // card rotation Y degree
+            id: "#skill-set-page",
         }
     },
     mounted(){
         window.addEventListener('scroll',()=>{
             this.cardsScrollingRotateEffect();
-        })
+        });
+        // Check if the device is horizontally rotated 
+        // if true, add class "rotated" to the <section> tag
+        // We treat the style of the horizontal screen separately
+        this.deviceRotationResponse(this.id)
+        window.addEventListener('resize',()=>{
+            this.deviceRotationResponse(this.id);
+            this.moveCard(0);     // When screen change, need reposite back the card to the origin 
+        });
+
+
     },
     methods:{
         moveCard(n){
@@ -385,6 +395,8 @@ export default {
             const triggerPoint = page.offsetTop + page.offsetHeight/2;
             if (travelDistance > triggerPoint){
                 this.cardsRotation(this.cardRotateDeg,500);
+                //set capability value (the bar) of each technique
+                this.SetCapabilityValue();
             } else {
                 // this.cardsRotation();
             }
@@ -397,150 +409,257 @@ export default {
                 },delayTime);
             })
         },
+        SetCapabilityValue(){
+            const v = {
+                '#html-bar' : '100%',
+                '#css-bar' : '100%',
+                '#javascript-bar':'100%',
+                '#vuejs-bar':'100%',
+                '#reactjs-bar':'40%',
+                '#python-bar':'100%',
+                '#django-bar':'100%',
+                '#nodejs-bar':'90%',
+                '#expressjs-bar':'90%',
+                '#php-bar':'40%',
+                '#laravel-bar':'20%',
+                '#mysql-bar':'70%',
+                '#mongodb-bar':'70%',
+                '#solidity-bar':'40%',
+                '#indesign-bar':'100%',
+                '#xd-bar':'90%',
+                '#illustrator-bar':'90%',
+                '#photoshop-bar':'70%'
+            }
+
+            Object.entries(v).forEach(([id, value])=>{
+                document.querySelector(id).style.width = value;
+            })
+        } 
         
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
+    $originalRotate: 0deg;
+
     .skill-set-page{
         position: relative;
-        // margin-top:1000px;
         width:100%;
         height:100%;
-        // display: flex;
         background-color: white;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        // border: rgb(136, 255, 0) solid thin;
-        // padding: 1.4rem;
-        // @include column-horizontal-center();
+        // overflow: hidden;
+        // overflow-y: scroll;
+        // padding:1.3rem;    //set here will affect the card moving
+        $headerHeight: 20%;
+        
+        .header{
+            position:relative;
+            height:20%;
 
+      
+
+            h1{
+                @mixin h1FontSetting_320px {
+                    font-size:1.7rem;
+                    letter-spacing: .1rem;
+                }
+                @mixin h1FontSetting_760px {
+                    font-size:2rem;
+                }
+
+                @mixin h1FontSetting_1020px {
+                    font-size:2.5rem;
+                }
+
+                @mixin h1FontSetting_1300px {
+                    font-size: 2.1rem;
+                }
+        
+                width:100%;
+                font-weight: 100;
+
+                // text-align: center;
+                color:black;
+                font-family: 'Courier New', Courier, monospace;
+                padding: 1.3rem 0 0 1.3rem;
+
+                @media (min-width:320px){
+                    @include h1FontSetting_320px();
+                }
+                
+                @media (min-width:760px){
+                    @include h1FontSetting_760px();
+                }
+                @media (min-width:1020px){
+                    @include h1FontSetting_1020px();
+                }
+
+                @media (min-width:1300px){
+                    @include h1FontSetting_1300px();
+                }
+            }
+
+
+
+            h3{
+                @mixin h3FontSetting_320px {
+                    font-size:.6rem;
+                }
+                @mixin h3FontSetting_760px {
+                    font-size: 1.2rem;
+                }
+                @mixin h3FontSetting_1020px {
+                    font-size: 1.5rem;
+                }
+                @mixin h3FontSetting_1300px {
+                    font-size: 1.2rem;
+                }
+                margin-top:.1rem;
+                padding:0 1.3rem;
+                font-weight: 100;
+                width:100%;
+                color:black;
+                font-family: 'Courier New', Courier, monospace;
+
+
+                @media (min-width:320px){
+                    @include h3FontSetting_320px();
+                }
+                
+                @media (min-width:768px){
+                    @include h3FontSetting_760px();
+                }
+
+                @media (min-width:1020px){
+                    @include h3FontSetting_1020px();
+                }
+
+                @media (min-width:1300px){
+                    @include h3FontSetting_1300px();
+                }
     
-        h1{
-            width:100%;
-            font-weight: 100;
-            color:black;
-            font-family: 'Courier New', Courier, monospace;
-            font-size:1.4rem;
-            padding: 1.4rem 0 0 1.4rem;
-            letter-spacing: .1rem;
-            // border: blue solid thin;
-            @media (min-width:768px){
-                font-size: 1.8rem;
             }
 
-            @media (min-width:768px){
-                font-size: 2rem;
-            }
-            @media (min-width:1306px){
-                font-size: 2.1rem;
+            .card-switcher{
+                width:100%;
+                display: flex;
+                justify-content: space-between;
+                padding-left: 1.4rem;
+                padding-right: 1.4rem;
+
+                
+                @media (min-width:320px){
+                    margin-top:1rem;
+                    margin-bottom:1rem;
+                }
+
+                @media (min-width:370px){
+                    margin-top:1.5rem;
+                    margin-bottom:2rem;
+                }
+
+                @media (min-width:760px){
+                    margin-top:2rem;
+                    margin-bottom:4rem;
+                }
+
+                @media (min-width:1300px){
+                    display: none;
+                }
+
+                button{
+                    @mixin buttonSetting_320px {
+                        font-size:.6rem;
+                    }
+                    @mixin buttonSetting_760px {
+                        font-size: 1.2rem;
+                    }
+
+                    border:none;
+                    background-color: none;
+                    padding:.2rem;
+
+                    @media (min-width:320px){
+                        @include buttonSetting_320px();
+                    }
+                    
+                    @media (min-width:760px){
+                        @include buttonSetting_760px();
+                    }
+                }
             }
         }
 
-        h3{
-            font-weight: 100;
-            width:100%;
-            color:black;
-            font-family: 'Courier New', Courier, monospace;
-            font-size:.5rem;
-            letter-spacing: .1rem;
-            padding: 0 0 0 1.4rem;
-            @media (min-width:768px){
-                font-size: 0.9rem;
-            }
-            @media (min-width:1024px){
-                font-size: 1.1rem;
-                margin-bottom:30px;
-            }
-
-            @media (min-width:1306px){
-                font-size: 1.2rem;
-                margin-bottom:100px;
-            }
-        }
-
-        .card-switcher{
-            width:100%;
-            display: flex;
-            justify-content: space-between;
-            padding-left: 1.4rem;
-            padding-right: 1.4rem;
-            margin-top:1rem;
-            margin-bottom:20px;
-
-            @media (min-width:1306px){
-                display: none;
-            }
-
-            @media (min-height:768px){
-                margin-bottom:40px;
-            }
-            @media (min-height:1024px){
-                margin-bottom:150px;
-            }
-
-            button{
-                border:none;
-                background-color: none;
-            }
-
-
-        }
-
+        $cardsWrapperHeight:calc(100% - $headerHeight);
 
         .cards-wrapper{      
             width: calc(100vw * 4);
-            height: calc(100vh - 125px) ;
-            min-height: 400px;
-            max-height: 600px;
-            padding-bottom:20px;
+            height: $cardsWrapperHeight ;
             display: flex;
             justify-content: left;
+            align-items: center;
             transition: transform 1s;
-            // border:red thin solid;
-            @media (min-width:1306px){
+  
+            @media (min-width:1300px){
                 transform: translateX(0)  !important;;
                 width: 100%;
                 justify-content: space-around;
             }
         }
 
-        $width:80vw;
+        
         .card-wrapper{
-            width:$width;
-            height:100%;
-            max-width: 330px;
-            max-height: 600px;
+            $cardWidth_320px:80vw;
+            $cardWidth_450px:45vw;
+            $cardWidth_1020px:55vw;
+
+            @mixin cardSizeingSetting_320px{
+                width:$cardWidth_320px;
+                height:90%;
+                max-height: 600px;
+                margin-right:calc((100vw - $cardWidth_320px));   
+                .card:nth-child(1){
+                    margin-left:calc((100vw - $cardWidth_320px)/1.5);
+                }
+
+            }
+
+            @mixin cardSizeingSetting_450px{
+                width:$cardWidth_450px;
+                height:90%;
+                max-height: 600px;
+                margin-right:calc((100vw - $cardWidth_450px));   
+                .card:nth-child(1){
+                    margin-left:calc((100vw - $cardWidth_450px)/1.8);
+                }
+            }
+
+            @mixin cardSizeingSetting_1020px{
+                width:$cardWidth_1020px;
+                height:90%;
+                max-height: 900px;
+                margin-right:calc((100vw - $cardWidth_1020px));   
+                .card:nth-child(1){
+                    margin-left:calc((100vw - $cardWidth_1020px)/1.8);
+                }
+            }
+
+            @media(min-width: 320px){
+                @include cardSizeingSetting_320px();
+            }
+     
+            @media(min-width:450px){
+                @include cardSizeingSetting_450px();
+            }
+
+            @media(min-width:1020px){
+                @include cardSizeingSetting_1020px();
+            }
+
             transform-style: preserve-3d; 
             perspective: 100rem;
-            margin-right:calc((100vw - $width));
-            .card:nth-child(1){
-                margin-left:calc((100vw - $width)/1.5);
-            }
-
-            @media (min-width:331px){
-                // background-color: blue;
-                $width:330px;
-                width:$width;
-                margin-right:calc((100vw - $width));
-                .card:nth-child(1){
-                    margin-left:calc((100vw - $width)/2);
-                }
-            }
-
-            @media (min-width:1306px){
-                // background-color: blue;
-                .card:nth-child(1){
-                    margin-left:unset;
-                }
-                margin-right:unset;
-            }
-
-    
-
-  
-      
 
             .card{
                 width: 100%;
@@ -548,28 +667,18 @@ export default {
                 border: thin solid rgba(238, 235, 235, .5);
                 border-radius: 1rem;
                 box-shadow: 2rem 1.5rem .8rem #4442424f;
-                transform:rotateY(360deg);
+                transform: rotateY($originalRotate);
+     
                 background-color: #ffffff;
                 transform-origin: center;
                 transition:transform .5s;
                 @include column-horizontal-center(); 
 
-                // @media (min-width:1306px){
-                    // transform: rotateY(-8deg);
-                // }
-
-            
-
-  
-
 
                 .card-title{
-                    // width: 21rem;
-                    // height: 7rem;
                     margin:3rem;
                     @include column-horizontal-center(); 
-                    // justify-content: flex-start;
-                    
+
                     
                     h3{
                         width:100%;
@@ -603,7 +712,7 @@ export default {
                     overflow: hidden;
                     @include column-horizontal-center(); 
                     gap:5%;
-                    // justify-content:start;
+     
                     padding: 0rem 10px 10px 10px;
 
                     .tech-wrapper{
@@ -646,9 +755,14 @@ export default {
                                 
                                 .bar{
                                     @include vertical-center(); 
-                                    width:100%;
+                                    // width:100%;
+                                    width:0%;
                                     height:1px;
                                     background-color: rgb(0, 0, 0);
+                                    transition: width 3s 1s;
+                                    perspective: 100rem;
+                                    z-index: 1;
+                    
                                 }
                             }
                         }
@@ -659,60 +773,346 @@ export default {
         }
     }
 
-    #html-bar{
-        width:100%;
+
+
+
+
+.skill-set-page.rotated{
+
+    $headerHeight_h:20%;
+    .header{
+
+        // background-color: rgb(151, 149, 153);
+
+        @media (min-width:560px){
+            $headerHeight_h:20%;
+            margin-bottom:.5rem;
+            height:$headerHeight_h;
+        }
+        @media (min-width:1020px){
+            $headerHeight_h:14%;
+            height:$headerHeight_h;
+        }
+    
+        h1{
+            @media (min-width:560px){
+                font-size: 1rem;
+            }
+            
+            @media (min-width:660px){
+                font-size: 1.3rem;
+            }
+            @media (min-width:1020px){
+                font-size: 2rem;
+            }
+            // // @media (min-width:1020px){
+            // //     @include h1FontSetting_1020px();
+            // // }
+
+            // // @media (min-width:1300px){
+            // //     @include h1FontSetting_1300px();
+            // }
+        }
+
+
+
+        h3{
+
+
+            @media (min-width:660px){
+                font-size:0.7rem;
+            }
+            @media (min-width:1020px){
+                font-size:1.1rem;
+            }
+            // @media (min-width:768px){
+            //     @include h3FontSetting_760px();
+            // }
+
+            // @media (min-width:1020px){
+            //     @include h3FontSetting_1020px();
+            // }
+
+            // @media (min-width:1300px){
+            //     @include h3FontSetting_1300px();
+            // }
+
+        }
+
+        .card-switcher{
+            display: none;
+            button{}
+        }
     }
-    #css-bar{
-        width:100%;
+
+    
+
+    .cards-wrapper{ 
+        // background-color: blue;
+
+        @media (min-width:560px){
+            // align-items: unset;
+            justify-content: space-evenly;
+            align-items: unset;
+            width:100vw;
+            height:calc(100% - $headerHeight_h);
+        }
+
+        @media (min-width:1020px){
+             height:calc(100% - $headerHeight_h);
+             align-items: center;
+        }
+        
+        .card-wrapper{
+            $cardWidth_h_560px:21vw;
+           
+            @mixin cardSizeingSetting_h_560px{
+                width:$cardWidth_h_560px;
+                height:85%;
+                max-height: 500px;
+            }
+
+            @media(min-width: 560px){
+                @include cardSizeingSetting_h_560px();
+                margin:0;
+                .card{
+                    margin:unset;
+                }
+                &:nth-child(1){
+                    margin-left:unset;
+                }
+            }
+
+            @media(min-width:1020px){
+                max-height:416px;
+                max-width:215px;
+            }
+
+            @media(min-width:1300px){
+                max-height: 497px;
+                max-width: 292px;
+            }
+            @media(min-width:1450px){
+                max-height: 569px;
+                max-width: 314px;
+            }
+            @media(min-width:1800px){
+                max-height: 800px;
+                max-width: 400px;
+            }
+         
+            
+            .card{
+
+                // justify-content: space-between;
+       
+                .card-title{
+
+                    $cardTitleFont_h3_h_560px :0.6rem;
+                    $cardTitleFont_h4_h_560px: 0.4rem;
+                    @media(min-width:560px){
+                        margin:1rem;
+                    }
+                    @media(min-width:660px){
+                        margin:1.7rem;
+                    } 
+                    @media(min-width:730px){
+                        margin:2rem;
+                    } 
+                    @media(min-width:1020px){
+                        margin:2.6rem;
+                    }
+                    // @media(min-width:1300px){
+                    //     margin:2rem;
+                    // }
+                    @media(min-width:1450px){
+                        margin:3rem;
+                    }
+                    @media(min-width:1800px){
+                        margin:4rem;
+                    }                   
+
+
+           
+                    h3{
+                        @media(min-width:560px){
+                            letter-spacing: 0.2rem;
+                            font-size: 0.6rem;
+                        }
+                        @media(min-width:730px){
+                            letter-spacing: 0.2rem;
+                            font-size: 0.7rem;
+                        }
+                        @media(min-width:1020px){
+                            font-size: 1rem;
+                        }
+                        @media(min-width:1300px){
+                            font-size: 1.7rem;
+                        }
+                        @media(min-width:1450px){
+                            font-size: 1.9rem;
+                        }
+                        @media(min-width:1800px){
+                            font-size: 2rem;
+                        }  
+                    }
+                    h4{
+                        @media(min-width:560px){
+                            font-size: 0.4rem
+                        }
+                        @media(min-width:730px){
+                            letter-spacing: 0.2rem;
+                            font-size: 0.5rem
+                        }
+                        @media(min-width:1020px){
+                            font-size: 0.7rem
+                        }
+                        @media(min-width:1300px){
+                            font-size: 1.3rem;
+                        }
+                        @media(min-width:1450px){
+                            font-size: 1.4rem;
+                        }
+                        @media(min-width:1800px){
+                            font-size: 1.5rem;
+                        }  
+                    }
+                }
+
+                .card-tech-chart{
+                    @media(min-width:560px){
+                        // height:100%;
+                        overflow: unset;
+                    }
+                    .tech-wrapper{
+                        .left-side{   
+                            .tech-icon{
+                                @media(min-width:560px){
+                                    // min-height: 20px;
+                                    min-width: 20px;
+                                    object-fit:fill;
+                                }
+                                // @media(min-width:730px){
+                                //     letter-spacing: 0.2rem;
+                                //     font-size: 0.5rem
+                                // }
+                                @media(min-width:1020px){
+                                    width:88%;
+                                }
+                                @media(min-width:1300px){
+                                    width:100%;
+                                }
+                                // @media(min-width:1450px){
+                                //     font-size: 1.4rem;
+                                // }
+                                // @media(min-width:1800px){
+                                //     font-size: 1.5rem;
+                                // }  
+                            }
+                        }
+                        .right-side{
+                            .tech-name{
+                                @media(min-width:560px){
+                                    overflow: hidden;
+                                    font-size:0.4rem;
+                                    letter-spacing: 0;
+                                }
+                                @media(min-width:730px){
+                                    font-size:0.5rem;
+                                }
+                                @media(min-width:730px){
+                                    letter-spacing: 0.2rem;
+                                    font-size: 0.5rem
+                                }
+                                @media(min-width:1020px){
+                                    font-size: 0.7rem
+                                }
+                                @media(min-width:1300px){
+                                    font-size: 0.9rem;
+                                }
+                                // @media(min-width:1450px){
+                                //     font-size: 1rem;
+                                // }
+                                @media(min-width:1800px){
+                                    font-size: 1rem;
+                                }  
+                            }
+                            .tech-bar-wrapper{
+                                .bar{}
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-    #javascript-bar{
-        width:100%;
-    }
-    #vuejs-bar{
-        width:100%;
-    }
-    #reactjs-bar{
-        width:40%;
-    }
-    #python-bar{
-        width:100%;
-    }
-    #django-bar{
-        width:100%;
-    }
-    #nodejs-bar{
-        width:90%;
-    }
-    #expressjs-bar{
-        width:90%;
-    }
-    #php-bar{
-        width:40%;
-    }
-    #laravel-bar{
-        width:20%;
-    }
-    #mysql-bar{
-        width:70%;
-    }
-    #mongodb-bar{
-        width:70%;
-    }
-    #solidity-bar{
-        width:40%;
-    }
-    #indesign-bar{
-        width:100%;
-    }
-    #xd-bar{
-        width:90%;
-    }
-    #illustrator-bar{
-        width:90%;
-    }
-    #photoshop-bar{
-        width:70%;
-    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    // #html-bar{
+    //     width:100%;
+    // }
+    // #css-bar{
+    //     width:100%;
+    // }
+    // #javascript-bar{
+    //     width:100%;
+    // }
+    // #vuejs-bar{
+    //     width:100%;
+    // }
+    // #reactjs-bar{
+    //     width:40%;
+    // }
+    // #python-bar{
+    //     width:100%;
+    // }
+    // #django-bar{
+    //     width:100%;
+    // }
+    // #nodejs-bar{
+    //     width:90%;
+    // }
+    // #expressjs-bar{
+    //     width:90%;
+    // }
+    // #php-bar{
+    //     width:40%;
+    // }
+    // #laravel-bar{
+    //     width:20%;
+    // }
+    // #mysql-bar{
+    //     width:70%;
+    // }
+    // #mongodb-bar{
+    //     width:70%;
+    // }
+    // #solidity-bar{
+    //     width:40%;
+    // }
+    // #indesign-bar{
+    //     width:100%;
+    // }
+    // #xd-bar{
+    //     width:90%;
+    // }
+    // #illustrator-bar{
+    //     width:90%;
+    // }
+    // #photoshop-bar{
+    //     width:70%;
+    // }
 
     
 

@@ -77,7 +77,7 @@
 
 
                 <div class="content-wrapper">
-                    <div class="flex-box description-wrapper slot3">
+                    <!-- <div class="flex-box description-wrapper slot3">
                         <div>
                         <h6>Deploy on Google Cloud</h6>
                         <p>
@@ -99,12 +99,12 @@
                             I also embeded ads inside the application. As lacking of advertisement of the website, it just could earn 148.17 HKD. Though the amount is so poor, but it is such a great experience to integrate application to Google’s services.
                         </p>
                         </div>
-                    </div>
-                     <div class="flex-box img slot3">
+                    </div> -->
+                     <!-- <div class="flex-box img slot3">
                             <img :src="require('@/assets/img/projects/web_project_2/AdSense.png')" alt="">
-                    </div>
+                    </div> -->
                 </div>
-            </div>
+            </div> 
         </template>
         <!-- end of slot 3 -->
 
@@ -152,14 +152,14 @@ export default {
             fontColor:"white",
             buttonColor:"#0099AF",
             id: "#web-project-2",
-            projectDescription :    
+            projectDescription :
             "I was so fascinated in option trading after reading Sheldon Natenberg’s  “Option Volatility & Pricing: Advanced Trading Strategies and Techniques”. The charm of option is that you can adopt numerous strategies by combining selling or buying action of put and call contract."+
-            // "<br>"+
+            "<br>"+
             "<br>One day, I was tired to calculate the profit and return of each strategy manually. I wished there was an application that could automatically scrape market data from internet, calculate contract price and volatility, test all the possible combinations and finally tell you which is worth to trade."+
             "Therefore I created one with Python and Django. The reason to choose python as the major tool is due to its useful package like NumPy and Pandas which facilitates in scientific calculation."+
-            // "<br>"+           
+            "<br>"+           
             "<br>When all the functions I want were created. I have an amazing discovery - Arbitrage. Please click the \"View Project Description\" button above to see the detail."+
-            // "<br>"+
+            "<br>"+
             "<br>I later hosted the application on Google AppEngine and also joined Google AdSense, wishing to earn some to cover the expensive hosting cost. However it was not successful."+          
             "As I seldom trade option later and the cost of hosting was so high, there is no more maintenance on the application. Some packages in the app are depreciated. Though Option Katze is not be able to function now, it is a valuable experience to utilise programming knowledge to tackle problem in other sector."
         }
