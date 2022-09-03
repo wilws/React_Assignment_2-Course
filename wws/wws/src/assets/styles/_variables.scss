@@ -25,6 +25,31 @@ $quaternary-font: 'Courier Prime', monospace;
 
 
 
+@mixin titleFontSetting{
+    @media(min-width:320px){
+        font-size: 1.4rem;
+        letter-spacing: .1rem;
+    }  
+    @media(min-width:760px){
+        font-size: 3rem;
+        letter-spacing: .1rem;
+    }
+    // @media(min-width:820px){}
+    // @media(min-width:1020px){}
+    // @media(min-width:1300px){}
+    // @media(min-width:1500px){}
+}
+
+@mixin titleSetting{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    width:100%;
+    text-align: center;
+    margin-bottom:1rem;
+    @include titleFontSetting();
+  
+}
+
 // @mixin contentFontSetting_1024px{
 //     font-family: "Nanum Myeongjo", serif;
 //     text-align: justify;
@@ -97,3 +122,74 @@ $assignmentsheight:$assignmentsWidth/1.2;
 
 // Show border line during contruction:
 $borderLine: solid thin grey;
+
+
+@mixin OptionKatzeSubPageTitle{
+    position: relative;
+    width:100%;
+    min-height:44px;
+    min-width:284px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+
+@mixin OptionKatzeMainTitle{
+    position: relative;
+    width:100%;
+    font-family: $secondary-font;
+    font-size:1.1rem;
+    letter-spacing: 0rem;
+    text-align: left; 
+    @media(min-width: 320px){
+        font-size:1.1rem;
+    }
+    @media(min-width:400px){
+        font-size: 1.7rem;
+    }
+    // @media(min-width:760px){}
+    // @media(min-width:820px){}
+    @media(min-width:1020px){
+        font-size: 2.2rem;
+    }
+    // @media(min-width:1300px){}
+    // @media(min-width:1500px){}
+}
+
+
+@mixin OptionKatzeSubTitle{
+    position: relative;
+    width:100%;
+    font-size: 0.6rem;
+    font-weight: 500;
+    font-family: $secondary-font;
+    letter-spacing: .1rem;
+    padding-left: .2rem;
+    text-align: left;
+    @media(min-width: 320px){
+        font-size: 0.6rem;
+        padding-left: .2rem;
+    }
+    @media(min-width:760px){
+        font-size: 0.9rem;
+    }
+    // @media(min-width:760px){}
+    // @media(min-width:820px){}
+    @media(min-width:1020px){
+        font-size: 1.3rem;
+    }
+    // @media(min-width:1300px){}
+    // @media(min-width:1500px){}
+}
+
+
+
+
+// @media(min-width:320px){}
+// @media(min-width:400px){}
+// @media(min-width:760px){}
+// @media(min-width:820px){}
+// @media(min-width:1020px){}
+// @media(min-width:1300px){}
+// @media(min-width:1500px){}

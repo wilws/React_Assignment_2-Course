@@ -52,9 +52,11 @@ export default {
     },
     methods:{
         menuController(){
-            document.querySelector(".menu").classList.toggle('close');
-            document.querySelector(".menu-button").classList.toggle('close');
-            this.menuOpen = !this.menuOpen;
+            this.DefaultBoxes();
+            this.showMenu();
+            // document.querySelector(".menu").classList.toggle('close');
+            // document.querySelector(".menu-button").classList.toggle('close');
+            // this.menuOpen = !this.menuOpen;
 
             // lock the scroll bar when menu open
             if (this.menuOpen) {
@@ -62,11 +64,23 @@ export default {
             } else {
                 document.getElementsByTagName('body')[0].style.overflow = 'visible';
             }
+        },
+        showMenu(){
+            document.querySelector(".menu").classList.toggle('close');
+            document.querySelector(".menu-button").classList.toggle('close');
+            this.menuOpen = !this.menuOpen;
+        },
+        DefaultBoxes(){
+            // turn all boxes back to the first page
+            document.querySelectorAll(".firstPage").forEach((e)=>{
+                e.click();
+            });
         }
     },
     mounted(){
         document.querySelector(".menu-button").addEventListener("mouseover",() => {
-            this.menuController();
+            // this.menuController();
+            this.showMenu();
         });
         // Check if the device is horizontally rotated 
         // if true, add class "rotated" to the <section> tag

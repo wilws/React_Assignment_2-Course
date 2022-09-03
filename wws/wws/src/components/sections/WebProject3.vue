@@ -92,9 +92,14 @@ export default {
         }
     },
     methods:{
+
         workDisplay(){
-            this.$refs.rotationLayoutRef3.rotate('forward');
-        }
+            document.querySelector(this.id).scrollIntoView();
+            setTimeout(() => {
+                this.$refs.rotationLayoutRef3.rotate('forward');
+            }, 200);
+        },
+
     }
 }
 </script>
@@ -116,39 +121,19 @@ export default {
     background-color: black;
     color: white;
     @include column-horizontal-center();
+    overflow: scroll;
 
     .title-wrapper{
         position:relative;
         width:100%;
 
         .title{
-            position: relative;
-            width:100%;
-            min-height:44px;
-            min-width:284px;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            // border:red thin solid;
-        
+            @include OptionKatzeSubPageTitle();
             h1{
-                position: relative;
-                width:100%;
-                font-family: $secondary-font;
-                font-size:1.1rem;
-                letter-spacing: 0rem;
-                text-align: left; 
+                @include OptionKatzeMainTitle();
             }
-
             h3{
-                position: relative;
-                width:100%;
-                font-size: 0.6rem;
-                font-weight: 500;
-                font-family: $secondary-font;
-                letter-spacing: .1rem;
-                padding-left: .2rem;
-                text-align: left;
+                @include OptionKatzeSubTitle();
             }
         }
     }
@@ -159,16 +144,7 @@ export default {
         height:80%;
         margin-top:1rem;
 
-        // border:red thin solid;
-        // overflow: scroll;
-        
-
-        // @media(min-width:1024px) and (max-height:1024px){
-        //     flex-direction: unset; 
-        //     flex-wrap: wrap;   
-        //     justify-content: space-between;
-        //     padding:0 2rem;
-        // }  
+      
 
         .video-wrapper{
             position:relative;
@@ -184,6 +160,45 @@ export default {
             }
         }
 
+    }
+}
+
+
+
+#web-project-3.rotated div div div.face4 .slot-wrapper {
+
+    .title-wrapper{
+        .title{
+            h1{
+                @media(min-width:560px){
+                    font-size:1.1rem;
+                }
+                @media(min-width:800px){
+                    font-size:1.7rem;
+                }
+                @media(min-width:1300px){
+                    font-size:2.2rem;
+                }
+
+            }
+            h3{
+                @media(min-width:560px){
+                    font-size: 0.6rem;
+                }
+                @media(min-width:800px){
+                    font-size:0.9rem;
+                }
+                @media(min-width:800px){
+                    font-size:1.1rem;
+                }
+            }
+        }
+    }
+
+    .content-wrapper{
+        .video-wrapper{
+            video{}
+        }
     }
 }
 

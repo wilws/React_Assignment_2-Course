@@ -224,6 +224,12 @@ export default {
                     @media(min-width:320px){
                         font-size: 1.1rem;
                     }
+                    @media(min-width:480px){
+                        font-size: 1.4rem;
+                    }
+                    @media(min-width:600px){
+                        font-size: 2rem;
+                    }                      
                     @media(min-width:760px){
                         font-size: 2.3rem;
                     }
@@ -247,6 +253,12 @@ export default {
                     
                     @media(min-width:320px){
                         font-size: 0.5rem;
+                    }
+                    @media(min-width:480px){
+                        font-size: 0.6rem;
+                    }
+                    @media(min-width:600px){
+                        font-size: 0.9rem;
                     }
                     @media(min-width:760px){
                         font-size: 1rem;
@@ -473,9 +485,9 @@ export default {
                     @media(min-width:1300px){
                         font-size: 2.2rem;
                     }
-                    @media(min-width:1500px){
-                        font-size: 2.8rem;
-                    }
+                    // @media(min-width:1500px){
+                    //     font-size: 2.8rem;
+                    // }
                     // @media(min-width:1800px){
                     //     font-size: 1.1rem;
                     // }
@@ -502,9 +514,9 @@ export default {
                         font-size: 0.9rem;
                         margin-top: -4px;
                     }
-                    @media(min-width:1500px){
-                        font-size: 1.2rem;
-                    }
+                    // @media(min-width:1500px){
+                    //     font-size: 1.2rem;
+                    // }
 
                 }
                 button{   
@@ -555,13 +567,13 @@ export default {
                     width:40%;
                 }
                 @media(min-width:1300px){
-                    width:40%;
+                    width:35%;
                 }
                 @media(min-width:1500px){
-                    width:20%;
+                    width:28%;
                 }
-                // @media(min-width:1800px){
-                //     width:30%;
+                // @media(min-width:1600px){
+                //     width:25%;
                 // }
 
 

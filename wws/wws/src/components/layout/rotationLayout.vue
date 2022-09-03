@@ -13,6 +13,8 @@
 </template>
 
 <script>
+
+
 export default {
     data(){
         return{
@@ -95,9 +97,11 @@ export default {
             const translateZ = `-${vw/2}px`;
             document.querySelector(this.boxClass).style.transform = `translateZ(${translateZ}) rotateY(${this.rotateDeg}deg) `;
             
-            this.animationClassRemover();         // remove animation when go back
+            this.animationClassRemover();          // remove animation when go back
+            this.closeOpenedImageScreen();         // close all the opened image in showImageFullScreen.vue
             if (!this.rotateDeg){           
                  this.mainScrollBarLocker(false);  // unlockscroll bar
+                 
             } else {
                 this.mainScrollBarLocker(true)     // lockscroll bar when go to project details
                 this.animationClassController(this.rotateDeg);
@@ -161,6 +165,18 @@ export default {
                 this.forwardButtonAppearDeg = -270;
             }
         },
+
+        closeOpenedImageScreen(){
+            // The function related to component "showImageInFullScreen. 
+            // we wanna close the image screen when rotation happens.
+            document.querySelectorAll(".imageInFullScreen").forEach((e)=>{
+                if (e){
+                    e.classList.remove('show');
+                }
+            });
+            
+            
+        }
     }
 
 }
@@ -280,7 +296,7 @@ $translateDistanceRight : $boxWidth/2;
     position:relative;
     width:$boxWidth;
     height:$boxHeight;
-    // transform: translateZ(-$translateDistanceFront) rotateY(-270deg);
+    // transform: translateZ(-$translateDistanceFront) rotateY(-90deg);
     transform: translateZ(-$translateDistanceFront);
     transform-style: preserve-3d;
     transform-origin: center;
@@ -302,6 +318,7 @@ $translateDistanceRight : $boxWidth/2;
         @include setting();
         transform: translateZ($translateDistanceFront);
         background-color: white;
+        z-index:1;
     }
     .face2{
         @include setting();
