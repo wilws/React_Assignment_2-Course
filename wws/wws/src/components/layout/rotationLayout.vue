@@ -244,7 +244,6 @@ $translateDistanceRight : $boxWidth/2;
     position: relative;
     width:100%;
     height:100%;
-   
     background-color: rgb(236, 231, 231);
     perspective: $perspective;
     @include vertical-horizontal-center();
@@ -252,13 +251,12 @@ $translateDistanceRight : $boxWidth/2;
 
 @mixin buttonStyle {
         position:absolute;
-        background-color: transparent;
         border:none;
-        top:0;
-        // left:0rem;
+        top:50%;
+        background-color: transparent;
         width:1.5rem;
-        height:100%;
-        z-index: 3;
+        // height:10%;
+        z-index: 999;
         transition-property:background-color transform ;
         transition-duration: .5s;
         cursor: pointer;
@@ -287,6 +285,7 @@ $translateDistanceRight : $boxWidth/2;
 
 .backward{
     @include buttonStyle();
+    transform:translateZ(1rem) translateY(-50%);     // use this because the bug of safari
     left:0rem;
     
     &:hover{
@@ -297,7 +296,7 @@ $translateDistanceRight : $boxWidth/2;
 
 .forward{
     @include buttonStyle();
-    transform:rotateZ(180deg);
+    transform:rotateZ(180deg) translateZ(1rem) translateY(-50%);
     right:0rem;
     
     &:hover{
@@ -314,6 +313,7 @@ $translateDistanceRight : $boxWidth/2;
     border: none;
     background-color: transparent;
     z-index: 3;
+    transform:translateZ(1rem);
     transition-property:background-color transform ;
     transition-duration: .5s;
     font-family: $tertiary-font;
@@ -345,7 +345,7 @@ $translateDistanceRight : $boxWidth/2;
     position:relative;
     width:$boxWidth;
     height:$boxHeight;
-    // transform: translateZ(-$translateDistanceFront) rotateY(-270deg);
+    // transform: translateZ(-$translateDistanceFront) rotateY(-20deg);
     transform: translateZ(-$translateDistanceFront);
     transform-style: preserve-3d;
     transform-origin: center;
@@ -367,30 +367,26 @@ $translateDistanceRight : $boxWidth/2;
         @include setting();
         transform: translateZ($translateDistanceFront);
         background-color: white;
-        z-index:1;
-
-        &.show {
-            
-        }
+        // z-index:1;
     }
     .face2{
         @include setting();
         transform: translateZ($translateDistanceBack) rotateY(180deg);
         background-color: white;
-         z-index:4;
+        //  z-index:4;
     }
     .face3{
         @include setting();
         transform: translateX($translateDistanceLeft) rotateY(-90deg) ;
         background-color: white;
-         z-index:4;
+        //  z-index:4;
     }
     .face4{
         @include setting();
         // color:white;
         transform: translateX($translateDistanceRight) rotateY(90deg) ;
         background-color: white;
-        z-index:4;
+        // z-index:1;
     }
 }
 

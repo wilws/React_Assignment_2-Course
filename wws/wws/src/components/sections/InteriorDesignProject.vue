@@ -226,7 +226,7 @@ export default {
 
 <style lang="scss" scoped>
 .interior-design-project-1{
-    background-color: rgb(255, 255, 255);
+    // background-color: rgb(255, 255, 255);
 }
 
 .slot-wrapper{
@@ -282,7 +282,7 @@ export default {
     width:100%;
     height:100%;
     // padding:1rem;
-    background-color: white;
+    // background-color: white;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -447,7 +447,7 @@ export default {
             @media(min-width:760px){
                 @include contentFontSetting_760px();
             }
-            
+
             i{
                 // font-size: .8rem;
                 width:10px;
