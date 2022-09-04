@@ -51,7 +51,7 @@ export default {
     },
     methods:{
         workDisplay(){
-            window.open("http://http://www.longlifeproduction.com", '_blank');
+            window.open("http://www.longlifeproduction.com", '_blank');
         }
     }
 }

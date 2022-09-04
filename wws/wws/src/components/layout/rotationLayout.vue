@@ -4,10 +4,10 @@
         <button v-if="rotateDeg < 0"  class="backward" @click="rotate('backward')"><i :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-angle-left"></i></button>
         <button v-if="rotateDeg < 0"  class="firstPage" @click="rotate('firstPage')"><i :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-house"></i></button>
        <div class="box">
-            <div v-if="hasSlot1" class="face1"><slot name="slot1"></slot></div>
-            <div v-if="hasSlot3" class="face2"><slot name="slot3"></slot></div>
-            <div v-if="hasSlot4" class="face3"><slot name="slot4"></slot></div>
-            <div v-if="hasSlot2" class="face4"><slot name="slot2"></slot></div>
+            <div v-if="hasSlot1" class="face face1"><slot name="slot1"></slot></div>
+            <div v-if="hasSlot3" class="face face2"><slot name="slot3"></slot></div>
+            <div v-if="hasSlot4" class="face face3"><slot name="slot4"></slot></div>
+            <div v-if="hasSlot2" class="face face4"><slot name="slot2"></slot></div>
         </div>
     </div>
 </template>
@@ -48,15 +48,21 @@ export default {
 
         
         this.buttonVisibilityController();
+
         
 
     },
     mounted(){
 
+
+
+        
+
         // Responsive Setting
         // this.resizeAdjustor();                          
         window.addEventListener("resize",this.resizeAdjustor);    // Always ready to trigger "resize()" when width change. 
-    },
+
+   },
 
     methods:{
         rotate(direction){   
@@ -79,6 +85,7 @@ export default {
             document.querySelector(this.boxClass).style.transition = "transform 1s";  // When rotate browser, we want to see the rotation
             this.rotateController();      
         },
+
         resizeAdjustor(){
             document.querySelector(this.boxClass).style.transition = "transform 0s";   // When resize browser, we dont what the delay effect. It stop the transition delay when resize
             this.rotateController();                                          
@@ -92,14 +99,54 @@ export default {
             }
         },
 
+        preSetting(buttonSetting={}, boxClass=""){
+            this.buttonSetting = buttonSetting;
+            this.boxClass = boxClass;
+            this.NonDisplayedPageInvisible();
+        },
+
+
+        NonDisplayedPageInvisible(){    
+            // set invisible to pages that is not showing to user
+            // reason : the back page's element will affect the font page (i.e. scrolling of back page makes font page lag)
+            
+            const allfaces = `${this.boxClass} .face`;
+            const faces = {
+                '0':'face1',
+                '-90':'face4',
+                '-180':'face2',
+                '-270':'face3',
+            }
+            document.querySelectorAll(allfaces).forEach((f)=>{
+                // f.style.visibility = 'visible';
+                // if (!f.classList.contains(faces[this.rotateDeg])){
+                //      f.style.visibility = 'hidden';
+                // } 
+
+                f.style.pointerEvents = 'unset';
+                if (!f.classList.contains(faces[this.rotateDeg])){
+                     f.style.pointerEvents = 'none';
+                } 
+            })
+        },
+
+        // lockAllChildNodes(n,childnodes){
+        //     // childNodes.forEach((c))
+        // }
+
         rotateController(){
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
             const translateZ = `-${vw/2}px`;
             document.querySelector(this.boxClass).style.transform = `translateZ(${translateZ}) rotateY(${this.rotateDeg}deg) `;
             
+
+
             this.animationClassRemover();          // remove animation when go back
             this.closeOpenedImageScreen();         // close all the opened image in showImageFullScreen.vue
-            if (!this.rotateDeg){           
+            
+            this.NonDisplayedPageInvisible(); // invisible faces that is not displaying;
+            
+            if (!this.rotateDeg){                  // if rotate back to font   
                  this.mainScrollBarLocker(false);  // unlockscroll bar
                  
             } else {
@@ -241,6 +288,7 @@ $translateDistanceRight : $boxWidth/2;
 .backward{
     @include buttonStyle();
     left:0rem;
+    
     &:hover{
         background-color: rgba(255, 255, 255, 0.1);
         transform:scale(1.5);
@@ -251,6 +299,7 @@ $translateDistanceRight : $boxWidth/2;
     @include buttonStyle();
     transform:rotateZ(180deg);
     right:0rem;
+    
     &:hover{
         background-color: rgba(255, 255, 255, 0.1);
         transform:rotateZ(180deg) scale(1.5);
@@ -264,7 +313,7 @@ $translateDistanceRight : $boxWidth/2;
     right:1rem;
     border: none;
     background-color: transparent;
-    z-index: 10;
+    z-index: 3;
     transition-property:background-color transform ;
     transition-duration: .5s;
     font-family: $tertiary-font;
@@ -296,7 +345,7 @@ $translateDistanceRight : $boxWidth/2;
     position:relative;
     width:$boxWidth;
     height:$boxHeight;
-    // transform: translateZ(-$translateDistanceFront) rotateY(-90deg);
+    // transform: translateZ(-$translateDistanceFront) rotateY(-180deg);
     transform: translateZ(-$translateDistanceFront);
     transform-style: preserve-3d;
     transform-origin: center;
@@ -319,22 +368,29 @@ $translateDistanceRight : $boxWidth/2;
         transform: translateZ($translateDistanceFront);
         background-color: white;
         z-index:1;
+
+        &.show {
+            
+        }
     }
     .face2{
         @include setting();
         transform: translateZ($translateDistanceBack) rotateY(180deg);
         background-color: white;
+         z-index:4;
     }
     .face3{
         @include setting();
         transform: translateX($translateDistanceLeft) rotateY(-90deg) ;
         background-color: white;
+         z-index:4;
     }
     .face4{
         @include setting();
         // color:white;
         transform: translateX($translateDistanceRight) rotateY(90deg) ;
         background-color: white;
+        z-index:4;
     }
 }
 

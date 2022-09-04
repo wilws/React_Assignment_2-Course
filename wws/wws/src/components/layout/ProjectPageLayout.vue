@@ -67,10 +67,16 @@
     <!-- End of section -->
     
 
+ 
+
+
+
 </template>
 
 
 <script>
+
+
 import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
 export default {
     mixins:[screenSizeDetection],
@@ -166,11 +172,12 @@ export default {
 
 <style lang="scss" scoped>
 .section{
+    background-color: transparent;
 
     width:100%;
     height:100%;
     @include row-horizontal-center();
-    overflow: hidden;
+    // overflow: auto;
 
 
     .left-wrapper{
@@ -355,7 +362,10 @@ export default {
 
         .lower-wrapper{
            position: relative;
-           overflow:auto;
+           height:auto;
+           overflow: scroll;
+
+        
 
 
             .content{
@@ -365,24 +375,15 @@ export default {
                 height: 100%;
                 opacity:0;
                 transition:opacity 1s 1s;
-                overflow: scroll;
-
+  
                 .left-side{
-
-
-                    @include contentFontSetting_320px();
-
-     
-                    @media(min-width:768px){
-                        @include contentFontSetting_760px()
-                    }
-                    // @media(min-width:1024px){
-                    //     // font-size: 1.3rem;
-                    //     font-size: 0.9rem;
-                    // }
-
                     
-
+                    span{
+                        @include contentFontSetting_320px();
+                        @media(min-width:768px){
+                            @include contentFontSetting_760px()
+                        }
+                    }
                 }
                 .bottom-side{
                     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -455,9 +456,9 @@ export default {
     }
 }
 
-
-
+.rotated .space .box .face1 .section,
 .rotated .section{
+    
 
     .left-wrapper{
 
@@ -567,10 +568,10 @@ export default {
                     width:40%;
                 }
                 @media(min-width:1300px){
-                    width:35%;
+                    width:29%;
                 }
                 @media(min-width:1500px){
-                    width:28%;
+                    width:20%;
                 }
                 // @media(min-width:1600px){
                 //     width:25%;
@@ -643,9 +644,9 @@ export default {
             // }
         }
 
-        @media(min-width:1024px) and (max-height:1024px){
-            display:unset;
-        }
+        // @media(min-width:1024px) and (max-height:1024px){
+        //     display:unset;
+        // }
         .vidoe{
             @media(min-width: 560px){
                 width:100%;

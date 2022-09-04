@@ -42,12 +42,12 @@
 
                 <div class="content-wrapper">
                     <div class="description-wrapper">
-                        <!-- <div> -->
+                       
                             <h6>Dig out Arbitrage Chance </h6>
                             <p>
                                 In the red circle of the Picture-1, it shows that  if we make a “Long Butterfly” combination, the cost to pay is -7.32 HKD and the premium to receive is 7.38 HKD. The difference of 0.06 HKD means no matter where the price goes (up or down), that 0.06 HKD is for sure in your wallet. If you are so lucky that the price eventually falls on the desired point, you can take 2.56 HKD. 
                             </p>
-                        <!-- </div> -->
+                       
                     </div>
 
                     <div class="img-wrapper">
@@ -72,7 +72,7 @@
 
         <!-- slot 3-->
         <template v-slot:slot3>
-            <image-screen  ref="ImageInFullScreen2Slot3" id="webProject2Slot3"></image-screen>
+                <image-screen  ref="ImageInFullScreen2Slot3" id="webProject2Slot3"></image-screen>
             <div class="slot3-wrapper">
                 <img :src="require('@/assets/img/projects/web_project_2/logo.png')" class="background-logo" />
                 <div class="title-wrapper">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-               <div class="content-wrapper">
+          <div class="content-wrapper">
 
                     <div class="wrapper">
                         <div class="description">
@@ -109,10 +109,10 @@
                         <div class="img" @click="showImageInFullScreen('webProject2Slot3',3, 'AdSense.png')">
                             <img :src="require('@/assets/img/projects/web_project_2/AdSense.png')" alt="">
                         </div>
-                    </div>
+                    </div> 
                     
-                </div>
-            </div>  
+                </div> 
+            </div>
         </template>
         <!-- end of slot 3 -->
 
@@ -137,18 +137,19 @@ export default {
     },
 
     mounted(){
-        // pass proprs to "rotation-layout" slot
-        this.$refs.rotationLayoutRef2.buttonSetting = { 
-            backgroundColor : "#0099AF",
-            color:"White",
-        }
-
-        this.$refs.rotationLayoutRef2.boxClass = ".web-project-2 .space .box";
-
-        
+        // Pass esential variable to rotation layout slot
+        this.$refs.rotationLayoutRef2.preSetting( 
+             {  
+                backgroundColor : "#0099AF",   // assign style to rotation layout slot
+                color:"White",  
+            },
+            ".web-project-2 .space .box"      // tell rotation layout which page it is
+        )  
     },
     data(){
+        
         return {
+            // data to projectPage layout slot
             mainTitle : "Web Project 2",
             subTitle: "2018-OPTION KATZE",
             linkToProjectDescription: "View Project Description",
@@ -159,6 +160,7 @@ export default {
             mediaType:"image",
             mediaDisplayUrl: require('@/assets/img/projects/web_project_2/cover.png'),
             backgroundColor:"Black",
+         
             fontColor:"white",
             buttonColor:"#0099AF",
             id: "#web-project-2",
@@ -211,6 +213,7 @@ export default {
 <style lang="scss" scoped>
 .web-project-2{
     background-color: rgb(0, 0, 0);
+    // z-index: 1;
 }
 
 
@@ -264,7 +267,6 @@ export default {
         column-gap: 2px;
         row-gap: 1rem;
         overflow: scroll;
-        display: flex;
         flex-direction: column;
 
         @media(min-width:800px){
@@ -480,7 +482,6 @@ export default {
         margin-top:2rem;
         row-gap: 2.5rem;
         overflow: scroll;
-        display: flex;
         flex-direction: column;
 
         @media(min-width:800px){
@@ -558,30 +559,37 @@ export default {
     }
 
     .content-wrapper{
+
+        // border:blue thin solid;
         align-items: center;
         // justify-content: center;
         // justify-content: space-evenly;
 
         @media(min-width:1000px){
-            gap:4rem;
-            // justify-content: center;
-            // width:50%;
+            padding: 0 10%;
         }
 
         .wrapper{
+
+            // border:red thin solid;
+            height: 50%;
            
             @media(min-width:560px){
                 flex-direction: row;
                 gap:1rem;
+                // max-width:810px;
+                // max-height:300px;
             }
             // @media(min-width:560px){
             //     gap:7rem;
             // }
-            // @media(min-width:1160px){
-            //     gap:9rem;
-            // }
+            @media(min-width:1300px){
+                gap:20px;
+            }
         
             .description{
+
+                // border:purple solid thin;
     
               
                 
@@ -608,6 +616,7 @@ export default {
                 }
             }
             .img{
+                border:green thin solid;
                 @media(min-width:560px){
                     text-align: center;
                         width:100%;

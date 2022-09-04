@@ -1,9 +1,11 @@
 <template>
         
     <div class="imageInFullScreen">
-        <button class="closeScreenBtn" @click="screenController()">Close Picture</button>
-        <div class="image-Wrapper">
-            <img v-if="!!imgUrl" :src="imgUrl">
+        <div class="content-wrapper">
+            <button class="closeScreenBtn" @click="screenController()">Close Picture</button>
+            <div class="image-Wrapper">
+                <img v-if="!!imgUrl" :src="imgUrl">
+            </div>
         </div>
         
     </div>
@@ -52,11 +54,7 @@ export default {
        }
    },
    methods:{
-      
        screenController(turnOn=false,id="",project='',filename=''){
-           console.log(id)
-           console.log(project)
-           console.log(filename)
            if (turnOn) {
                 document.querySelector(`#${id}`).classList.add('show');
                 this.projectCode =  project;
@@ -80,49 +78,60 @@ export default {
 .imageInFullScreen.show{
      width:100%;
 
-     .closeScreenBtn{
-         opacity: 1;
-         visibility: visible;
+     .content-wrapper{
+
+        .closeScreenBtn{
+            opacity: 1;
+            visibility: visible;
+        }
      }
 }
 .imageInFullScreen{
     position: absolute;
     width:0%;
-    height: 100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height:100%;
+    @include vertical-horizontal-center();
 
     background-color: rgba(26, 24, 24, 0.863);
     z-index: 2;
     transition: width 1s;
-    
-    .image-Wrapper{
-        position: relative;
-        width:80%;
+
+
+    .content-wrapper{
+        width:90%;
         height:90%;
-        
-        img{
-            width:100%;
-            object-fit: cover;
+
+        .closeScreenBtn{
+            position: relative;
+            width:100%; 
+            opacity: 0;
+            visibility: hidden;
+            margin-bottom: 1rem;
+            text-align: center;
+            border:none;
+            background-color: transparent;;
+            color: white;
+            font-size:100%;
+            letter-spacing: .2rem;
+            cursor: pointer;
+            transition: opacity 1s 1s;
+            font-family: 'Courier New', Courier, monospace;
         }
-    }
-    .closeScreenBtn{
-        width:100%;
-        height:10%;
-        position: relative;
-        opacity: 0;
-        visibility: hidden;
-        margin-bottom: 1rem;
-        text-align: center;
-        border:none;
-        background-color: transparent;;
-        color: white;
-        font-size:100%;
-        letter-spacing: .2rem;
-        cursor: pointer;
-        transition: opacity 1s 1s;
+
+        .image-Wrapper{
+            position: relative;
+            width:100%;
+            height:calc(100% - 1.5rem);
+
+  
+            img{
+                position: relative;
+                width:100%;
+                height:100%;
+                object-fit: contain;
+            }
+        }
+        
     }
 
 }
