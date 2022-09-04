@@ -317,21 +317,30 @@ export default {
             h1{
                 // border: thin solid red;
                 width:100%;
-                text-align: center;
-                font-family: $secondary-font;
+                // text-align: center;
+                // font-family: $secondary-font;
+                // font-size: 1.1rem;
+                // font-weight: 300;
+                // letter-spacing: 0rem;
+                // line-height:3rem;
+                @include titleSetting();
                 font-size: 1.1rem;
-                font-weight: 300;
-                letter-spacing: 0rem;
-                line-height:3rem;
             }
             .content{
                 // border: thin solid red;
                     font-family: $primary-font;
                     color:$grey ;
-                    font-size: 0.8rem;
-                    letter-spacing: 0rem ;
-                    line-height: 1.2rem;
-                    text-align: center;
+                    // font-size: 0.8rem;
+                    // letter-spacing: 0rem ;
+                    // line-height: 1.2rem;
+                    // text-align: center;
+                    @media(min-width:320px){
+                        @include contentFontSetting_320px();
+                    }
+                    @media(min-width:760px){
+                        @include contentFontSetting_760px();
+                    }
+                
             }
         }
     }
@@ -369,7 +378,7 @@ export default {
         @include column-horizontal-center();
         
         &.animation{
-            animation: leftSideMovingOut 4s 1.8s forwards;
+            animation: leftSideMovingOut 4s 1s forwards;
         }
 
         .img{
@@ -428,16 +437,17 @@ export default {
             margin-top:1rem;
             width:80%;
             max-width:588px;
-            // max-height:200px;
-            font-family: $primary-font;
-            
-            
             color: #1f1f1f;
-            font-size: 0.9rem;
-            letter-spacing: 0rem;
-            line-height: 1.8rem;
-            text-align: justify;
+            padding:.2rem;
             background-color: rgba(255, 255, 255, 0.8);
+
+            @media(min-width:320px){
+                @include contentFontSetting_320px();
+            }
+            @media(min-width:760px){
+                @include contentFontSetting_760px();
+            }
+            
             i{
                 // font-size: .8rem;
                 width:10px;
@@ -464,7 +474,7 @@ export default {
 
         
         &.animation{
-            animation: RightSideMovingOut 4s 1.8s forwards;
+            animation: RightSideMovingOut 4s 1s forwards;
         }
         .img{
             border: thick black solid;
@@ -851,12 +861,12 @@ export default {
                                 top:7%;
                                 transform: rotateZ(10deg) translateZ(500px);
                                 &.animation{
-                                    animation: dropPicture2 3s 4s forwards;
+                                    animation: dropPicture2 3s 3s forwards;
                                 }
                                 img{
                                     filter: sepia(0%);
                                     &.animation{
-                                        animation: sepia 3s 8s forwards;
+                                        animation: sepia 3s 6s forwards;
                                     }
                                 }
                                 @keyframes dropPicture2 {
@@ -875,12 +885,12 @@ export default {
                                 top:20%;
                                 transform: rotateZ(-8deg)  translateZ(500px) ;
                                 &.animation{
-                                    animation: dropPicture3 3s 9s forwards;
+                                    animation: dropPicture3 3s 6s forwards;
                                 }
                                 img{
                                     filter: sepia(0%);
                                     &.animation{
-                                        animation: sepia 3s 12s forwards;
+                                        animation: sepia 3s 9s forwards;
                                     }
                                 }
                                 @keyframes dropPicture3 {
@@ -899,12 +909,12 @@ export default {
                                 top:20%;
                                 transform: rotateZ(7deg) translateZ(500px);
                                 &.animation{
-                                    animation: dropPicture4 3s 13s forwards;
+                                    animation: dropPicture4 3s 9s forwards;
                                 }
                                 img{
                                     filter: sepia(0%);
                                     &.animation{
-                                        animation: sepia 3s 16s forwards;
+                                        animation: sepia 3s 12s forwards;
                                     }
                                 }
                                 @keyframes dropPicture4 {
@@ -923,12 +933,12 @@ export default {
                                 top: 13%;
                                 transform: rotateZ(349deg)  translateZ(500px);
                                 &.animation{
-                                    animation: dropPicture5 3s 17.5s forwards;
+                                    animation: dropPicture5 3s 12s forwards;
                                 }
                                 img{
                                     filter: sepia(0%);
                                     &.animation{
-                                        animation: sepia 3s 22s forwards;
+                                        animation: sepia 3s 15s forwards;
                                     }
                                 }
                                 @keyframes dropPicture5 {
@@ -947,12 +957,12 @@ export default {
                                 top: 4%;
                                 transform: rotateZ(0) translateZ(500px);
                                 &.animation{
-                                    animation: dropPicture6 3s 22s forwards;
+                                    animation: dropPicture6 3s 15s forwards;
                                 }
                                 img{
                                     filter: sepia(0%);
                                     &.animation{
-                                        animation: sepia 3s 26s forwards;
+                                        animation: sepia 3s 21s forwards;
                                     }
                                 }
                                 @keyframes dropPicture6 {
@@ -971,11 +981,11 @@ export default {
                                 top: 4%;
                                 transform: rotateZ(357deg) translateZ(500px);
                                 &.animation{
-                                    animation: dropPicture7 3s 27s forwards;
+                                    animation: dropPicture7 3s 18s forwards;
                                 }
                                 img{
                                     filter: sepia(0%);
-                                    animation: sepia 3s 31s forwards,
+                                    animation: sepia 3s 28s forwards,
                                 }
                                 @keyframes dropPicture7 {
                                     0%{
@@ -994,8 +1004,8 @@ export default {
                                 transform: rotateZ(0deg) translateZ(500px);
                                 &.animation{
                                     animation: 
-                                        dropPicture8 3s 32s forwards,
-                                        movingLeft  3s 35s forwards;
+                                        dropPicture8 3s 21s forwards,
+                                        movingLeft  3s 22s forwards;
                                 }
                                
                                 @keyframes dropPicture8 {
@@ -1052,7 +1062,7 @@ export default {
 
                                 height: 100%;
                                 &.animation{
-                                    animation:showCompleteWrapper 3s 38s forwards;
+                                    animation:showCompleteWrapper 3s 25s forwards;
                                 }
                                 
                                 @keyframes showCompleteWrapper {
