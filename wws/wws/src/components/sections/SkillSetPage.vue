@@ -108,6 +108,11 @@ export default {
             max-height: 132px;
             height:100%;
             /* background-color: red; */
+             @media (min-width:760px){
+                height:200px;
+                max-height: unset;
+                /* background-color: blue; */
+            }
 
             h1{
                 @mixin h1FontSetting_320px {
@@ -196,8 +201,9 @@ export default {
                 justify-content: space-between;
                 padding-left: 1.4rem;
                 padding-right: 1.4rem;
-                margin-top:1.4rem;
+                /* margin-top:1.4rem; */
                 margin-bottom:1rem;
+                z-index: 10;
 
                 
                 @media (min-width:320px){
@@ -205,7 +211,7 @@ export default {
                     margin-bottom:1rem;
                 }
 
-                /* @media (min-width:370px){
+                @media (min-width:370px){
                     margin-top:1.5rem;
                     margin-bottom:2rem;
                 }
@@ -213,16 +219,16 @@ export default {
                 @media (min-width:760px){
                     margin-top:2rem;
                     margin-bottom:4rem;
-                } */
+                }
 
                 @media (min-width:1500px){
                     display: none;
                 }
 
-                @media(max-height:484px){
+                /* @media(max-height:484px){
                      margin-top:0rem;
                     margin-bottom:0rem;
-                }
+                } */
 
                 button{
                     @mixin buttonSetting_320px {
@@ -258,6 +264,9 @@ export default {
             align-items: center;
             transition: transform 1s;
             overflow: hidden;
+             @media (min-width:760px){
+                    height:80%;
+                }
   
         }      
     }
