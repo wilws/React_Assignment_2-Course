@@ -9,7 +9,7 @@
     <web-project-3></web-project-3>
     <web-project-4></web-project-4>
     <graphic-design-project></graphic-design-project>
-    <interior-design-project></interior-design-project> 
+    <interior-design-project></interior-design-project>
     <final-page></final-page>
 
   </div>
@@ -30,6 +30,8 @@ import InteriorDesignProject from './components/sections/InteriorDesignProject.v
 import FinalPage from './components/sections/FinalPage.vue';
 
 
+
+
 export default {
   name: 'App',
   components: {
@@ -44,11 +46,20 @@ export default {
     InteriorDesignProject,
     FinalPage,
     
+  },
+
+  mounted(){
+    this.disableIOSScalability();            // [mixins function]. to stop the ISO scalability during rotation
+    window.addEventListener('resize',()=>{   
+        this.defaultBoxes();                // [mixins function]. to turn all the boxex back to homepage
+    });
   }
+  
 }
 </script>
 
 <style lang="scss">
+
 
 /* Common Style */
 
@@ -59,11 +70,18 @@ export default {
     outline:none;
     box-sizing:border-box;
     text-decoration:none;
-    scrollbar-width: none;  
+    // scrollbar-width: none;  
 }
 
-*::-webkit-scrollbar {
-  display: none;
+// *::-webkit-scrollbar {
+//   display: none;
+// }
+
+// body {-webkit-text-size-adjust: none;}
+
+body {
+  position:relative;                  // necessary in ISO
+    -webkit-text-size-adjust: 100%;
 }
 
 html{
@@ -73,17 +91,15 @@ html{
 
 
 .container{
-  height:100vh;
-  width:100vw;
-  // min-height:568px;
-  min-width:320px;
   background:rgb(100, 83, 83);
 }
 
 section{
-  height:100%;
-  width:100%;
-  background-color: green;
+  position:relative;
+  width:100vw;
+  min-height:100vh;
+  height:auto;
+  background-color: transparent;
   overflow: hidden;
 }
 

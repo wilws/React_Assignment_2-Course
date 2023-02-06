@@ -14,8 +14,7 @@
                 <div class="intro">
                     <h1>Course Assignment</h1>
                     <p>
-                        Udemy is my source of coding knowledge. I always follow the online course and complete the assignments / projects requested in the course. Whenever I encounter something that I don’t understand druing the lesson, I will pause the video then search for the reason rather than clicking “Next” to let it remains mysterious. Therefore, I understand every single codes that I type in my assignment.  Hence I can replicate the effect / output that the assignments have. 
-                        <br>It is meaningless to fake what you know as time will reveal it anyway.
+                        Udemy is my source of programming knowledge. The following are the assignments that I have completed in the online courses.
                     </p>
                 </div>
 
@@ -74,6 +73,11 @@ export default {
 
 
 .assignment{
+
+    width:100vw;
+    height: auto;
+    min-height: 100vh;
+    
 
     @mixin titleSetting_320px{
         font-size: 1.7rem;
@@ -212,7 +216,7 @@ export default {
     .background{
         position: absolute;
         right:0;
-        top:0r;
+        top:0;
         width:100%;
         height:100%;
         // border:orange solid thin;
@@ -241,6 +245,10 @@ export default {
             right:15%;
             @media(min-width:603px){
                 right:35%;
+            }
+
+            @media(min-width:768px){
+                right:0%;
             }
             // z-index: 11;
             // border:red thin solid;
@@ -284,7 +292,15 @@ export default {
                     text-align: left;
                 }
             }
-            p{ }
+            p{
+                @media(min-width:560px){
+                    @include contentFontSetting_320px();
+                }
+
+                @media(min-width:1000px){
+                    @include contentFontSetting_760px()
+                }
+             }
         }
         .web-assignments{
             @media(min-width:1300px){
@@ -296,6 +312,9 @@ export default {
                 }
             }
             .assignments-wrapper{
+                @media(min-width:560px){
+                    justify-content: center;
+                }
                 a {
                     @media(min-width:1300px){
                         width:30%;
@@ -324,7 +343,7 @@ export default {
             }
         .dog-img{
              @media(min-width:568px){
-                width:31%;
+                width:100%;
             }
             @media(min-width:1300px){
                 width:50%;

@@ -3,6 +3,7 @@
         <button v-if="rotateDeg > forwardButtonAppearDeg && rotateDeg < 0" class="forward" @click="rotate('forward')"><i  :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-angle-left"></i></button>
         <button v-if="rotateDeg < 0"  class="backward" @click="rotate('backward')"><i :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-angle-left"></i></button>
         <button v-if="rotateDeg < 0"  class="firstPage" @click="rotate('firstPage')"><i :style="{ color:buttonSetting.backgroundColor}" class="fa-solid fa-house"></i></button>
+    
        <div class="box">
             <div v-if="hasSlot1" class="face face1"><slot name="slot1"></slot></div>
             <div v-if="hasSlot3" class="face face2"><slot name="slot3"></slot></div>
@@ -45,21 +46,10 @@ export default {
         this.hasSlot2 = (this.$slots.slot2) ? true:false;
         this.hasSlot3 = (this.$slots.slot3) ? true:false;
         this.hasSlot4 = (this.$slots.slot4) ? true:false;
-
-        
         this.buttonVisibilityController();
-
-        
-
     },
     mounted(){
-
-
-
-        
-
-        // Responsive Setting
-        // this.resizeAdjustor();                          
+        // Responsive Setting                       
         window.addEventListener("resize",this.resizeAdjustor);    // Always ready to trigger "resize()" when width change. 
 
    },
@@ -87,15 +77,20 @@ export default {
         },
 
         resizeAdjustor(){
+            //to move the box to correct axis when rotate
             document.querySelector(this.boxClass).style.transition = "transform 0s";   // When resize browser, we dont what the delay effect. It stop the transition delay when resize
             this.rotateController();                                          
         },
 
         mainScrollBarLocker(n){
+            //  lock the bar when box is rotated
             if(n){
-                document.querySelector('html').style.overflow = 'hidden';
+                // document.querySelector('body').style.overflow = 'hidden';
+                document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+                
             } else {
-                document.querySelector('html').style.overflow = 'scroll';
+                // document.querySelector('body').style.overflow = 'scroll';
+                document.getElementsByTagName('body')[0].style.overflow = 'visible';
             }
         },
 
@@ -118,11 +113,6 @@ export default {
                 '-270':'face3',
             }
             document.querySelectorAll(allfaces).forEach((f)=>{
-                // f.style.visibility = 'visible';
-                // if (!f.classList.contains(faces[this.rotateDeg])){
-                //      f.style.visibility = 'hidden';
-                // } 
-
                 f.style.pointerEvents = 'unset';
                 if (!f.classList.contains(faces[this.rotateDeg])){
                      f.style.pointerEvents = 'none';
@@ -130,9 +120,7 @@ export default {
             })
         },
 
-        // lockAllChildNodes(n,childnodes){
-        //     // childNodes.forEach((c))
-        // }
+  
 
         rotateController(){
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -151,7 +139,7 @@ export default {
                  
             } else {
                 this.mainScrollBarLocker(true)     // lockscroll bar when go to project details
-                this.animationClassController(this.rotateDeg);
+                this.animationClassController(this.rotateDeg);         
             }
         },
 
@@ -221,8 +209,43 @@ export default {
                     e.classList.remove('show');
                 }
             });
-            
-            
+        },
+
+        scrollButton(id){
+            // For testing purpose
+
+
+            // console.log( 'scrolToBottom');
+            console.log( id);
+            id = '.slot2-wrapper'
+            const element = document.querySelector(id);
+
+            element.addEventListener("scroll",()=>{
+                alert('click')
+                element.scrollTo({
+                    top: 1000,
+                    // left: 100,
+                    behavior: 'smooth'
+                    });
+            });
+
+            // element.onwheel= ()=>{
+            //     console.log('hit')
+                
+            // }
+
+            // element.scrollTop = element.scrollToBottom;
+
+            // let dis = 0
+            // window.onwheel = function(){ 
+            //     console.log('hit')
+            //  }
+            // window.addEventListener("wheel",()=>{
+                // console.log('hit')
+                // dis += 10
+                // element.scrollTo(0,10000)
+            // });
+
         }
     }
 
@@ -243,22 +266,28 @@ $translateDistanceRight : $boxWidth/2;
 .space{
     position: relative;
     width:100%;
-    height:100%;
-    background-color: rgb(236, 231, 231);
+    height:auto;
+    min-height: 100vh;
     perspective: $perspective;
+    -webkit-perspective: $perspective;
+    background-color: transparent;
+    // background-color: green;
+    // transform-style: preserve-3d;
     @include vertical-horizontal-center();
 }
 
 @mixin buttonStyle {
         position:absolute;
-        border:none;
+        border:solid thin transparent;
+        border-radius: 50%;
         top:50%;
         background-color: transparent;
         width:1.5rem;
-        // height:10%;
-        z-index: 999;
+        z-index: 9;
         transition-property:background-color transform ;
         transition-duration: .5s;
+        -webkit-transition-property:background-color transform ;
+        -webkit-transition-duration: .5s;
         cursor: pointer;
 
         @media(min-width:768px){
@@ -290,18 +319,23 @@ $translateDistanceRight : $boxWidth/2;
     
     &:hover{
         background-color: rgba(255, 255, 255, 0.1);
-        transform:scale(1.5);
+        transform:scale(1.5) translateY(-50%);
+        -webkit-transform:scale(1.5) translateY(-50%);
+        transform-origin: center;
     }
 }
 
 .forward{
     @include buttonStyle();
     transform:rotateZ(180deg) translateZ(1rem) translateY(-50%);
+    -webkit-transform:translateZ(1rem) translateY(-50%) rotateZ(180deg) ;
     right:0rem;
     
     &:hover{
+        transform-origin: center;
         background-color: rgba(255, 255, 255, 0.1);
-        transform:rotateZ(180deg) scale(1.5);
+        transform:scale(1.5) translateY(-50%) rotateZ(180deg) ;
+        -webkit-transform:scale(1.5) translateY(-50%) rotateZ(180deg) ;
     }
 }
 
@@ -316,6 +350,9 @@ $translateDistanceRight : $boxWidth/2;
     transform:translateZ(1rem);
     transition-property:background-color transform ;
     transition-duration: .5s;
+    -webkit-transform:translateZ(1rem);
+    -webkit-transition-property:background-color transform ;
+    -webkit-transition-duration: .5s;
     font-family: $tertiary-font;
     cursor: pointer;
 
@@ -336,6 +373,8 @@ $translateDistanceRight : $boxWidth/2;
     &:hover{
         background-color: rgba(255, 255, 255, 0.1);
         transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        
     }
 }
 
@@ -344,11 +383,19 @@ $translateDistanceRight : $boxWidth/2;
 .box{
     position:relative;
     width:$boxWidth;
-    height:$boxHeight;
-    // transform: translateZ(-$translateDistanceFront) rotateY(-20deg);
+    // height:$boxHeight;
+    // height:100%;
+
+    min-height: 100vh;
+    height:auto;
+    
     transform: translateZ(-$translateDistanceFront);
     transform-style: preserve-3d;
     transform-origin: center;
+    -webkit-transform: translateZ(-$translateDistanceFront);
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: center;
+    // transform: translateZ(-$translateDistanceFront) rotateY(-180deg);
 
 
     @mixin setting{
@@ -360,33 +407,52 @@ $translateDistanceRight : $boxWidth/2;
         width:100%;
         height:100%;
         transform-origin: center;
+        -webkit-transform-origin: center;
         @include vertical-horizontal-center();
+    }
+
+    @mixin pseudoSetting{
+        contain: "";
+        width:100%;
+        height:100%;
+        position:absolute;
+        transition: translateZ(0.1rem);
+        background-color: white;
     }
 
     .face1{
         @include setting();
         transform: translateZ($translateDistanceFront);
-        background-color: white;
+        -webkit-transform: translateZ($translateDistanceFront);
+        // background-color: white;
         // z-index:1;
+
+        @include pseudoSetting();
     }
     .face2{
         @include setting();
         transform: translateZ($translateDistanceBack) rotateY(180deg);
-        background-color: white;
+        -webkit-transform: translateZ($translateDistanceBack) rotateY(180deg);
+        // background-color: white;
         //  z-index:4;
+        @include pseudoSetting();
     }
     .face3{
         @include setting();
         transform: translateX($translateDistanceLeft) rotateY(-90deg) ;
-        background-color: white;
+        -webkit-transform: translateX($translateDistanceLeft) rotateY(-90deg) ;
+        // background-color: white;
         //  z-index:4;
+        @include pseudoSetting();
     }
     .face4{
         @include setting();
         // color:white;
         transform: translateX($translateDistanceRight) rotateY(90deg) ;
-        background-color: white;
+        -webkit-transform: translateX($translateDistanceRight) rotateY(90deg) ;
+        // background-color: white;
         // z-index:1;
+        @include pseudoSetting();
     }
 }
 

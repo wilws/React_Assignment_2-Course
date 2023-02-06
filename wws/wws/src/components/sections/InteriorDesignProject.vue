@@ -1,7 +1,7 @@
 <template>
     <section class="interior-design-project-1" id="interior-design-project-1">
         
-        <rotation-layout-5 ref="rotationLayoutRef5">
+        <rotation-layout ref="rotationLayoutRef5">
        
         <!-- slot 1 -->
         <template v-slot:slot1> 
@@ -37,7 +37,7 @@
                     <div>
                         <h1>A Messy Storage Room</h1>
                         <div class="content">
-                            The place that we rented was used as a store room by the owner.
+                            The place that we rented was used as a store room.
                             <br>
                             <br>
                             Dusty, scraped wall, worn carpet, dirty window and full of miscellaneous stuff, we were at first in question that was it really possible to use this place as our private harbour?
@@ -64,7 +64,7 @@
                         <h1>Planning</h1>
                     </div>
                     <div class="content">
-                        After acquiring knowledge from Internet, YouTube, books..etc, We roughly understood how to do plastering, construction of wooden structure, light and electricity stuff (well..yes...we knew it is dangerous...but we both are graduated from science background and believed in our knowledge. Don’t try it by yourself at home  <i class="fa-solid fa-face-smile"></i>).
+                        After acquiring knowledge from Internet, YouTube, books..etc, We roughly understood how to do plastering, construction of wooden structure, light and electricity stuff (well,yes,we knew it is dangerous...but we both are graduated from science background and believed in our knowledge. Don’t try it by yourself at home).
                        <br>
                        <br>
                        Having ensured that the renovation was within our ability, I started to learn how to use the software "SketchUp" to draw the layout. 
@@ -100,12 +100,11 @@
                         <h1> Desire , Knowledge and Action</h1>
                         <div class="content">
                             We finally spent 3 months to have our cozy studio completed. The whole process was so painful but the outcome was so satisfactory.
-                            <br>
-                            <br>
-                                This experience is so unforgettable. We started from zero, from doubt. We had no knowlege of renovation in the very beginning. But, desire motivated us to pursue knowledge to make it real.
-                            <br>
-                            <br>
-                            "Knowledge" and "Willingness to Learn" provide us confidence to action, to try and to achieve different things in life. Learning endlessly will turn every chapter of your life journey into an exciting adventrue. The more I learn, the more experience that I can put into my life story. We are the sole writer of our life story. Never, Never, Never write a boring story. You don't have another chance to re-write again.
+                            <br><br>
+                            This is such an unforgettable experience. We started from zero, from doubt. We had no knowledge of renovation at first. But, desire motivated us to pursue knowledge to make it real.
+
+                            <br><br>
+                            "Knowledge" and "Willingness to Learn" provide us confidence to act, to try and to achieve different things. ”Learning” can turn every chapter of life journey into an exciting adventure. The more I learn, the more experience that I can put into my life story. We are the sole writer of our life story. Never, Never, Never write a boring story. You don't have another chance to re-write it.
                         </div>
                     </div>
                 </div>
@@ -113,36 +112,21 @@
         </template>
         <!-- End of slot 4 -->
 
-    
-
-
-
-
-
-
-
-
-        </rotation-layout-5>
+        </rotation-layout>
     </section>
 </template>
 
 <script>
 
-import ProjectPageLayout from "../layout/ProjectPageLayout.vue";
-import RotationLayout5 from "../layout/rotationLayout.vue";
-import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
+
 export default {
-    components:{
-        ProjectPageLayout,
-        RotationLayout5
-    },
-    mixins:[screenSizeDetection],
+
     mounted(){
         // pass proprs to "rotation-layout" slot
 
         // To tell the rotation layout that the button color
         this.$refs.rotationLayoutRef5.buttonSetting = { 
-            backgroundColor : "grey",
+            backgroundColor : "Black",
             color:"White",
         }
 
@@ -205,7 +189,7 @@ export default {
             mediaDisplayUrl: require('@/assets/img/projects/interior_design_project_1/cover.jpg'),
             backgroundColor:"White",
             fontColor:"Black",
-            buttonColor:"grey",
+            buttonColor:"Black",
             id: "#interior-design-project-1",
             projectDescription :
             "In Hong Kong, it is quite hard to get a private place for relax since rental is so high in this tiny place. In 2015,  My friend ,Berry ,and I were so luckily to have a chance to rent a place in a factory area with a very economic price. However,  as mentioned, it was in a factory area, the place was “not fancy”, or be more accurate — “messy”. Let see how we 2 turned a messy store room to a cozy studio."
@@ -226,7 +210,7 @@ export default {
 
 <style lang="scss" scoped>
 .interior-design-project-1{
-    // background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
 }
 
 .slot-wrapper{
@@ -276,95 +260,14 @@ export default {
     }
 }
 
-.slot2-wrapper{
 
-    position:relative;
-    width:100%;
-    height:100%;
-    // padding:1rem;
-    // background-color: white;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    @media(min-width:1024px){
-        flex-direction:row-reverse;
-    }
-
-    .lower-side{
-
-        width: 100%;
-        height:100%;
-        // top:0;
-        // left:0;
-        // border: thin solid red;
-        padding: 0.5rem 1rem 1rem 1rem;
-        // @include column-horizontal-center();
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-
-        justify-content: center;
-        @media(min-width:1024px){
-            max-width:400px;
-            width:40%;
-            // height:100%;
-            justify-content: center;
-            padding:3rem;
-        }
-        div{
-            width:100%;
-            h1{
-                // border: thin solid red;
-                width:100%;
-                // text-align: center;
-                // font-family: $secondary-font;
-                // font-size: 1.1rem;
-                // font-weight: 300;
-                // letter-spacing: 0rem;
-                // line-height:3rem;
-                @include titleSetting();
-                font-size: 1.1rem;
-            }
-            .content{
-                // border: thin solid red;
-                    font-family: $primary-font;
-                    color:$grey ;
-                    // font-size: 0.8rem;
-                    // letter-spacing: 0rem ;
-                    // line-height: 1.2rem;
-                    // text-align: center;
-                    @media(min-width:320px){
-                        @include contentFontSetting_320px();
-                    }
-                    @media(min-width:760px){
-                        @include contentFontSetting_760px();
-                    }
-                
-            }
-        }
-    }
-    .upper-side{
-        min-height: 227px;
-        min-width: 320px;
-        width:100%;
-        // border: thin solid red;
-        
-        img{
-            width:100%;
-            height:100%;
-            object-fit: cover;
-            
-        }
-    }
-}
-
-
+// Slot 3 vertical and horizontal
 .slot3-wrapper{
     position:relative;
     width:100%;
     height:100%;
     perspective: 100rem;
+    // background-color: white;
 
     
 
@@ -372,13 +275,13 @@ export default {
         position:absolute;
         width:50%;
         height:100%;
-        left:0;
+        left:0rem;
         top:0;
         z-index: 2;
         @include column-horizontal-center();
         
         &.animation{
-            animation: leftSideMovingOut 4s 1s forwards;
+            animation: leftSideMovingOut 4.5s 1s forwards;
         }
 
         .img{
@@ -409,20 +312,23 @@ export default {
         left:0;
         width:100%;
         height:100%;
-        opacity: 1;
-        transform: translateZ(-10rem);
-        transform-style: preserve-3d;
         opacity: 0;
+        transform: translateZ(-10rem);
+        -webkit-transform: translateZ(-10rem);
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+
       
         @include column-horizontal-center();
         justify-content: center;
 
         &.animation{
-            animation: movingClose 3s 1.5s forwards;
+            animation: movingClose 2s 1.5s forwards;
         }
         .h1-wrapper{
             h1{
                 text-align: center;
+                text-transform: uppercase;
                 font-family: $secondary-font;
                 font-size: 2.3rem;
                 font-weight: 300;
@@ -438,7 +344,7 @@ export default {
             width:80%;
             max-width:588px;
             color: #1f1f1f;
-            padding:.2rem;
+            padding:.3rem;
             background-color: rgba(255, 255, 255, 0.8);
 
             @media(min-width:320px){
@@ -466,7 +372,7 @@ export default {
         position:absolute;
         width:50%;
         height:100%;
-        right:0;
+        right:0rem;
         top:0;
         z-index: 2;
         display: flex;
@@ -474,7 +380,7 @@ export default {
 
         
         &.animation{
-            animation: RightSideMovingOut 4s 1s forwards;
+            animation: RightSideMovingOut 4.5s 1s forwards;
         }
         .img{
             border: thick black solid;
@@ -513,7 +419,7 @@ export default {
             z-index: 1;
         }
         100%{
-            left:0%;
+            left:0;
             z-index: 1;
         }
     }
@@ -540,10 +446,11 @@ export default {
            z-index: 1;
            opacity: 0;
         }
+ 
         100%{
             transform:translateZ(0rem);
             z-index: 2;
-            opacity: 1;
+            opacity: 2;
         }
     }
 
@@ -551,7 +458,9 @@ export default {
 
 
 }
+// End of Slot 3 vertical and horizontal
 
+// slot 4 Vertical
 .slot4-wrapper{
     position: relative;
     width:100%;
@@ -749,7 +658,7 @@ export default {
 
         position: absolute;
         width: 70%;
-        bottom:0;
+        bottom:3rem;
         left:0;
         color: #ffffffbd;
 
@@ -775,14 +684,16 @@ export default {
     }
 
 }
+// End of Slot 4 Vertical
 
+// slot 4 Horizontal
 #interior-design-project-1.rotated{
     .space{
         .box{
             .face3{
                 .slot4-wrapper{
 
-                    $min-width : 568px;
+                    $min-width : 560px;
         
                     @media(min-width:$min-width){
                         background-color: white;
@@ -798,28 +709,28 @@ export default {
                             transform: translateZ(0rem);
                             perspective: 10rem;
                             background-color: rgb(255, 255, 255);
-
-                            
                         }
                  
                         .img{
                             @media(min-width:$min-width){
-                                // position: relative;
+                  
                                 position:absolute;
                                 width:auto;
                                 height:50%;
                                 margin-left:0;
-                                background-color: rgb(31, 30, 30);
                                 text-align: left;
-                                padding:.3rem;
+                           
                                 transform-style: preserve-3d;
                                 box-shadow: -19px 12px 0.4rem rgb(0 0 0 / 43%);
                             
                             }
                             img{
-                                height:100%;
-                                width:auto;
-                                object-fit: contain;
+                                @media(min-width:$min-width){
+                                    height:100%;
+                                    border:4px solid black;
+                                    width:auto;
+                                    object-fit: cover;
+                                }
                             }
                         }
 
@@ -1050,50 +961,72 @@ export default {
                     }
                     @media(min-width: $min-width){
                         .complete-wrapper{
-                                display: flex;
-                                justify-content: center;
-                                z-index: 7;
-                                visibility: hidden;
-                                opacity: 0;
-                                position: relative;
-                                width: 100%;
-                                background-color:  rgb(255 255 255 / 84%);
-                                overflow: scroll;
-
-                                height: 100%;
-                                &.animation{
-                                    animation:showCompleteWrapper 3s 25s forwards;
-                                }
-                                
-                                @keyframes showCompleteWrapper {
-                                    0%{
-                                        visibility: hidden;
-                                        opacity: 0;
-                                    }
-                                    100%{
-                                        visibility: visible;
-                                        opacity: 1;                                        
-                                    }
-                                }
+                            position: relative;
+                            width: 100%;
+                            bottom:0rem;
+                            display: flex;
+                            justify-content: center;
+                            z-index: 7;
+                            visibility: hidden;
+                            opacity: 0;
                             
-                            .content-wrapper{
+                            background-color:  rgb(255 255 255 / 84%);
+                            overflow: scroll;
+
+                            height: 100%;
+                            &.animation{
+                                animation:showCompleteWrapper 3s 25s forwards;
+                            }
+                            
+                            @keyframes showCompleteWrapper {
+                                0%{
+                                    visibility: hidden;
+                                    opacity: 0;
+                                }
+                                100%{
+                                    visibility: visible;
+                                    opacity: 1;                                        
+                                }
+                            }
+                        
+                        .content-wrapper{
+                            @media(min-width:$min-width){
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
                                 padding:2rem;
-                                // width:65%;
-                    
-
-                                h1{
+                                overflow-y: scroll;
+                        
+                                @media(min-width:1300px){
+                                    padding:3rem;
+                                }
+                            }
+                           
+                            h1{
+                                @media(min-width:$min-width){
                                     text-align: center;
                                     color:black
                                 }
+                                @media(min-width:1020px){
+                                        font-size: 1.8rem;
+                                        line-height: 1.9rem;
+                                    }
+                            }
 
-                                .content{
-                                    margin-top: 2rem;
+                            .content{
+                                @media(min-width:$min-width){
+                                   
                                     text-align: justify;
-                                    color:black
-                                    
+                                    color:black;
+                                    @include contentFontSetting_320px();
+                                    font-size: 0.5rem;
+                                    line-height: 0.8rem;
+                           
+                                    @media(min-width:1020px){
+                                        @include contentFontSetting_760px();
+                                        font-size: 1.2rem;
+                                        line-height: 1.9rem;
+                                    }
                                 }
                             }
                         }
@@ -1102,6 +1035,154 @@ export default {
             }
         }
     }
+}
 
 } 
+
+// End of slot 4 Horizontal
+
+
+// Slot 2 Vertical
+.slot2-wrapper{
+    position:relative;
+    width:100%;
+    height:100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    // @media(min-width:1024px){
+    //     flex-direction:row-reverse;
+    // }
+
+    .lower-side{
+
+        width: 100%;
+        height:100%;
+
+        padding: 1rem 1.3rem 1.3rem 1rem;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // justify-content: start;
+         @media(min-width:375px){
+             margin-top:1rem;
+             justify-content: start
+         }
+        @media(min-width:760px){
+            padding:3rem;
+        }
+        @media(min-width:1020px){
+            padding:4rem;
+        }
+        div{
+            width:100%;
+            h1{
+                // border: thin solid red;
+                font-weight: bold;
+                width:100%;
+                @include titleSetting();
+                font-size: 1.1rem;
+                @media(min-width:760px){
+                    font-weight: bold;
+                    font-size: 2.4rem;
+                }
+            }
+            .content{
+                // border: thin solid red;
+                font-family: $primary-font;
+                color:$grey ;
+                text-align: center;
+                @media(min-width:320px){
+                    @include contentFontSetting_320px();
+                    text-align: center;
+                }
+                @media(min-width:760px){
+                    @include contentFontSetting_760px();
+                    text-align: center;
+                }
+                @media(min-width:1020px){
+                    padding:4rem;
+                }
+            }
+        }
+    }
+    .upper-side{
+        min-height: 227px;
+        min-width: 320px;
+        width:100%;
+        // border: thin solid red;
+        
+        img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            
+        }
+    }
+}
+// End of Slot 2 Vertical
+
+
+//  Slot 2 Horizontal
+#interior-design-project-1.rotated .space .box .face4 .slot2-wrapper{
+   
+    @media(min-width:560px){
+        flex-direction:row-reverse;
+    }
+    
+    .lower-side{
+
+        @media(min-width:560px){
+            width:60%;
+            justify-content: center;
+            margin-top:0;
+            padding:1.4rem;
+        }
+        @media(min-width:1020px){
+             padding:2.2rem;
+        }
+        @media(min-width:1024px){
+             padding:3rem;
+        }
+
+        div{
+            width:100%;
+            h1{
+                @media(min-width:560px){
+                    font-size: .9rem;
+                }
+                @media(min-width:600px){
+                    font-size: 1.1rem;
+                }
+                @media(min-width:1020px){
+                    font-size: 1.7rem;
+                }
+            }
+            .content{
+                // border: thin solid red;
+                // font-family: $primary-font;
+                // color:$grey ;
+                @media(min-width:560px){
+                    @include contentFontSetting_320px();
+                    font-size:0.6rem;
+                    line-height: 1rem;
+                    text-align: center;
+                }
+                @media(min-width:1020px){
+                    @include contentFontSetting_760px();
+                    text-align: center;
+                }
+                // @media(min-width:760px){
+                //     @include contentFontSetting_760px();
+                // }
+            }
+        }
+    }
+    .upper-side{
+        img{}
+    }
+}
+// End of Slot 2 Horizontal
+
 </style>

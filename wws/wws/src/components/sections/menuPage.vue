@@ -1,7 +1,10 @@
 <template>
-    <div class="menu-button"></div>
+
+<div class="menu-button"></div>
+    
 
     <section class="menu close" id="menu">
+        
         <button @click="menuController" class="close-button">Close</button>
         <div class="menu-items-wrapper">
             <menu-item class="menu-item"
@@ -25,13 +28,10 @@
 
 <script>
 import MenuItem from "../layout/menuItemLayout.vue";
-import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
 export default {
     components:{
         MenuItem
     },
-    mixins:[screenSizeDetection],
-
     data(){
         return{
             id: "#menu",
@@ -52,11 +52,9 @@ export default {
     },
     methods:{
         menuController(){
-            this.DefaultBoxes();
+            this.defaultBoxes();
             this.showMenu();
-            // document.querySelector(".menu").classList.toggle('close');
-            // document.querySelector(".menu-button").classList.toggle('close');
-            // this.menuOpen = !this.menuOpen;
+    
 
             // lock the scroll bar when menu open
             if (this.menuOpen) {
@@ -70,18 +68,14 @@ export default {
             document.querySelector(".menu-button").classList.toggle('close');
             this.menuOpen = !this.menuOpen;
         },
-        DefaultBoxes(){
-            // turn all boxes back to the first page
-            document.querySelectorAll(".firstPage").forEach((e)=>{
-                e.click();
-            });
-        }
     },
     mounted(){
         document.querySelector(".menu-button").addEventListener("mouseover",() => {
-            // this.menuController();
-            this.showMenu();
+            this.menuController();
+            // this.showMenu();
         });
+
+        // [ Global Mixin function ]
         // Check if the device is horizontally rotated 
         // if true, add class "rotated" to the <section> tag
         // We treat the style of the horizontal screen separately
@@ -104,7 +98,7 @@ export default {
     background-color: rgb(46, 46, 46);
     top:0.3rem;
     left:0.3em;
-    z-index: 10;
+    z-index: 999;
 
 }
 
@@ -127,6 +121,7 @@ export default {
     top:0;
     left:0;
     width:100%;
+    height:100%;
     padding: 3rem 1rem 3rem  1rem;
     background-color: rgb(255, 255, 255);
     opacity: 1;
@@ -309,146 +304,146 @@ export default {
 
 
 
-.menu-items-wrapper.rotated{
+// .menu-items-wrapper.rotated{
 
  
-        @media (min-width : 768px) and (min-height: 600px){
+//         @media (min-width : 768px) and (min-height: 600px){
             
-            position: absolute;
-            width:100%;
-            height:100%;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(2,45%);
-            grid-template-rows:  repeat(5);
-            grid-row-gap:50px;
-            grid-column-gap:50px;
-            grid-template-areas:
-            "a f"
-            "b g"
-            "c h"
-            "d i"
-            "e j";
+//             position: absolute;
+//             width:100%;
+//             height:100%;
+//             padding: 2rem;
+//             display: grid;
+//             grid-template-columns: repeat(2,45%);
+//             grid-template-rows:  repeat(5);
+//             grid-row-gap:50px;
+//             grid-column-gap:50px;
+//             grid-template-areas:
+//             "a f"
+//             "b g"
+//             "c h"
+//             "d i"
+//             "e j";
 
-            .menu-item{
-                // width:100%;
-                // border:red thin solid;
-            }
+//             .menu-item{
+//                 // width:100%;
+//                 // border:red thin solid;
+//             }
 
-            .menu-item:nth-child(1){
-                grid-area: a;
-            }
-            .menu-item:nth-child(2){
-                grid-area: b;
-            }
-            .menu-item:nth-child(3){
-                grid-area: c;
-            }
-            .menu-item:nth-child(4){
-                grid-area: d;
-            }
-            .menu-item:nth-child(5){
-                grid-area: e;
-            }
-            .menu-item:nth-child(6){
-                grid-area: f;
-            }
-            .menu-item:nth-child(7){
-                grid-area: g;
-            }
+//             .menu-item:nth-child(1){
+//                 grid-area: a;
+//             }
+//             .menu-item:nth-child(2){
+//                 grid-area: b;
+//             }
+//             .menu-item:nth-child(3){
+//                 grid-area: c;
+//             }
+//             .menu-item:nth-child(4){
+//                 grid-area: d;
+//             }
+//             .menu-item:nth-child(5){
+//                 grid-area: e;
+//             }
+//             .menu-item:nth-child(6){
+//                 grid-area: f;
+//             }
+//             .menu-item:nth-child(7){
+//                 grid-area: g;
+//             }
 
-            .menu-item:nth-child(8){
-                grid-area: h;
-            }
+//             .menu-item:nth-child(8){
+//                 grid-area: h;
+//             }
 
-            .menu-item:nth-child(9){
-                grid-area: i;
-            }
+//             .menu-item:nth-child(9){
+//                 grid-area: i;
+//             }
         
-        }
+//         }
 
-        @media (min-width : 1024px) and (max-height: 1024px) and (min-height: 700px){
+//         @media (min-width : 1024px) and (max-height: 1024px) and (min-height: 700px){
 
-            position: absolute;
-            width:100%;
-            height:100%;
-            padding: 0rem;
-            padding-right:6rem;
-            margin-left:6rem;
+//             position: absolute;
+//             width:100%;
+//             height:100%;
+//             padding: 0rem;
+//             padding-right:6rem;
+//             margin-left:6rem;
 
-            padding-top:2rem;
-            display: grid;
-            grid-template-columns: repeat(3,30%);
-            grid-template-rows:  repeat(4);
-            // grid-row-gap:2%;
-            // grid-column-gap:%;
-            grid-template-areas:
-            "a e i"
-            "b f j"
-            "c g k"
-            "d h l";
+//             padding-top:2rem;
+//             display: grid;
+//             grid-template-columns: repeat(3,30%);
+//             grid-template-rows:  repeat(4);
+//             // grid-row-gap:2%;
+//             // grid-column-gap:%;
+//             grid-template-areas:
+//             "a e i"
+//             "b f j"
+//             "c g k"
+//             "d h l";
 
-            .menu-item{
-                // border:red thin solid;
-            }
+//             .menu-item{
+//                 // border:red thin solid;
+//             }
 
-            .menu-item:nth-child(1){
-                grid-area: a;
-            }
-            .menu-item:nth-child(2){
-                grid-area: b;
-            }
-            .menu-item:nth-child(3){
-                grid-area: e;
-            }
-            .menu-item:nth-child(4){
-                grid-area: f;
-            }
-            .menu-item:nth-child(5){
-                grid-area: g;
-            }
-            .menu-item:nth-child(6){
-                grid-area: h;
-            }
-            .menu-item:nth-child(7){
-                grid-area: i;
-            }
+//             .menu-item:nth-child(1){
+//                 grid-area: a;
+//             }
+//             .menu-item:nth-child(2){
+//                 grid-area: b;
+//             }
+//             .menu-item:nth-child(3){
+//                 grid-area: e;
+//             }
+//             .menu-item:nth-child(4){
+//                 grid-area: f;
+//             }
+//             .menu-item:nth-child(5){
+//                 grid-area: g;
+//             }
+//             .menu-item:nth-child(6){
+//                 grid-area: h;
+//             }
+//             .menu-item:nth-child(7){
+//                 grid-area: i;
+//             }
 
-            .menu-item:nth-child(8){
-                grid-area: j;
-            }
+//             .menu-item:nth-child(8){
+//                 grid-area: j;
+//             }
 
-            .menu-item:nth-child(9){
-                grid-area: k;
-            }
+//             .menu-item:nth-child(9){
+//                 grid-area: k;
+//             }
         
-        }
+//         }
 
-        @media (min-width : 1366px) and (min-height: 1024px){
+//         @media (min-width : 1366px) and (min-height: 1024px){
 
-            position: absolute;
-            width:100%;
+//             position: absolute;
+//             width:100%;
 
           
          
-            height:100%;
-            padding: 3rem;
-            padding-right:6rem;
-            padding-top:5rem;
-            display: grid;
-            grid-template-columns: repeat(3,30%);
-            grid-template-rows:  repeat(4);
-            // grid-row-gap:2%;
-            // grid-column-gap:%;
-            grid-template-areas:
-            "a e i"
-            "b f j"
-            "c g k"
-            "d h l";
-        }
+//             height:100%;
+//             padding: 3rem;
+//             padding-right:6rem;
+//             padding-top:5rem;
+//             display: grid;
+//             grid-template-columns: repeat(3,30%);
+//             grid-template-rows:  repeat(4);
+//             // grid-row-gap:2%;
+//             // grid-column-gap:%;
+//             grid-template-areas:
+//             "a e i"
+//             "b f j"
+//             "c g k"
+//             "d h l";
+//         }
         
 
-    }
+//     }
 
 
 

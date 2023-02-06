@@ -13,75 +13,93 @@
         </div>
 
         <div class="introduction-wrapper">
-            <div class="above-intro"> 
-            </div>
+            <div class="above-intro"></div>
             <div class="introduction">
-                I am Wai Shun WONG, a self-taught full stack web developer. 
-                <br><br>I specialise in VueJs, HTML and CSS/SACS/SCSS to construct frontend web application. For the backend side, I am proficient in using Python + Django or NodeJs + Express framework. I can construct RESTful API for the communication of both front and back ends. I also have knowledge to connect application to MySQL / MongoDB  to preform CRUD.
-                <br><br>“Learn” and “Create” are what I passionate about. From design to coding and even to investment, applying newly absorbed knowledge to solve the problem encountered in reality brings me a great satisfaction. 
-                <br><br>After Obtaining a Bachelor Degree in Biology in Hong Kong, I pursued a Postgraduate Diploma in Investment Management and Financial Intelligence. The knowledge obtained from postgraduate diploma always stimulating me what programming can do in financial aspect.  I recently finished a course of Solidity and Ethereum. I am seeking chances to participate in a relative project. But, I will never confine myself in single area as life is a journey of learning. My passion for learning and coding drive me to try and challenge as much as I can, no matter it is a frontend project, backend project or others.
+                <b class="subtitle">About Me</b>
+                <br>
+                I am Wai Shun WONG, a full stack web developer. 
+                <br><br>
+                I am proficient in constructing frontend application with ReactJs, VueJs, HTML and CSS/SCSS. For the backend, I have experience with using Python＋Django or NodeJs＋ExpressJs framework to construct REST API. I also have knowledge to connect application to MySQL , MongoDB and PSQL to preform CRUD.
+                <br><br>
+                More recently, I have been attracted by the trend of blockchain technology, and have completed a course in Solidity & Ethereum. This has brought more fun and enjoyment to my coding journey.
+                <br><br>
+
+                <b class="subtitle">Education Background</b>
+                <br>
+                After obtaining a Bachelor’s Degree in Biology in Hong Kong, I pursued a Postgraduate Diploma in Investment Management and Financial Intelligence. The scientific background helps me a lot in logical thinking and the knowledge obtained from my postgraduate diploma always stimulates me to think what programming can do in the financial industry.
+                <br><br>
+                I am highly passionate about learning & creating and applying newly absorbed knowledge to solve problems brings me a great satisfaction.
+                <br><br>
+                <b class="subtitle">Contact</b>
+                <br>
+                Email : wilson.ws.pro@gmail.com<br>
+                Github : https://github.com/wilws/
           </div>
-        </div>
-
-
-
-
+        </div> <!-- end of introduction-wrapper -->
     </section>
 </template>
 
 <script>
-import screenSizeDetection from "../../mixins/screenSizeDetection.vue";
 export default {
-    mixins:[screenSizeDetection],
+    data(){
+        return {
+            id: "#index",
+        }
+    },
+
     mounted(){
+        // [ Global Mixin function ]
         // Check if the device is horizontally rotated 
         // if true, add class "rotated" to the <section> tag
         // We treat the style of the horizontal screen separately
         this.deviceRotationResponse(this.id)
         window.addEventListener('resize',()=>{
-            this.deviceRotationResponse(this.id);
+            this.deviceRotationResponse(this.id);          
         });
     },
-    data(){
-        return {
-            id: "#index"
-        }
-    }
 }
 </script>
 
 <style lang="scss" scoped>
 
+ /* *{
+        border:red thin solid;
+    } */
 
 .index-page{
     position:relative;
-    width:100%;
-    height:100%;
+    width:100vw;
     background-color: rgb(255, 255, 255);
+    @include contentFontSetting_320px();
 
     .img-wrapper{
         position: relative;
         width:100%;
         height:45%;
-        // min-height:300px;
+
         
         .img{
-            position: absolute;
-            width:80%;
+            // position: absolute;
+            position:relative;
+            width:100%;
             height:100%;
             top:0;
             right:0;
+            // border: red thin solid;
             overflow: hidden;
 
-            @media (min-width:760px) {
-                width:60%;
-            }
+
  
             img{
-                width: 100%;
+                width: 80%;
                 height:100%;      
+                // border: red thin solid;
+                float:right;
                 object-fit:cover;
                 overflow: hidden;
+                @media (min-width:760px) {
+                    width:60%;
+                }
             }
         }
 
@@ -111,9 +129,14 @@ export default {
                 line-height: 2.9rem;
             }
             @mixin nameFontSetting_540px{  
-                bottom: -7%;
+                bottom: -2%;
                 right: 46%;
             }
+            @mixin nameFontSetting_680px{  
+                bottom: -0.5%;
+                font-size: 2.6rem;
+                right: 46%;
+            }      
 
             @mixin nameFontSetting_760px{
                 bottom:-7%;
@@ -148,7 +171,9 @@ export default {
             z-index: 1;
             padding: 0rem;
             text-align: right;
+            text-shadow: 10px 10px 10px #d4d1d1;
             background-color: rgba(256,256,256,0.5);
+            @include nameFontSetting_320px();
 
             @media (min-width:320px) {
                 @include nameFontSetting_320px();
@@ -164,6 +189,10 @@ export default {
 
             @media (min-width:540px) {
                 @include nameFontSetting_540px();
+            }
+
+            @media (min-width:680px) {
+                @include nameFontSetting_680px();
             }
 
             @media (min-width:760px) {
@@ -187,25 +216,23 @@ export default {
 
     .introduction-wrapper{
         position: relative;     
-        // height:50%;
         height:55%;
         width: 100%;
-        padding:0 1.3rem 0rem 1.3rem;
+        padding:0 0.1rem 0.9rem 0.1rem;
         overflow: hidden;
         z-index: 0;
         display:flex;
         flex-direction: column;
+        /* border:rgb(14, 34, 14) thick solid; */
   
 
         @media(min-width:760px){
             padding:0 3rem 3rem 3rem;
         }
 
-
-
         .above-intro{
             position: relative;
-      
+            /* border: red thin solid; */
             @media(min-width:320px){
                 margin-bottom:34px;
             }
@@ -220,54 +247,55 @@ export default {
 
         .introduction{
             position: relative;
-            color: rgb(0, 0, 0);
+            color: black;
             height:100%;
             overflow: scroll;
+            padding:1.2rem;
 
             @media(min-width:320px){
                 @include contentFontSetting_320px();
             }
             @media(min-width:760px){
-                // height:calc(100% - $aboveIntroHeight_760px);
+                padding:2rem;
                 @include contentFontSetting_760px();
             }
-            // @media(min-width:1000px){
-            //     height:calc(100% - $aboveIntroHeight_1000px);
-            // }
+            
+            b{
+                font-weight: bolder;
+                // text-decoration: underline;
+                text-transform: uppercase;
+                letter-spacing: .1rem;
+                font-family: 'Courier New', Courier, monospace;
+          
+            }
         }
     }
-
-    // .contact{
-    //     position:absolute;
-    //     right:5rem;
-    //     bottom:5rem;
-    //     color: rgb(141, 139, 139);
-    //     font-family: $secondary-font;
-    //     font-size: 1.4rem;
-    //     letter-spacing: 0.3rem;
-    //     text-align: right;
-
-    // }
 }
 
 // Rotated style
+
+$min-width:560px;
 .index-page.rotated{
-    @media(min-width:568px){
+
+    @media(min-width:500px){   
+        
         display:flex;
         flex-direction: row-reverse;
+
     }
+
     .img-wrapper{
-        @media(min-width:568px){
+        @media(min-width:$min-width){
             width:80%;
-            height: 100%;
+            height: 100vh;
         }
         .img{
-            @media(min-width:568px){
+            @media(min-width:$min-width){
                 width:100%;
                 height:100%;
             }
             img{
-                @media(min-width:568px){
+                @media(min-width:$min-width){
                     width:100%;
                     height:100%;
                     object-fit: cover;
@@ -281,7 +309,6 @@ export default {
                 left:unset;
                 bottom:unset;
                 right:87%;
-                
                 font-size: 1.5rem;
                 letter-spacing: 0.3rem;
                 line-height: 1.8rem;  
@@ -289,7 +316,8 @@ export default {
                 height: auto;
                 background-color: transparent;
         
-            }
+            }      
+            
 
             @mixin nameFontSetting_h_660px{
                 top: 1.4%;
@@ -325,9 +353,10 @@ export default {
                 letter-spacing: .7rem;
             }
         
-            @media (min-width:560px) {
+            @media (min-width:$min-width) {
                 @include nameFontSetting_h_560px();
             }
+
 
             @media (min-width:660px) {
                 @include nameFontSetting_h_660px();
@@ -350,13 +379,13 @@ export default {
     }
     .introduction-wrapper{
 
-        @media(min-width:560px){
+        @media(min-width:$min-width){
             height:100%;
         }
       
         .above-intro{
-            @media(min-width:560px){
-                margin-bottom:5rem;
+            @media(min-width:$min-width){
+                margin-bottom:8rem;
             }
             @media(min-width:660px){
                 margin-bottom:6rem;
@@ -372,11 +401,20 @@ export default {
 
         }
         .introduction{ 
-            @media(min-width:560px){
+            color: rgb(31, 29, 29);
+            @media(min-width:$min-width){
                 position: relative;
                 height:100%;
                 overflow: scroll;   
-            }        
+            
+                @include contentFontSetting_320px();
+
+                @media(min-width:1000px){
+                    // height:calc(100% - $aboveIntroHeight_760px);
+                    @include contentFontSetting_760px();
+                }  
+
+            }
         }
     }
 }

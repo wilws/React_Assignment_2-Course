@@ -16,11 +16,37 @@
             </div>
             <div class="lower-wrapper">
                 <div class="content">
+                    <h3 v-if="!!FrontEndTechList.length">Specification</h3>
+
+                    <div class="bottom-side">
+                        <div v-if="FrontEndTechList.length > 0">
+                            <p class="tech-cat-tittle">Front End</p>
+                            <li v-for="(tech, index) in FrontEndTechList" :key="index">
+                                {{ tech }}
+                            </li>               
+                        </div>
+
+                        <div v-if="BackEndTechList.length > 0">
+                            <p class="tech-cat-tittle">Back End</p>
+                            <li v-for="(tech, index) in BackEndTechList" :key="index">
+                                {{ tech }}
+                            </li>               
+                        </div>
+
+                        <div v-if="DesignStyleList.length > 0">
+                            <p class="tech-cat-tittle">Others</p>
+                            <li v-for="(tech, index) in DesignStyleList" :key="index">
+                                {{ tech }}
+                            </li>               
+                        </div>
+                    </div>
+
+                    <h3>Background</h3>
                     <p class="left-side">
                         <span v-html="projectDescription"></span>
                     </p>
 
-                    <div class="bottom-side">
+                    <!-- <div class="bottom-side">
                         <div v-if="FrontEndTechList.length > 0">
                             <p class="tech-cat-tittle">Front End</p>
                             <li v-for="(tech, index) in FrontEndTechList" :key="index">
@@ -41,16 +67,9 @@
                                 {{ tech }}
                             </li>               
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-
-                
             </div>
-
-
-
-
-
         </div>
         <div class="right-wrapper">
             <div v-if="mediaType == 'video'" class="vidoe">
@@ -131,7 +150,7 @@ export default {
             const content = `${this.id}  div div.left-wrapper div.lower-wrapper div.content`;
             const page = document.querySelector(this.id);
             const travelDistance = window.innerHeight + window.pageYOffset;
-            const triggerPoint = page.offsetTop + page.offsetHeight/2;
+            const triggerPoint = page.offsetTop + page.offsetHeight/3.5;
             
             if (travelDistance > triggerPoint){
                 headerMovingItems.forEach((item) => {
@@ -172,12 +191,16 @@ export default {
 
 <style lang="scss" scoped>
 .section{
-    background-color: transparent;
-
+    position:relative;
     width:100%;
-    height:100%;
+    height:100vh;
+    // min-height:100vh;  
+    display: flex;
+    justify-content: start;
+    border-top: rgb(0, 0, 0) thick solid;
+    overflow: hidden;
     @include row-horizontal-center();
-    // overflow: auto;
+
 
 
     .left-wrapper{
@@ -186,8 +209,11 @@ export default {
         padding:1rem;
         width:100%;
         height:100%;
+        // height:auto;
+        // min-height:100vh;  
         display: flex;
         flex-direction: column;
+         overflow: hidden;
 
         @media(min-width:320px){
             padding:1rem;
@@ -221,6 +247,7 @@ export default {
                 h1{
            
                     position: relative;
+  
                     width:100%;
                     font-family: $secondary-font;
                     font-size:1.1rem;
@@ -247,11 +274,15 @@ export default {
 
                 h3{
                     position: relative;
+    
                     width:100%;
-                    font-size: 0.6rem;
-                    font-weight: 500;
-                    font-family: $secondary-font;
-                    letter-spacing: .1rem;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    // font-family: $secondary-font;
+                    
+                    font-family: $primary-font;
+                    text-transform: uppercase;
+                    letter-spacing: 0rem;
                     padding-left: .2rem;
                     margin-top:-.1rem;
                     text-align: left;
@@ -259,7 +290,7 @@ export default {
                     transition: transform 1s .1s;
                     
                     @media(min-width:320px){
-                        font-size: 0.5rem;
+                        font-size: 0.8rem;
                     }
                     @media(min-width:480px){
                         font-size: 0.6rem;
@@ -268,12 +299,12 @@ export default {
                         font-size: 0.9rem;
                     }
                     @media(min-width:760px){
-                        font-size: 1rem;
+                        font-size: 1.2rem;
                         margin-top:-0.3rem;
                     }
                     @media(min-width:1020px){
                         font-size: 1.7rem;
-                        margin-top:-0.7rem;
+                        margin-top:-0.4rem;
                     }
 
                 }
@@ -281,6 +312,7 @@ export default {
                     position: relative;     
                     text-align: center;
                     border-radius: 1rem;
+                    border: thin solid transparent;
                     color:white;
                     cursor: pointer;        
                     transform:translateX(-200%);
@@ -303,6 +335,7 @@ export default {
                         height: 2.8rem; 
                         width: 16.1rem;
                         font-size: 1.3rem;
+                        margin-top:5px;
                     }
                     @mixin buttonSetting_1300px{
                         height: 1.5rem;
@@ -362,48 +395,82 @@ export default {
 
         .lower-wrapper{
            position: relative;
-           height:auto;
-           overflow: scroll;
-
-        
-
+            overflow: hidden;
+        //    height:auto;
+            width:100%;
+            height:100%;
 
             .content{
                 position: relative;
-                overflow: auto;
+                // overflow: auto;
                 width:100%;
                 height: 100%;
+               
+                overflow: scroll;
                 opacity:0;
                 transition:opacity 1s 1s;
   
                 .left-side{
-                    
+                     text-align: justify;
                     span{
                         @include contentFontSetting_320px();
+                       
                         @media(min-width:768px){
                             @include contentFontSetting_760px()
                         }
                     }
                 }
+
+                h3{
+                    margin-bottom:.5rem;
+                    margin-top:2rem;
+                    width: 100%;
+                    // &:nth-child(1){
+                    //     // color:transparent;
+                    //     transform:scale(0.7);
+                    // }
+                    // @media(min-width:320px){
+                    //     font-size: 0.8rem;
+                    // }
+                    // @media(min-width:768px){
+                    //         font-size: 1rem;
+                    // }
+                    // @media(min-width:1000px){
+                    //         font-size: 1.2rem;
+                    //     }
+                }
                 .bottom-side{
-                    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                    // display: flex;
-                    // gap:4rem;
+                    position: relative;
+                    font-family:'Lucida Sans';
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    ;
+                    margin-bottom:2.5rem;
+                    margin-top:1rem;
+                    padding:0 1rem;
+                    // padding-right: 1rem;
                 
                     div {
-                        margin-top:2rem;
+                        // margin-top:2rem;
                         // border:red thin solid;
                     }
 
                     div .tech-cat-tittle{
                         font-weight: bold;
-                        font-size: .8rem;
-                        text-decoration: underline;
+                        font-size: .7rem;
+                        // text-decoration: underline;
                         text-align: left;
                         letter-spacing: 0rem;
-                        margin-bottom:.5rem;
+                        // margin-bottom:.5rem;
                         @media(min-width:320px){
                             font-size: 0.8rem;
+                        }
+                        @media(min-width:760px){
+                            font-size: 0.9rem;
+                        }
+                        @media(min-width:1000px){
+                            font-size: 1rem;
                         }
 
                     }
@@ -411,9 +478,15 @@ export default {
                         list-style: none;
                         text-align: left;
                         font-size: .6rem;
-                        margin-top:.3rem;
+                        // margin-top:.3rem;
                         @media(min-width:320px){
-                            font-size: 0.6rem;
+                            font-size: 0.7rem;
+                        }
+                        @media(min-width:760px){
+                            font-size: 0.9rem;
+                        }
+                        @media(min-width:1000px){
+                            font-size: 1rem;
                         }
     
                     }
@@ -427,48 +500,57 @@ export default {
         display: none;
   
 
-        @media(min-width:1024px) and (max-height:1024px){
-            display:unset;
-        }
+        // @media(min-width:1024px) and (max-height:1024px){
+        //     display:unset;
+        // }
         .vidoe{
-            width:100%;
-            height: 100%;
-            background:rgb(255, 255, 255);
-            text-align: right;
+            // width:100%;
+            // height: 100%;
+            // background:rgb(255, 255, 255);
+            // text-align: right;
             
             video{
-                height:100%;   
-                object-fit: cover;
+                // height:100%;   
+                // object-fit: cover;
       
             }
         }
 
         .img{
-            width: 100%;
-            height: 100%;
+            // width: 100%;
+            // height: 100%;
 
             img{
-                height: 100%;
-                width:100%;
-                object-fit: cover;
+                // height: 100%;
+                // width:100%;
+                // object-fit: cover;
             }
         }      
     }
 }
 
+
+
 .rotated .space .box .face1 .section,
 .rotated .section{
-    
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
 
     .left-wrapper{
+         @media(min-width:560px){
+             width:70%;
+         }
 
         .upper-wrapper{
             @media(min-width:560px){
                 margin-bottom: 20px;
             }
-            @media(min-width:560px){
-                margin-bottom: 70px;
-            }
+            // @media(min-width:560px){
+            //     margin-bottom: 70px;
+            // }
            
             .left-side{
               
@@ -498,13 +580,13 @@ export default {
                 h3{
 
                     @media(min-width:560px){
-                        font-size: 0.5rem;
-                    }
-                    @media(min-width:660px){
-                        font-size: 0.5rem;
-                    }
-                    @media(min-width:800px){
                         font-size: 0.8rem;
+                    }
+                    // @media(min-width:660px){
+                    //     font-size: 0.5rem;
+                    // }
+                    @media(min-width:800px){
+                        font-size: 1rem;
                         margin-top: -2px;
                     }
                     // @media(min-width:1000px){
@@ -512,7 +594,7 @@ export default {
                     //     margin-top: -3px;
                     // }
                     @media(min-width:1300px){
-                        font-size: 0.9rem;
+                        font-size: 1.4rem;
                         margin-top: -4px;
                     }
                     // @media(min-width:1500px){
@@ -565,7 +647,7 @@ export default {
                     width:43%;
                 }
                 @media(min-width:1000px){
-                    width:40%;
+                    width:29%;
                 }
                 @media(min-width:1300px){
                     width:29%;
@@ -602,24 +684,18 @@ export default {
                 height: 100%;
                 opacity:0;
                 transition:opacity 1s 1s;
-                overflow: scroll;
+         
 
                 .left-side{
+                    span{
+                        @media(min-width:560px){
+                            @include contentFontSetting_320px();
+                        }
 
-
-                    @include contentFontSetting_320px();
-
-     
-                    @media(min-width:1000px){
-                        @include contentFontSetting_760px()
+                        @media(min-width:1000px){
+                            @include contentFontSetting_760px()
+                        }
                     }
-                    // @media(min-width:1024px){
-                    //     // font-size: 1.3rem;
-                    //     font-size: 0.9rem;
-                    // }
-
-                    
-
                 }
                 .bottom-side{
                     div {}
@@ -634,30 +710,29 @@ export default {
     }
     .right-wrapper{
         @media(min-width: 560px){
-            display: unset;
-            max-width:700px;
-            width:55%;
-            height: 100%;
-            z-index: 2;
-            // @media(min-width:1024px) and (max-height:1024px){
-            //     display:unset;
-            // }
-        }
 
-        // @media(min-width:1024px) and (max-height:1024px){
-        //     display:unset;
-        // }
+            // border:red thin solid;
+            position: relative;
+            width:50%;
+            height:100vh;  
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            z-index: 2;
+
+        }
         .vidoe{
             @media(min-width: 560px){
+                position: relative;
                 width:100%;
                 height: 100%;
                 background:rgb(255, 255, 255);
                 text-align: right;
             }
-            
             video{
                 @media(min-width: 560px){
-                    height:100%;   
+                    // width:100%;  
+                    height:100%; 
                     object-fit: cover;
                 }
       
@@ -665,13 +740,17 @@ export default {
         }
 
         .img{
-            width: 100%;
-            height: 100%;
+            @media(min-width: 560px){
+                width: 100%;
+                height: 100%;
+            }
 
             img{
-                height: 100%;
-                width:100%;
-                object-fit: cover;
+                @media(min-width: 560px){
+                    height: 100%;
+                    width:100%;
+                    object-fit: cover;
+                }
             }
         }
 
